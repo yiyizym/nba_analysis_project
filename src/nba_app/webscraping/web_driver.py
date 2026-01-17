@@ -109,9 +109,15 @@ class CustomWebDriver(BaseWebDriver):
             # Try multiple possible chromium locations
             chromium_path = shutil.which('chromium') or shutil.which('chromium-browser') or shutil.which('google-chrome')
 
-            # Also try common installation paths
+            # Also try common installation paths (Linux and macOS)
             if not chromium_path:
-                for path in ['/usr/bin/chromium', '/usr/bin/chromium-browser', '/usr/bin/google-chrome']:
+                for path in [
+                    '/usr/bin/chromium',
+                    '/usr/bin/chromium-browser',
+                    '/usr/bin/google-chrome',
+                    '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',  # macOS
+                    '/Applications/Chromium.app/Contents/MacOS/Chromium',  # macOS Chromium
+                ]:
                     if os.path.exists(path):
                         chromium_path = path
                         break
@@ -131,13 +137,21 @@ class CustomWebDriver(BaseWebDriver):
                 )
 
             # Prefer a system ChromeDriver when available (better version alignment with chromium package)
-            chromedriver_path = shutil.which('chromedriver')
+            # First check user-local install (may have newer version matching Chrome)
+            home = os.path.expanduser('~')
+            chromedriver_path = None
+            for path in [
+                f'{home}/bin/chromedriver',  # User local install (priority)
+                '/usr/bin/chromedriver',
+                '/usr/lib/chromium/chromedriver',
+            ]:
+                if os.path.exists(path):
+                    chromedriver_path = path
+                    break
 
+            # Fall back to PATH if not found in standard locations
             if not chromedriver_path:
-                for path in ['/usr/bin/chromedriver', '/usr/lib/chromium/chromedriver']:
-                    if os.path.exists(path):
-                        chromedriver_path = path
-                        break
+                chromedriver_path = shutil.which('chromedriver')
 
             if chromedriver_path:
                 logger.info(f"Using system ChromeDriver at: {chromedriver_path}")

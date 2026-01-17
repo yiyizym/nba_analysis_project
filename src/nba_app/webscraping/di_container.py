@@ -9,6 +9,7 @@ from .boxscore_scraper import BoxscoreScraper
 from .schedule_scraper import ScheduleScraper
 from .nba_scraper import NbaScraper
 from .validation_scraper import ValidationScraper
+from .team_stats_shooting_scraper import TeamStatsShootingScraper
 
 
 class DIContainer(CommonDIContainer):
@@ -69,6 +70,15 @@ class DIContainer(CommonDIContainer):
         error_handler=CommonDIContainer.error_handler_factory
     )
 
+    team_stats_scraper = providers.Factory(
+        TeamStatsShootingScraper,
+        config=CommonDIContainer.config,
+        data_access=CommonDIContainer.data_access,
+        page_scraper=page_scraper,
+        app_logger=CommonDIContainer.app_logger,
+        error_handler=CommonDIContainer.error_handler_factory
+    )
+
     nba_scraper = providers.Factory(
         NbaScraper,
         config=CommonDIContainer.config,
@@ -76,5 +86,6 @@ class DIContainer(CommonDIContainer):
         schedule_scraper=schedule_scraper,
         app_logger=CommonDIContainer.app_logger,
         error_handler=CommonDIContainer.error_handler_factory,
-        validation_scraper=validation_scraper
+        validation_scraper=validation_scraper,
+        team_stats_scraper=team_stats_scraper
     )

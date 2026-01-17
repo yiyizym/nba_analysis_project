@@ -22,6 +22,10 @@ class BaseNbaScraper(ABC):
     def scrape_and_save_matchups_for_day(self, search_day: str) -> None:
         pass
 
+    @abstractmethod
+    def scrape_and_save_team_stats(self, seasons: List[str], stat_category: str) -> None:
+        pass
+
 class BaseBoxscoreScraper(ABC):
     @abstractmethod
     def __init__(self, config: BaseConfigManager, data_access: BaseDataAccess):
@@ -61,7 +65,7 @@ class BasePageScraper(ABC):
     @abstractmethod
     def __init__(self, config: BaseConfigManager, web_driver: BaseWebDriver):
         pass
-    
+
     @abstractmethod
     def go_to_url(self, url: str) -> bool:
         """Navigate to the specified URL."""
@@ -80,6 +84,21 @@ class BasePageScraper(ABC):
     @abstractmethod
     def scrape_page_table(self, url: str, table_class: str, pagination_class: str, dropdown_class: str) -> Optional[WebElement]:
         """Scrape a table from a web page, handling pagination if necessary."""
+        pass
+
+class BaseTeamStatsScraper(ABC):
+    @abstractmethod
+    def __init__(self, config: BaseConfigManager, data_access: BaseDataAccess, page_scraper: BasePageScraper):
+        pass
+
+    @abstractmethod
+    def scrape_and_save_team_stats(self, seasons: List[str], stat_category: str) -> None:
+        """Scrape and save team statistics for specified seasons and stat category."""
+        pass
+
+    @abstractmethod
+    def scrape_team_stats_for_season(self, season: str, stat_category: str, season_type: str) -> pd.DataFrame:
+        """Scrape team statistics for a specific season, stat category, and season type."""
         pass
 
 

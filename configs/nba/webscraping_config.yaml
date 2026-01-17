@@ -19,6 +19,10 @@ enable_validation_scraping: False # Set to False to skip validation data collect
 validation_data_file: validation_data.csv  # File to store validation data from basketball-reference.com
 team_mapping_file: team_mapping.yaml  # Team ID to abbreviation mapping for basketball-reference.com
 
+# Team stats settings
+enable_team_stats_scraping: False # Set to True to enable team stats collection (shooting, defense, etc.)
+team_stats_category: shooting # Category of team stats to scrape (shooting, defense, traditional, etc.)
+
 # NBA URLs
 nba_boxscores_url: https://www.nba.com/stats/teams/boxscores
 nba_schedule_url: https://www.nba.com/schedule

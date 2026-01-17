@@ -84,6 +84,10 @@ def main() -> None:
             if hasattr(config, 'enable_validation_scraping') and config.enable_validation_scraping:
                 scrape_validation_data(nba_scraper, newly_scraped, config, app_logger)
 
+            # Scrape team stats if enabled
+            if hasattr(config, 'enable_team_stats_scraping') and config.enable_team_stats_scraping:
+                scrape_team_stats(nba_scraper, seasons, config, app_logger)
+
             if config.full_scrape:
                 concatenated_data = newly_scraped #no need to concatenate if full scrape is true
             else:
@@ -202,6 +206,52 @@ def scrape_validation_data(nba_scraper, newly_scraped, config, app_logger):
         )
         # Don't fail the entire pipeline if validation scraping fails
         app_logger.structured_log(logging.WARNING, "Continuing pipeline despite validation scraping error")
+
+def scrape_team_stats(nba_scraper, seasons, config, app_logger):
+    """
+    Scrape team statistics for the specified seasons.
+
+    This function scrapes aggregated team statistics (e.g., shooting stats) from NBA.com
+    for the given seasons. Unlike boxscores which are per-game, team stats represent
+    season-level aggregated statistics.
+
+    Args:
+        nba_scraper: NbaScraper instance
+        seasons: List of seasons to scrape (e.g., ["2021-22", "2022-23"])
+        config: Configuration object
+        app_logger: App logger instance
+    """
+    try:
+        app_logger.structured_log(
+            logging.INFO,
+            "Initiating team stats scraping",
+            seasons=seasons
+        )
+
+        # Get stat category from config, default to 'shooting'
+        stat_category = getattr(config, 'team_stats_category', 'shooting')
+
+        if nba_scraper.scrape_and_save_team_stats(seasons, stat_category):
+            app_logger.structured_log(
+                logging.INFO,
+                "Team stats scraping completed successfully",
+                stat_category=stat_category
+            )
+        else:
+            app_logger.structured_log(
+                logging.WARNING,
+                "Team stats scraping skipped or failed"
+            )
+
+    except Exception as e:
+        app_logger.structured_log(
+            logging.ERROR,
+            "Error during team stats scraping",
+            error_message=str(e),
+            error_type=type(e).__name__
+        )
+        # Don't fail the entire pipeline if team stats scraping fails
+        app_logger.structured_log(logging.WARNING, "Continuing pipeline despite team stats scraping error")
 
 def validate_data(newly_scraped, cumulative_scraped, file_names, data_validator, error_handler, app_logger) -> bool:
 
