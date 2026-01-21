@@ -1,0 +1,56 @@
+{
+  "data_type": "monthly_multi_season",
+  "training_seasons": [
+    "2021_22",
+    "2022_23",
+    "2023_24",
+    "2024_25"
+  ],
+  "validation_seasons": [
+    "2025_26"
+  ],
+  "training_samples": 840,
+  "validation_samples": 120,
+  "training_r2": 0.9717605726924049,
+  "validation_r2": 0.9271416521893103,
+  "training_rmse": 0.9035685021863363,
+  "validation_rmse": 1.205616727397638,
+  "weights": {
+    "Passes_Per_Poss": 0.4708989041471914,
+    "Secondary AST": 0.08608041734863786,
+    "AST_To_Pass_Pct": 0.7749007169038608,
+    "Potential_AST_To_Pass_Pct": -0.06982860360767898,
+    "Dist_Miles_Off": 0.006826195508794467,
+    "Very_Tight_Pct": -0.036453220169476594,
+    "Tight_Pct": -0.015310569351224912,
+    "Open_Pct": -0.0690773087418534,
+    "Wide_Open_Pct": -0.028051148940561644,
+    "FGM_AST_Pct": -0.5811991206584446,
+    "OREB_Pct": 2.1107114742950666,
+    "TOV_Pct": -1.9364078440104466,
+    "Rim_Pct": -0.2226647208221292,
+    "Mid_Range_Pct": -0.09613689509427079,
+    "Three_Pt_Pct": 0.15504565855167635,
+    "eFG_Pct": 4.14775034673242,
+    "FTA_Rate": 0.8656153271922911
+  },
+  "feature_order": [
+    "Passes_Per_Poss",
+    "Secondary AST",
+    "AST_To_Pass_Pct",
+    "Potential_AST_To_Pass_Pct",
+    "Dist_Miles_Off",
+    "Very_Tight_Pct",
+    "Tight_Pct",
+    "Open_Pct",
+    "Wide_Open_Pct",
+    "FGM_AST_Pct",
+    "OREB_Pct",
+    "TOV_Pct",
+    "Rim_Pct",
+    "Mid_Range_Pct",
+    "Three_Pt_Pct",
+    "eFG_Pct",
+    "FTA_Rate"
+  ]
+}
