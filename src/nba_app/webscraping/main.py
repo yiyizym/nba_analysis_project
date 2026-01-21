@@ -88,6 +88,10 @@ def main() -> None:
             if hasattr(config, 'enable_team_stats_scraping') and config.enable_team_stats_scraping:
                 scrape_team_stats(nba_scraper, seasons, config, app_logger)
 
+            # Scrape per-team stats if enabled
+            if hasattr(config, 'per_team_stats') and config.per_team_stats.get('enabled', False):
+                scrape_per_team_stats(nba_scraper, seasons, config, app_logger)
+
             if config.full_scrape:
                 concatenated_data = newly_scraped #no need to concatenate if full scrape is true
             else:
@@ -211,9 +215,12 @@ def scrape_team_stats(nba_scraper, seasons, config, app_logger):
     """
     Scrape team statistics for the specified seasons.
 
-    This function scrapes aggregated team statistics (e.g., shooting stats) from NBA.com
-    for the given seasons. Unlike boxscores which are per-game, team stats represent
-    season-level aggregated statistics.
+    This function scrapes aggregated team statistics from NBA.com for the given seasons.
+    Unlike boxscores which are per-game, team stats represent season-level aggregated statistics.
+
+    Supports two modes:
+    1. Legacy single category mode: Uses team_stats_category config value
+    2. Multi-category mode: When team_stats_categories is configured, scrapes all enabled categories
 
     Args:
         nba_scraper: NbaScraper instance
@@ -228,14 +235,29 @@ def scrape_team_stats(nba_scraper, seasons, config, app_logger):
             seasons=seasons
         )
 
-        # Get stat category from config, default to 'shooting'
-        stat_category = getattr(config, 'team_stats_category', 'shooting')
+        # Check if multi-category mode is configured
+        has_categories_config = hasattr(config, 'team_stats_categories') and config.team_stats_categories
+
+        if has_categories_config:
+            # Multi-category mode: pass None to use all enabled categories from config
+            app_logger.structured_log(
+                logging.INFO,
+                "Using multi-category mode from team_stats_categories config"
+            )
+            stat_category = None
+        else:
+            # Legacy single category mode
+            stat_category = getattr(config, 'team_stats_category', 'shooting')
+            app_logger.structured_log(
+                logging.INFO,
+                "Using legacy single category mode",
+                stat_category=stat_category
+            )
 
         if nba_scraper.scrape_and_save_team_stats(seasons, stat_category):
             app_logger.structured_log(
                 logging.INFO,
-                "Team stats scraping completed successfully",
-                stat_category=stat_category
+                "Team stats scraping completed successfully"
             )
         else:
             app_logger.structured_log(
@@ -252,6 +274,50 @@ def scrape_team_stats(nba_scraper, seasons, config, app_logger):
         )
         # Don't fail the entire pipeline if team stats scraping fails
         app_logger.structured_log(logging.WARNING, "Continuing pipeline despite team stats scraping error")
+
+
+def scrape_per_team_stats(nba_scraper, seasons, config, app_logger):
+    """
+    Scrape per-team statistics with dimension parameters.
+
+    This function scrapes individual team pages from NBA.com with filters like
+    Month, LastNGames, Location, and Outcome. Configuration is read from the
+    per_team_stats section in webscraping_config.yaml.
+
+    Args:
+        nba_scraper: NbaScraper instance
+        seasons: List of seasons to scrape (e.g., ["2024-25"])
+        config: Configuration object
+        app_logger: App logger instance
+    """
+    try:
+        app_logger.structured_log(
+            logging.INFO,
+            "Initiating per-team stats scraping",
+            seasons=seasons
+        )
+
+        if nba_scraper.scrape_and_save_per_team_stats(seasons):
+            app_logger.structured_log(
+                logging.INFO,
+                "Per-team stats scraping completed successfully"
+            )
+        else:
+            app_logger.structured_log(
+                logging.WARNING,
+                "Per-team stats scraping skipped (not enabled or failed)"
+            )
+
+    except Exception as e:
+        app_logger.structured_log(
+            logging.ERROR,
+            "Error during per-team stats scraping",
+            error_message=str(e),
+            error_type=type(e).__name__
+        )
+        # Don't fail the entire pipeline if per-team stats scraping fails
+        app_logger.structured_log(logging.WARNING, "Continuing pipeline despite per-team stats error")
+
 
 def validate_data(newly_scraped, cumulative_scraped, file_names, data_validator, error_handler, app_logger) -> bool:
 

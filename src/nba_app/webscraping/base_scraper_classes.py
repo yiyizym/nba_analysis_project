@@ -6,7 +6,7 @@ These base classes provide a common interface for different scraper implementati
 """
 
 from abc import ABC, abstractmethod
-from typing import Optional, List, Tuple
+from typing import Optional, List, Tuple, Dict, Any
 from selenium.webdriver.remote.webelement import WebElement
 import pandas as pd
 
@@ -23,7 +23,12 @@ class BaseNbaScraper(ABC):
         pass
 
     @abstractmethod
-    def scrape_and_save_team_stats(self, seasons: List[str], stat_category: str) -> None:
+    def scrape_and_save_team_stats(
+        self,
+        seasons: List[str],
+        stat_category: Optional[str] = None,
+        categories: Optional[List[Any]] = None
+    ) -> None:
         pass
 
 class BaseBoxscoreScraper(ABC):
@@ -92,12 +97,23 @@ class BaseTeamStatsScraper(ABC):
         pass
 
     @abstractmethod
-    def scrape_and_save_team_stats(self, seasons: List[str], stat_category: str) -> None:
-        """Scrape and save team statistics for specified seasons and stat category."""
+    def scrape_and_save_team_stats(
+        self,
+        seasons: List[str],
+        stat_category: Optional[str] = None,
+        categories: Optional[List[Any]] = None
+    ) -> None:
+        """Scrape and save team statistics for specified seasons and categories."""
         pass
 
     @abstractmethod
-    def scrape_team_stats_for_season(self, season: str, stat_category: str, season_type: str) -> pd.DataFrame:
+    def scrape_team_stats_for_season(
+        self,
+        season: str,
+        stat_category: str,
+        season_type: str,
+        extra_params: Optional[Dict[str, str]] = None
+    ) -> pd.DataFrame:
         """Scrape team statistics for a specific season, stat category, and season type."""
         pass
 

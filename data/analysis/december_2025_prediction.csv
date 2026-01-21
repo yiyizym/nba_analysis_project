@@ -1,0 +1,31 @@
+﻿Actual_Rank,Predicted_Rank,Rank_Diff,TEAM,OffRtg,Predicted_OffRtg,Error,GP
+1,2,-1,Boston Celtics,124.3,120.47,3.83,12
+2,4,-2,New York Knicks,123.2,119.37,3.83,14
+3,6,-3,Denver Nuggets,122.9,118.81,4.09,14
+4,3,1,Houston Rockets,120.4,119.45,0.95,13
+5,13,-8,San Antonio Spurs,119.0,114.71,4.29,14
+6,1,5,Oklahoma City Thunder,118.7,120.72,-2.02,13
+7,18,-11,Utah Jazz,118.6,113.31,5.29,13
+8,19,-11,LA Clippers,117.9,113.17,4.73,12
+9,9,0,Detroit Pistons,117.5,115.55,1.95,13
+10,7,3,Cleveland Cavaliers,117.3,117.69,-0.39,14
+11,14,-3,Golden State Warriors,116.3,114.31,1.99,13
+12,12,0,Memphis Grizzlies,116.1,114.77,1.33,12
+13,15,-2,New Orleans Pelicans,116.0,113.87,2.13,14
+13,22,-9,Charlotte Hornets,116.0,112.75,3.25,13
+15,5,10,Dallas Mavericks,115.4,119.35,-3.95,13
+16,21,-5,Minnesota Timberwolves,114.8,113.07,1.73,14
+16,11,5,Atlanta Hawks,114.8,114.86,-0.06,14
+18,17,1,Los Angeles Lakers,114.2,113.53,0.67,12
+19,10,9,Miami Heat,114.1,115.43,-1.33,13
+20,16,4,Chicago Bulls,113.7,113.76,-0.06,14
+21,29,-8,Brooklyn Nets,113.5,110.11,3.39,11
+22,20,2,Washington Wizards,113.3,113.14,0.16,14
+23,25,-2,Philadelphia 76ers,113.1,110.94,2.16,12
+24,8,16,Phoenix Suns,112.4,115.6,-3.2,12
+25,27,-2,Milwaukee Bucks,111.1,110.7,0.4,13
+26,26,0,Orlando Magic,110.6,110.8,-0.2,14
+27,30,-3,Portland Trail Blazers,110.5,108.26,2.24,14
+28,23,5,Toronto Raptors,109.9,112.64,-2.74,14
+29,24,5,Indiana Pacers,109.8,111.68,-1.88,14
+30,28,2,Sacramento Kings,108.0,110.64,-2.64,12

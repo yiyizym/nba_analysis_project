@@ -249,13 +249,22 @@ class NbaScraper(BaseNbaScraper):
             raise self.error_handler.create_error_handler('data_validation', "Invalid search_day format. Expected 3-letter day abbreviation (e.g., 'MON', 'TUE')")
 
     @log_performance
-    def scrape_and_save_team_stats(self, seasons: List[str], stat_category: str = 'shooting') -> bool:
+    def scrape_and_save_team_stats(
+        self,
+        seasons: List[str],
+        stat_category: Optional[str] = None
+    ) -> bool:
         """
-        Scrape and save team statistics for specified seasons and stat category.
+        Scrape and save team statistics for specified seasons and categories.
+
+        Supports two modes:
+        1. Single category mode (backwards compatible): Pass stat_category parameter
+        2. Multi-category mode: Leave stat_category as None to use all enabled categories from config
 
         Args:
             seasons (List[str]): List of seasons to scrape (e.g., ["2021-22", "2022-23"])
-            stat_category (str): Category of stats to scrape (default: 'shooting')
+            stat_category (Optional[str]): Single category for backwards compatibility.
+                If None, uses all enabled categories from config.
 
         Returns:
             bool: True if team stats were scraped successfully, False if scraper not available.
@@ -275,12 +284,15 @@ class NbaScraper(BaseNbaScraper):
                                              "No seasons provided for team stats scraping")
                 return False
 
-            with log_context(operation="scrape_team_stats", season_count=len(seasons), stat_category=stat_category):
+            mode = "single category" if stat_category else "multi-category (config-driven)"
+            with log_context(operation="scrape_team_stats", season_count=len(seasons), mode=mode):
                 self.app_logger.structured_log(logging.INFO, "Starting to scrape team stats",
                                              season_count=len(seasons),
-                                             stat_category=stat_category)
+                                             stat_category=stat_category,
+                                             mode=mode)
 
-                self._team_stats_scraper.scrape_and_save_team_stats(seasons, stat_category)
+                # Pass stat_category (may be None for multi-category mode)
+                self._team_stats_scraper.scrape_and_save_team_stats(seasons, stat_category=stat_category)
 
                 self.app_logger.structured_log(logging.INFO, "Team stats scraping completed successfully")
                 return True
@@ -293,4 +305,64 @@ class NbaScraper(BaseNbaScraper):
                            error_type=type(e).__name__)
             raise self.error_handler.create_error_handler('scraping',
                 f"Unexpected error occurred while scraping team stats: {str(e)}")
+
+    def scrape_and_save_per_team_stats(
+        self,
+        seasons: List[str]
+    ) -> bool:
+        """
+        Scrape per-team statistics with dimension parameters.
+
+        Scrapes individual team pages with filters like Month, LastNGames, Location, Outcome.
+        Configuration is read from per_team_stats section in webscraping_config.yaml.
+
+        Args:
+            seasons (List[str]): List of seasons to scrape (e.g., ["2024-25"])
+
+        Returns:
+            bool: True if scraping completed, False if scraper not available or not enabled.
+        """
+        try:
+            if not self._team_stats_scraper:
+                self.app_logger.structured_log(
+                    logging.WARNING,
+                    "Team stats scraper not available - skipping per-team stats"
+                )
+                return False
+
+            if not seasons:
+                self.app_logger.structured_log(
+                    logging.WARNING,
+                    "No seasons provided for per-team stats scraping"
+                )
+                return False
+
+            with log_context(operation="scrape_per_team_stats", season_count=len(seasons)):
+                self.app_logger.structured_log(
+                    logging.INFO,
+                    "Starting per-team stats scraping",
+                    season_count=len(seasons)
+                )
+
+                self._team_stats_scraper.scrape_and_save_per_team_stats(seasons)
+
+                self.app_logger.structured_log(
+                    logging.INFO,
+                    "Per-team stats scraping completed"
+                )
+                return True
+
+        except Exception as e:
+            if hasattr(e, 'app_logger'):
+                raise
+            self.app_logger.structured_log(
+                logging.ERROR,
+                "Unexpected error in scrape_and_save_per_team_stats",
+                error_message=str(e),
+                error_type=type(e).__name__
+            )
+            raise self.error_handler.create_error_handler(
+                'scraping',
+                f"Unexpected error in per-team stats scraping: {str(e)}"
+            )
 

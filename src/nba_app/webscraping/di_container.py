@@ -9,7 +9,7 @@ from .boxscore_scraper import BoxscoreScraper
 from .schedule_scraper import ScheduleScraper
 from .nba_scraper import NbaScraper
 from .validation_scraper import ValidationScraper
-from .team_stats_shooting_scraper import TeamStatsShootingScraper
+from .team_stats_scraper import TeamStatsScraper
 
 
 class DIContainer(CommonDIContainer):
@@ -71,7 +71,7 @@ class DIContainer(CommonDIContainer):
     )
 
     team_stats_scraper = providers.Factory(
-        TeamStatsShootingScraper,
+        TeamStatsScraper,
         config=CommonDIContainer.config,
         data_access=CommonDIContainer.data_access,
         page_scraper=page_scraper,

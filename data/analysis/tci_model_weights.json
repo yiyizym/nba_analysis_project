@@ -1,0 +1,29 @@
+{
+  "season": "2024-25",
+  "r2_score": 0.9107054049664087,
+  "weights": {
+    "Passes_Per_Poss": 2.2463872471423825,
+    "Secondary AST": 1.0085588573025919,
+    "AST_To_Pass_Pct": 3.6708058459971245,
+    "Potential_AST_To_Pass_Pct": 0.3400385631856359,
+    "Dist_Miles_Off": -0.6377539301492294,
+    "Very_Tight_Pct": -0.44320943643928634,
+    "Tight_Pct": -0.04433778990527754,
+    "Open_Pct": 0.3344480170217308,
+    "Wide_Open_Pct": 0.01268024906374786,
+    "FGM_AST_Pct": -2.757751489069283
+  },
+  "feature_order": [
+    "Passes_Per_Poss",
+    "Secondary AST",
+    "AST_To_Pass_Pct",
+    "Potential_AST_To_Pass_Pct",
+    "Dist_Miles_Off",
+    "Very_Tight_Pct",
+    "Tight_Pct",
+    "Open_Pct",
+    "Wide_Open_Pct",
+    "FGM_AST_Pct"
+  ],
+  "description": "TCI = sum of (standardized_feature * weight)"
+}

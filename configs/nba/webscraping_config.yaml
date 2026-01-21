@@ -20,8 +20,111 @@ validation_data_file: validation_data.csv  # File to store validation data from 
 team_mapping_file: team_mapping.yaml  # Team ID to abbreviation mapping for basketball-reference.com
 
 # Team stats settings
-enable_team_stats_scraping: False # Set to True to enable team stats collection (shooting, defense, etc.)
-team_stats_category: shooting # Category of team stats to scrape (shooting, defense, traditional, etc.)
+enable_team_stats_scraping: False # Set to True to enable team stats collection
+team_stats_category: shooting # Legacy: single category mode (for backwards compatibility)
+
+# Team stats categories configuration
+# Each group can be enabled/disabled independently
+# Categories with extra_params will be scraped multiple times with different URL parameters
+team_stats_categories:
+  # Traditional Stats Group
+  traditional_stats:
+    enabled: true
+    categories:
+      - name: traditional
+      - name: advanced
+      - name: four-factors
+      - name: misc
+      - name: scoring
+      - name: opponent
+      - name: defense
+      - name: estimated-advanced
+
+  # Clutch Stats Group
+  clutch_stats:
+    enabled: true
+    categories:
+      - name: clutch-traditional
+      - name: clutch-advanced
+      - name: clutch-four-factors
+      - name: clutch-misc
+      - name: clutch-scoring
+      - name: clutch-opponent
+
+  # Playtype Stats Group
+  playtype_stats:
+    enabled: true
+    categories:
+      - name: isolation
+      - name: transition
+      - name: ball-handler
+      - name: roll-man
+      - name: post-up
+      - name: spot-up
+      - name: hand-off
+      - name: cut
+      - name: off-screen
+      - name: putbacks
+
+  # Tracking Stats Group
+  tracking_stats:
+    enabled: true
+    categories:
+      - name: drives
+      - name: defensive-impact
+      - name: catch-shoot
+      - name: passing
+      - name: touches
+      - name: pullup
+      - name: rebounding
+      - name: speed-distance
+      - name: elbow-touches
+      - name: post-touches
+      - name: paint-touches
+
+  # Defense Dashboard Group
+  defense_dashboard:
+    enabled: true
+    categories:
+      - name: defense-dash-overall
+      - name: defense-dash-3pt
+      - name: defense-dash-2pt
+      - name: defense-dash-lt6
+      - name: defense-dash-lt10
+      - name: defense-dash-gt15
+
+  # Shot Dashboard Group
+  shot_dashboard:
+    enabled: true
+    categories:
+      - name: shots-general
+      - name: shots-shotclock
+      - name: shots-dribbles
+      - name: shots-touch-time
+      - name: shots-closest-defender
+      - name: shots-closest-defender-10
+
+  # Shooting Stats Group (with DistanceRange parameter support)
+  shooting_stats:
+    enabled: true
+    categories:
+      - name: shooting
+        extra_params:
+          - DistanceRange: "By+Zone"
+          - DistanceRange: "5ft+Range"
+          - DistanceRange: "8ft+Range"
+      - name: opponent-shooting
+        extra_params:
+          - DistanceRange: "By+Zone"
+          - DistanceRange: "5ft+Range"
+          - DistanceRange: "8ft+Range"
+
+  # Hustle Stats Group
+  hustle_stats:
+    enabled: true
+    categories:
+      - name: hustle
+      - name: box-outs
 
 # NBA URLs
 nba_boxscores_url: https://www.nba.com/stats/teams/boxscores
@@ -99,3 +202,61 @@ firefox_options:
   --disable-blink-features=AutomationControlled: null
   --user-agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:53.0) Gecko/20100101 Firefox/53.0"
 
+# Per-team stats scraping configuration
+# Scrapes individual team pages with dimension filters (Month, LastNGames, etc.)
+per_team_stats:
+  enabled: false  # Master switch for per-team scraping
+
+  # Team scope: "all" for all 30 NBA teams, or list of specific team IDs
+  # Team IDs are loaded from team_mapping.yaml when "all" is specified
+  teams: all  # Options: "all" | ["1610612737", "1610612738", ...]
+
+  # Rate limiting to avoid IP blocking
+  rate_limiting:
+    delay_between_requests: 2.0  # seconds between each page request
+    delay_between_teams: 5.0     # seconds between switching teams
+    max_retries: 3               # max retries on error
+    retry_base_delay: 2          # base delay for exponential backoff
+
+  # Dimension parameters to scrape
+  # Each enabled dimension creates additional data variations
+  # NBA.com Month mapping: 0=All, 1=Oct, 2=Nov, 3=Dec, 4=Jan, 5=Feb, 6=Mar, 7=Apr, 8=May, 9=Jun
+  dimensions:
+    Month:
+      enabled: false  # Disable by default to reduce request volume
+      values:
+        - "0"   # All months
+
+    LastNGames:
+      enabled: false
+      values:
+        - "0"   # All games
+        - "5"   # Last 5 games
+        - "10"  # Last 10 games
+
+    Location:
+      enabled: false
+      values:
+        - ""      # All locations
+        - "Home"
+        - "Road"
+
+    Outcome:
+      enabled: false
+      values:
+        - ""   # All outcomes
+        - "W"  # Wins only
+        - "L"  # Losses only
+
+    DaysRest:
+      enabled: false
+      values:
+        - ""    # All
+        - "0"   # Back-to-back
+        - "1"   # 1 day rest
+        - "2+"  # 2+ days rest
+
+  # Categories to scrape for per-team mode
+  # If empty list, uses enabled categories from team_stats_categories above
+  # If specified, only these categories will be scraped
+  categories: []  # Empty = use existing enabled categories
