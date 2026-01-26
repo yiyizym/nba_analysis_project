@@ -1,27 +1,36 @@
 #!/usr/bin/env python3
 """
-Scrape NBA PlayType stats for monthly periods.
+Scrape NBA Player PlayType stats for monthly periods.
+
+This script scrapes player-level PlayType statistics with monthly granularity
+for building the player classification model.
+
+URL pattern: https://www.nba.com/stats/players/{playtype}?SeasonType=Regular+Season&Season={season}&Month={month}
 
 PlayType categories:
 - isolation: 单打
 - transition: 转换进攻
 - ball-handler: 挡拆持球人 (Pick & Roll Ball Handler)
 - roll-man: 挡拆顺下人 (Pick & Roll Roll Man)
-- post-up: 低位单打
+- playtype-post-up: 低位单打
 - spot-up: 定点投篮
-- handoff: 手递手
+- hand-off: 手递手
 - cut: 空切
 - off-screen: 无球掩护
 - putbacks: 二次进攻
-- misc: 其他
+- playtype-misc: 其他
 """
 
 import sys
 import time
 import random
 import json
+import re
 from pathlib import Path
 from datetime import datetime
+from io import StringIO
+
+import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
@@ -33,22 +42,21 @@ DELAY_MAX = 12
 MAX_RETRIES = 2
 
 # PlayType categories (URL slug -> file name)
-# Note: Some categories have different URL patterns on nba.com
 PLAYTYPE_CATEGORIES = {
-    "isolation": "playtype_isolation",
-    "transition": "playtype_transition",
-    "ball-handler": "playtype_ball_handler",
-    "roll-man": "playtype_roll_man",
-    "playtype-post-up": "playtype_post_up",  # URL uses "playtype-post-up"
-    "spot-up": "playtype_spot_up",
-    "hand-off": "playtype_handoff",  # URL uses "hand-off"
-    "cut": "playtype_cut",
-    "off-screen": "playtype_off_screen",
-    "putbacks": "playtype_putbacks",
-    "playtype-misc": "playtype_misc",  # URL uses "playtype-misc"
+    "isolation": "player_playtype_isolation",
+    "transition": "player_playtype_transition",
+    "ball-handler": "player_playtype_ball_handler",
+    "roll-man": "player_playtype_roll_man",
+    "playtype-post-up": "player_playtype_post_up",
+    "spot-up": "player_playtype_spot_up",
+    "hand-off": "player_playtype_handoff",
+    "cut": "player_playtype_cut",
+    "off-screen": "player_playtype_off_screen",
+    "putbacks": "player_playtype_putbacks",
+    "playtype-misc": "player_playtype_misc",
 }
 
-# Seasons to scrape
+# Seasons to scrape (5 seasons)
 SEASONS = {
     "2021-22": {
         "months": {
@@ -60,7 +68,7 @@ SEASONS = {
             "march": "6",
             "april": "7",
         },
-        "output_dir": "data/newly_scraped/tracking_monthly/2021_22"
+        "output_dir": "data/newly_scraped/player_monthly/2021_22"
     },
     "2022-23": {
         "months": {
@@ -72,7 +80,7 @@ SEASONS = {
             "march": "6",
             "april": "7",
         },
-        "output_dir": "data/newly_scraped/tracking_monthly/2022_23"
+        "output_dir": "data/newly_scraped/player_monthly/2022_23"
     },
     "2023-24": {
         "months": {
@@ -84,7 +92,7 @@ SEASONS = {
             "march": "6",
             "april": "7",
         },
-        "output_dir": "data/newly_scraped/tracking_monthly/2023_24"
+        "output_dir": "data/newly_scraped/player_monthly/2023_24"
     },
     "2024-25": {
         "months": {
@@ -96,7 +104,7 @@ SEASONS = {
             "march": "6",
             "april": "7",
         },
-        "output_dir": "data/newly_scraped/tracking_monthly/2024_25"
+        "output_dir": "data/newly_scraped/player_monthly/2024_25"
     },
     "2025-26": {
         "months": {
@@ -105,11 +113,11 @@ SEASONS = {
             "december": "3",
             "january": "4",
         },
-        "output_dir": "data/newly_scraped/tracking_monthly/2025_26"
+        "output_dir": "data/newly_scraped/player_monthly/2025_26"
     },
 }
 
-PROGRESS_FILE = Path("data/newly_scraped/tracking_monthly/playtype_progress.json")
+PROGRESS_FILE = Path("data/newly_scraped/player_monthly/player_playtype_progress.json")
 
 
 def load_progress():
@@ -135,19 +143,104 @@ def random_delay(min_sec=DELAY_MIN, max_sec=DELAY_MAX):
     return delay
 
 
-def scrape_with_retry(scraper, season, playtype, month_value, max_retries=MAX_RETRIES):
-    """Scrape playtype data for a specific month."""
-    params = {"Month": month_value}
+def construct_playtype_url(playtype, season, month_value, season_type="Regular+Season"):
+    """Construct URL for NBA player playtype page."""
+    base_url = f"https://www.nba.com/stats/players/{playtype}"
+    url = f"{base_url}?SeasonType={season_type}&Season={season}&Month={month_value}"
+    return url
 
+
+def extract_player_ids(data_table):
+    """Extract player IDs from table links."""
+    player_ids = []
+    try:
+        links = data_table.find_elements("css selector", "a[href*='/player/']")
+        for link in links:
+            href = link.get_attribute("href")
+            if href:
+                match = re.search(r'/player/(\d+)', href)
+                if match:
+                    player_ids.append(match.group(1))
+    except Exception as e:
+        print(f"      Warning: Could not extract player IDs: {e}")
+    return player_ids
+
+
+def fix_multi_level_header(df):
+    """Fix multi-level headers by combining column levels."""
+    if df.columns.nlevels > 1:
+        new_cols = []
+        for col in df.columns:
+            if isinstance(col, tuple):
+                parts = [str(c).strip() for c in col if str(c).strip() and 'Unnamed' not in str(c)]
+                new_cols.append('_'.join(parts) if parts else col[0])
+            else:
+                new_cols.append(col)
+        df.columns = new_cols
+
+    # Clean column names
+    df.columns = [
+        re.sub(r'\s+', '_', str(c).strip())
+        .replace('.', '')
+        .replace('%', '_Pct')
+        .replace('+', '_Plus')
+        .replace('-', '_')
+        for c in df.columns
+    ]
+    return df
+
+
+def scrape_playtype_stats(page_scraper, config, url):
+    """Scrape player playtype from a URL and return DataFrame."""
+    try:
+        if not page_scraper.go_to_url(url):
+            return None
+
+        time.sleep(3)
+
+        table = page_scraper.scrape_page_table(
+            url,
+            config.table_class_name,
+            config.pagination_class_name,
+            config.dropdown_class_name
+        )
+
+        if table is None:
+            return None
+
+        table_html = table.get_attribute('outerHTML')
+        dfs = pd.read_html(StringIO(table_html), header=0)
+
+        if not dfs:
+            return None
+
+        df = pd.concat(dfs, ignore_index=True)
+        df = fix_multi_level_header(df)
+
+        player_ids = extract_player_ids(table)
+        if len(player_ids) == len(df):
+            df['PLAYER_ID'] = player_ids
+        else:
+            print(f"      Warning: Player ID count mismatch ({len(player_ids)} vs {len(df)} rows)")
+
+        return df
+
+    except Exception as e:
+        print(f"      Error scraping: {e}")
+        return None
+
+
+def scrape_with_retry(page_scraper, config, url, max_retries=MAX_RETRIES):
+    """Scrape with retry logic."""
     for attempt in range(max_retries + 1):
         try:
-            df = scraper.scrape_team_stats_for_season(
-                season=season,
-                stat_category=playtype,
-                season_type="Regular+Season",
-                extra_params=params
-            )
-            return df
+            df = scrape_playtype_stats(page_scraper, config, url)
+            if df is not None and not df.empty:
+                return df
+            elif attempt < max_retries:
+                wait_time = (attempt + 1) * 30
+                print(f"      No data, retry {attempt + 1}/{max_retries} after {wait_time}s")
+                time.sleep(wait_time)
         except Exception as e:
             if attempt < max_retries:
                 wait_time = (attempt + 1) * 30
@@ -155,11 +248,12 @@ def scrape_with_retry(scraper, season, playtype, month_value, max_retries=MAX_RE
                 time.sleep(wait_time)
             else:
                 raise
+    return None
 
 
 def main():
     print("=" * 70)
-    print("PlayType Data Scraper (Monthly)")
+    print("Player PlayType Scraper (11 categories, Monthly)")
     print("=" * 70)
     print(f"Started: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print(f"Categories: {len(PLAYTYPE_CATEGORIES)}")
@@ -168,7 +262,6 @@ def main():
     progress = load_progress()
     completed_tasks = set(progress["completed"])
 
-    # Calculate total tasks
     total_tasks = sum(
         len(PLAYTYPE_CATEGORIES) * len(season_info["months"])
         for season_info in SEASONS.values()
@@ -183,7 +276,6 @@ def main():
         print("All tasks already completed!")
         return 0
 
-    # Estimated time
     avg_time = (DELAY_MIN + DELAY_MAX) / 2 + 3
     print(f"Estimated time: ~{remaining_tasks * avg_time / 60:.0f} minutes")
     print()
@@ -191,8 +283,10 @@ def main():
     container = DIContainer()
     try:
         app_logger = container.app_logger()
-        app_logger.setup("scrape_playtype.log")
-        scraper = container.team_stats_scraper()
+        app_logger.setup("scrape_player_playtype.log")
+
+        config = container.config()
+        page_scraper = container.page_scraper()
 
         results = {"success": 0, "failed": 0, "skipped": 0}
 
@@ -217,7 +311,10 @@ def main():
                         continue
 
                     try:
-                        df = scrape_with_retry(scraper, season, playtype_slug, month_value)
+                        url = construct_playtype_url(playtype_slug, season, month_value)
+                        print(f"    {month_name}: Scraping...")
+
+                        df = scrape_with_retry(page_scraper, config, url)
 
                         if df is not None and not df.empty:
                             df["Month"] = month_name

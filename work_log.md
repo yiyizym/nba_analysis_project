@@ -1,5 +1,213 @@
 # 工作日志
 
+## 2026-01-23 (续)
+
+### 教练评估模型 - 基于残差分析
+
+**目标：** 量化评估 NBA 主教练的执教水平，使用 TCI 和 DefRtg 模型的残差作为代理指标。
+
+**核心思路：**
+```
+教练贡献 ≈ 实际表现 - 模型预测的"纸面实力"
+```
+- **进攻残差 (Off_Residual)** = 实际 OffRtg - 预测 OffRtg
+- **防守残差 (Def_Residual)** = 预测 DefRtg - 实际 DefRtg（符号反转，正值=更好）
+- **总分 (Total_Score)** = Off_Residual + Def_Residual
+
+**脚本：**
+- `scripts/evaluate_coaches.py` - 2025-26 赛季教练评估
+- `scripts/evaluate_coach_career.py` - 单个教练生涯评估
+
+---
+
+### 教练数据验证与修正
+
+**问题：** 最初使用硬编码的教练数据（来自我的训练数据，截止 2025 年 5 月），存在过时信息。
+
+**解决方案：**
+1. 尝试从 NBA.com 抓取教练数据 → 部分赛季数据不准确
+2. 使用 Basketball-Reference 验证 → 获得准确的历史数据
+
+**2025-26 赛季换帅（我的训练数据没有）：**
+| 球队 | 旧教练 | 新教练 |
+|------|--------|--------|
+| Denver Nuggets | Michael Malone | **David Adelman** |
+| Memphis Grizzlies | Taylor Jenkins | **Tuomas Iisalo** |
+| New York Knicks | Tom Thibodeau | **Mike Brown** |
+| Phoenix Suns | Mike Budenholzer | **Jordan Ott** |
+| Portland Trail Blazers | Chauncey Billups | **Tiago Splitter** |
+
+**输出文件：**
+- `data/newly_scraped/coaches_by_season_verified.json` - 经 BR 验证的教练数据 (5 个赛季)
+- `data/analysis/coach_evaluation_2025_26.csv` - 2025-26 教练评估结果
+
+---
+
+### 2025-26 教练完整排名（修正版）
+
+| 排名 | 教练 | 球队 | 战绩 | 进攻+ | 防守+ | 总分 |
+|------|------|------|------|-------|-------|------|
+| 1 | Jordi Fernandez | Brooklyn Nets | 12-29 | +1.12 | +0.87 | **+1.99** |
+| 2 | Mike Brown | New York Knicks | 25-18 | +1.11 | +0.64 | **+1.75** |
+| 3 | Tyronn Lue | LA Clippers | 19-23 | +1.08 | +0.24 | +1.32 |
+| 4 | Steve Kerr | Golden State Warriors | 25-19 | +0.47 | +0.64 | +1.11 |
+| 5 | Mark Daigneault | Oklahoma City Thunder | 36-8 | +0.28 | +0.60 | +0.89 |
+| ... | ... | ... | ... | ... | ... | ... |
+| 11 | **Ime Udoka** | **Houston Rockets** | 25-15 | -0.65 | **+0.86** | +0.21 |
+| ... | ... | ... | ... | ... | ... | ... |
+| 28 | Brian Keefe | Washington Wizards | 10-32 | -0.63 | -1.10 | -1.74 |
+| 29 | JJ Redick | Los Angeles Lakers | 25-16 | -1.79 | -0.16 | -1.95 |
+| 30 | Chris Finch | Minnesota Timberwolves | 27-16 | -2.02 | -0.12 | **-2.13** |
+
+**关键发现：**
+- **防守型教练**：Ime Udoka (+0.86 防守), Willie Green (+0.71), Mark Daigneault (+0.60)
+- **进攻型教练**：Jordi Fernandez (+1.12 进攻), Mike Brown (+1.11), Tyronn Lue (+1.08)
+
+---
+
+### Ime Udoka 生涯评估
+
+| 赛季 | 球队 | 战绩 | 胜率 | 进攻+ | 防守+ | 总分 |
+|------|------|------|------|-------|-------|------|
+| 2021-22 | Boston Celtics | 51-31 | 62.2% | +0.47 | +0.19 | +0.66 |
+| 2023-24 | Houston Rockets | 41-41 | 50.0% | -0.51 | -0.39 | -0.90 |
+| 2024-25 | Houston Rockets | 52-30 | 63.4% | -0.22 | +0.52 | +0.30 |
+| 2025-26 | Houston Rockets | 25-15 | 62.5% | -0.37 | +0.77 | +0.40 |
+| **生涯** | | **169-117** | **59.1%** | **-0.16** | **+0.27** | **+0.12** |
+
+**结论：** 中等偏上的**防守型教练**，生涯防守残差 +0.27，联盟第 17 位（48 位教练中前 65%）
+
+---
+
+### NBA Inside the Game 新数据抓取
+
+抓取了 NBA 官网的三个新高级统计数据：
+
+**1. Leverage（影响力指数）**
+- URL: `https://www.nba.com/inside-the-game/player/leverage`
+- 含义：球员对球队胜率的影响程度（1.0 = 贡献 10% 胜率）
+- 抓取数量：264 名球员
+- 输出文件：`data/newly_scraped/leverage_stats_full.csv`
+
+| 排名 | 球员 | 球队 | 总 Leverage | 进攻 | 防守 |
+|------|------|------|-------------|------|------|
+| 1 | Nikola Jokić | DEN | **5.21** | 2.61 | 2.60 |
+| 2 | Shai Gilgeous-Alexander | OKC | 3.87 | 1.80 | 2.07 |
+| 3 | Tyrese Maxey | PHI | 3.09 | 0.52 | 2.57 |
+
+**2. Gravity（引力指数）**
+- URL: `https://www.nba.com/inside-the-game/player/gravity`
+- 含义：球员吸引防守注意力的程度
+- 抓取数量：264 名球员
+- 输出文件：`data/newly_scraped/gravity_stats_full.csv`
+
+| 排名 | 球员 | 球队 | Gravity | On-Ball | Off-Ball |
+|------|------|------|---------|---------|----------|
+| 1 | Stephen Curry | GSW | **20.5** | 15.2 | 29.7 |
+| 2 | Kevin Durant | HOU | 17.0 | 15.1 | 18.5 |
+| 3 | Luka Dončić | LAL | 15.8 | 19.1 | 17.6 |
+
+**3. Shot Difficulty（投篮难度）**
+- URL: `https://www.nba.com/inside-the-game/shot-difficulty`
+- 含义：xFG%（预期命中率）vs 实际 FG%
+- 抓取数量：136 名球员
+- 输出文件：`data/newly_scraped/shot_difficulty_stats_full.csv`
+
+| 排名 | 球员 | 球队 | xFG% | FG% | FG%+ |
+|------|------|------|------|-----|------|
+| 1 | Nikola Jokić | DEN | 47.8 | 60.5 | **+12.7** |
+| 2 | Shai Gilgeous-Alexander | OKC | 47.4 | 55.5 | +8.1 |
+| 3 | Cam Spencer | MEM | 39.7 | 47.6 | +7.9 |
+
+**关键发现：**
+- Jokić 在 Leverage 和 Shot Difficulty 都是独一档
+- Stephen Curry 的 Off-Ball Gravity (29.7) 远超所有人
+- 火箭 Kevin Durant Gravity 排名第 2，说明仍是顶级进攻威胁
+
+**抓取脚本：**
+- `scripts/scrape_leverage.py`
+- `scripts/scrape_leverage_full.py`
+- `scripts/scrape_coaches.py`
+
+---
+
+## 2026-01-23
+
+### DefRtg 预测模型 v1
+
+**背景：** 完成进攻端 TCI 模型后，转向防守端研究。建立类似的 DefRtg 预测模型。
+
+**数据来源 (5 个赛季: 2021-22 至 2025-26)：**
+| 数据类型 | 文件数 | 来源 |
+|----------|--------|------|
+| defense_dash_overall | 32 | 整体防守 FG% |
+| defense_dash_lt6 | 32 | 篮下防守 (<6ft) |
+| hustle | 31 | 抢断、干扰投篮等 |
+| opponent_shooting_zone | 30 | 对手各区域命中率 |
+| four_factors | 32 | 对手 eFG%、TOV%、FTA Rate |
+
+**模型特征 (16 个)：**
+
+| 特征 | 权重 | 解释 |
+|------|------|------|
+| **Opp_eFG_Pct** | **+4.31** | 对手有效命中率（最重要） |
+| **Opp_TOV_Pct** | **-2.28** | 迫使对手失误率 |
+| **DREB_Pct** | **-1.70** | 防守篮板率 |
+| **Opp_FTA_Rate** | **+0.65** | 对手罚球率 |
+| Overall_DFG_Pct | -0.21 | 整体防守 FG% |
+| Rim_Diff_Pct | +0.13 | 篮下防守差值 |
+| Overall_Diff_Pct | -0.07 | 整体防守差值 |
+| Rim_DFG_Pct | -0.07 | 篮下防守 FG% |
+| Opp_3PT_FG_Pct | +0.05 | 对手三分命中率 |
+| Deflections | -0.04 | 干扰传球次数 |
+| Opp_MidRange_FG_Pct | +0.04 | 对手中距离命中率 |
+| DEF_Loose_Balls | -0.02 | 防守松散球 |
+| Opp_Rim_FG_Pct | -0.02 | 对手篮下命中率 |
+| Opp_Paint_FG_Pct | -0.02 | 对手油漆区命中率 |
+| Charges_Drawn | +0.01 | 造进攻犯规 |
+| Contested_Shots | +0.00 | 干扰投篮次数 |
+
+**模型性能：**
+
+| 指标 | 训练集 | 验证集 |
+|------|--------|--------|
+| **R²** | 0.9718 | **0.9501** |
+| **RMSE** | 0.84 | 1.05 |
+| 样本数 | 840 | 120 |
+| R² Drop | | 0.0217 |
+
+**关键发现：**
+
+1. **Four Factors 防守版本主导模型**
+   - Opp_eFG_Pct (+4.31) 是最重要特征，类似进攻端的 eFG_Pct (+4.15)
+   - 前四大特征都是 Four Factors (防守版)，占权重 90%+
+
+2. **Hustle 数据影响有限**
+   - Deflections、Contested_Shots 等权重都 < 0.05
+   - 可能原因：这些是过程指标，而 Four Factors 直接衡量结果
+
+3. **与进攻模型对比**
+   | 对比项 | 进攻 (TCI v5) | 防守 (DefRtg v1) |
+   |--------|---------------|------------------|
+   | 最重要特征 | eFG_Pct (+4.15) | Opp_eFG_Pct (+4.31) |
+   | Validation R² | 0.9271 | 0.9501 |
+   | R² Drop | 0.0446 | 0.0217 |
+
+**2026 年 1 月预测分析：**
+
+| 预测偏差类型 | 球队 | 实际 | 预测 | 差值 |
+|--------------|------|------|------|------|
+| 被低估（防守更好） | LA Clippers | 114.3 | 117.2 | -2.9 |
+| 被低估（防守更好） | San Antonio Spurs | 107.5 | 110.3 | -2.8 |
+| 被高估（防守更差） | Boston Celtics (10月) | 111.2 | 107.8 | +3.4 |
+
+**输出文件：**
+- `scripts/build_defrtg_model_monthly.py` - 模型训练脚本
+- `data/analysis/defrtg_model_monthly.json` - 模型参数
+- `data/analysis/defrtg_predictions_2025_26.csv` - 预测结果
+
+---
+
 ## 2026-01-21
 
 ### TCI 模型 v5 - 添加 Four Factors 特征
@@ -98,6 +306,61 @@
 | Mid_Range_Pct | 23.3% | 13.76% | 29/30 | 中距离出手占比高出 70% |
 
 **结论：** 火箭 1 月进攻风格为"蓝领进攻"——靠抢篮板和造罚球得分，而非投篮效率。eFG% 联盟垫底是最大问题，中距离出手过多拖累效率。
+
+### PlayType 对 eFG% 的影响分析
+
+**数据：** 352 个 PlayType 文件（5 个赛季，11 种 PlayType）
+
+**各 PlayType 效率排名：**
+| PlayType | eFG% | PPP | 使用率 |
+|----------|------|-----|--------|
+| Cut (空切) | 66.7% | 1.31 | 6.9% |
+| Transition (转换) | 60.8% | 1.13 | 18.4% |
+| Putbacks (二次进攻) | 58.1% | 1.12 | 5.3% |
+| Roll-man (顺下) | 57.4% | 1.11 | 5.3% |
+| Spot-up (定点) | 53.2% | 1.05 | 24.4% |
+| Isolation (单打) | 45.0% | 0.92 | 7.2% |
+
+**关键发现：执行质量 > 战术选择**
+- 高效球队在几乎所有 PlayType 上 eFG% 都更高
+- Isolation 执行差距最大：高效队 49.3% vs 低效队 44.8% (+4.5%)
+- PlayType 使用频率与球队整体 eFG% 相关性很弱（< 0.15）
+- 结论：球队 eFG% 高是因为"做什么都更准"，而非"选择更好的战术"
+
+### 主客场与赛程密集度分析
+
+**新增数据抓取：**
+- 脚本: `scripts/scrape_home_away_monthly.py`
+- 抓取 5 个赛季主客场分开的 team_advanced 数据（64 个文件）
+- 数据保存: `data/newly_scraped/tracking_monthly/*/team_advanced_*_home.csv` 和 `*_road.csv`
+
+**主场优势分析结果：**
+| 指标 | 主场 | 客场 | 差异 |
+|------|------|------|------|
+| **OffRtg** | 114.4 | 112.4 | **+2.0** |
+| eFG% | 54.6% | 53.7% | +0.8% |
+| TOV% | 13.9% | 14.2% | -0.2% |
+| OREB% | 28.7% | 28.3% | +0.4% |
+
+- **T检验 p < 0.0001**，统计高度显著
+- 主场优势来源：投篮更准、失误更少、篮板更好
+
+**主场优势差异最大的球队 (2024-25 + 2025-26)：**
+| 主场优势最大 | | 主场优势最小 | |
+|--------------|--------|--------------|--------|
+| 快船 | +5.4 | 老鹰 | -2.7 |
+| 雄鹿 | +4.9 | 公牛 | -1.9 |
+| 凯尔特人 | +4.6 | 掘金 | -1.7 |
+
+**赛程密集度分析：**
+- 月度 GP 与 OffRtg 相关性仅 0.10
+- 原因：月度数据粒度太粗，无法捕捉 back-to-back 等疲劳效应
+
+**对模型的建议：**
+| 场景 | 主客场特征 | 赛程密集度 |
+|------|------------|------------|
+| 月度预测 | 用处不大（被平均化） | 用处不大（粒度太粗） |
+| **单场预测** | **非常重要 (+2.0)** | 需要 back-to-back 标记 |
 
 ---
 
