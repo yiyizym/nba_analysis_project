@@ -134,6 +134,9 @@ PLAYER_CATEGORIES = {
     "player_defense_overall": {"url_category": "defense-dash-overall", "extra_params": None},
     "player_defense_lt6": {"url_category": "defense-dash-lt6", "extra_params": None},
     "player_hustle": {"url_category": "hustle", "extra_params": None},
+
+    # Scoring (includes FGM %UAST - Unassisted FG%)
+    "player_scoring": {"url_category": "scoring", "extra_params": None},
 }
 
 

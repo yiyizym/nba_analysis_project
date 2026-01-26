@@ -92,12 +92,14 @@ def calculate_derived_features(df):
     if df is None:
         return None
 
-    # Unassisted FG% (if FGM_AST_Pct exists)
-    if 'FGM_AST_Pct' in df.columns:
+    # Unassisted FG% - prefer actual FGM_Pct_UAST data from scoring stats
+    if 'FGM_Pct_UAST' in df.columns:
+        df['Unassisted_FG_Pct'] = df['FGM_Pct_UAST']
+    elif 'FGM_AST_Pct' in df.columns:
+        # Calculate from assisted FG%
         df['Unassisted_FG_Pct'] = 100 - df['FGM_AST_Pct']
-    elif 'AST_Pct' in df.columns:
-        # Approximate from assist percentage
-        df['Unassisted_FG_Pct'] = None  # Will need to calculate differently
+    else:
+        df['Unassisted_FG_Pct'] = None
 
     # 3PA Rate
     if 'FG3A' in df.columns and 'FGA' in df.columns:
@@ -163,6 +165,9 @@ def build_features_for_season(season):
         defense_overall = load_csv_safe(season_dir / f"player_defense_overall_{month}.csv")
         defense_lt6 = load_csv_safe(season_dir / f"player_defense_lt6_{month}.csv")
         hustle = load_csv_safe(season_dir / f"player_hustle_{month}.csv")
+
+        # Scoring data (includes Unassisted FG%)
+        scoring = load_csv_safe(season_dir / f"player_scoring_{month}.csv")
 
         # Check if we have minimum data
         if traditional is None or advanced is None:
@@ -230,6 +235,23 @@ def build_features_for_season(season):
                 def_cols.append('DFG_Rim_Pct')
             if len(def_cols) > 1:
                 df = df.merge(defense_lt6[def_cols], on='PLAYER_ID', how='left')
+
+        # Add scoring data (Unassisted FG%)
+        if scoring is not None and 'PLAYER_ID' in scoring.columns:
+            scoring = standardize_columns(scoring)
+            scoring_cols = ['PLAYER_ID']
+            # Look for FGM %UAST column (Unassisted FG%) - specifically the overall FGM, not 2FGM or 3FGM
+            uast_cols = [c for c in scoring.columns if 'UAST' in c.upper() and c.upper().startswith('FGM')]
+            if uast_cols:
+                scoring = scoring.rename(columns={uast_cols[0]: 'FGM_Pct_UAST'})
+                scoring_cols.append('FGM_Pct_UAST')
+            # Also try to get FGM %AST (Assisted FG%) - specifically the overall FGM
+            ast_cols = [c for c in scoring.columns if 'AST' in c.upper() and c.upper().startswith('FGM') and 'UAST' not in c.upper()]
+            if ast_cols:
+                scoring = scoring.rename(columns={ast_cols[0]: 'FGM_AST_Pct'})
+                scoring_cols.append('FGM_AST_Pct')
+            if len(scoring_cols) > 1:
+                df = df.merge(scoring[scoring_cols], on='PLAYER_ID', how='left')
 
         # Calculate derived features
         df = calculate_derived_features(df)

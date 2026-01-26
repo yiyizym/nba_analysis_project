@@ -76,6 +76,7 @@ python scripts/scrape_four_factors_monthly.py
 | `scrape_player_playtype_monthly.py` | 球员 11 种 PlayType 数据 | `data/newly_scraped/player_monthly/` |
 | `scrape_player_shooting_monthly.py` | 球员投篮区域分布 | `data/newly_scraped/player_monthly/` |
 | `scrape_player_defense_monthly.py` | 球员防守数据 | `data/newly_scraped/player_monthly/` |
+| `scrape_player_scoring_monthly.py` | 球员 Scoring 数据 (FGM %UAST) | `data/newly_scraped/player_monthly/` |
 | `run_all_player_scrapers.sh` | **一键运行所有球员抓取脚本** | - |
 
 **使用示例：**

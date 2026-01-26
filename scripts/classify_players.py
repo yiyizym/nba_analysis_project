@@ -2,24 +2,25 @@
 """
 Classify NBA players into archetypes based on their playing style.
 
-Player Archetypes (13 types):
+v2: 打法优先，身高次要
 
-Big Men (Height >= 6'10" or Position == C):
-1. Stretch Big - 3PA Rate > 40%
-2. Versatile Big - AST% > 20%
-3. Post Scorer - PostUp Freq > 20%
-4. Anchor Big - DFG Rim < 55%
-5. Rim Runner - Default big
+分类逻辑（按优先级）：
+1. Primary Initiator - 高 USG% + 高持球时间（持球核心）
+2. Shot Creator - 高单打频率（自主得分手）
+3. Playmaking Big - 高助攻率 + 内线身高（组织型内线）
+4. Movement Shooter - 高绕掩护 + 高三分率（跑位射手）
+5. Stretch Shooter - 高三分率 + 中高使用率（空间射手）
+6. Secondary Ball Handler - 中高 USG% + 高挡拆频率（副攻手）
+7. 3&D Wing - 高定点频率（3D侧翼）
+8. Post Scorer - 高低位频率（低位单打）
+9. Roll/Cut Finisher - 高顺下/空切/转换频率（终结者）
+10. Rim Protector - 优秀篮下防守 + 内线身高（护框中锋）
+11. Role Player - 默认
 
-Wings/Guards:
-6. Primary Initiator - USG% > 28% AND Time Of Poss > 6min
-7. Secondary Ball Handler - USG% > 20% AND PnR Handler Freq > 25%
-8. Movement Shooter - OffScreen Freq > 10% AND 3PA Rate > 60%
-9. Shot Creator - Isolation Freq > 15% AND Unassisted FG% > 50%
-10. 3&D Wing - SpotUp Freq > 40% AND good defense
-11. Athletic Finisher - Cut+Transition > 30% AND Rim Freq > 50%
-12. Slashing Creator - High Rim Freq AND moderate isolation
-13. Role Player - Default wing
+身高仅用于：
+- 区分 Playmaking Big vs Playmaker
+- 区分 Rim Protector vs Defensive Wing
+- 输出结果中添加 Size 标签
 """
 
 import sys
@@ -34,14 +35,25 @@ INPUT_DIR = Path("data/analysis")
 OUTPUT_DIR = Path("data/analysis")
 
 
+def get_size_label(height_inches):
+    """根据身高返回体型标签"""
+    if height_inches is None:
+        return "Unknown"
+    elif height_inches >= 82:  # 6'10"+
+        return "Big"
+    elif height_inches >= 78:  # 6'6" - 6'9"
+        return "Forward"
+    else:  # < 6'6"
+        return "Guard"
+
+
 def classify_player(row):
     """
-    Classify a single player based on their stats.
-    Returns (archetype_name, archetype_category)
+    Classify a single player based on their playing style (not height).
+    Returns (archetype_name, category, size_label)
     """
     # Extract features with defaults
     height_inches = row.get('Height_Inches', None)
-    position = str(row.get('POS', '')).upper() if pd.notna(row.get('POS')) else ''
 
     usg_pct = row.get('USG_Pct', 0) or 0
     ast_pct = row.get('AST_Pct', 0) or 0
@@ -66,72 +78,66 @@ def classify_player(row):
     # Defense
     dfg_rim_pct = row.get('DFG_Rim_Pct', 100) or 100  # Default to 100 (bad defense)
 
-    # Unassisted FG%
-    unassisted_fg_pct = row.get('Unassisted_FG_Pct', 50) or 50
+    # Size label (for output, not classification)
+    size = get_size_label(height_inches)
+    is_big = height_inches is not None and height_inches >= 82
 
-    # Shooting zones (estimate rim frequency from available data)
-    rim_freq = 0
-    if 'Restricted_Area_FGA_Pct' in row:
-        rim_freq = row.get('Restricted_Area_FGA_Pct', 0) or 0
+    # ========================================
+    # 分类逻辑（打法优先）
+    # ========================================
 
-    # Step 1: Determine if Big or Wing/Guard
-    is_big = False
-    if height_inches is not None and height_inches >= 82:  # 6'10" = 82 inches
-        is_big = True
-    elif 'C' in position or 'PF' in position:
-        is_big = True
+    # 1. Primary Initiator - 持球核心
+    # 高使用率 + 高持球时间
+    if usg_pct > 28 and time_of_poss > 4.5:
+        return "Primary Initiator", "Primary", size
 
-    # Step 2: Classify based on category
-    if is_big:
-        # Big Men Classification
-        if threept_rate > 40:
-            return "Stretch Big", "Big"
-        elif ast_pct > 20:
-            return "Versatile Big", "Big"
-        elif post_up_freq > 20:
-            return "Post Scorer", "Big"
-        elif dfg_rim_pct < 55:
-            return "Anchor Big", "Big"
-        else:
-            return "Rim Runner", "Big"
-    else:
-        # Wings/Guards Classification
+    # 2. Shot Creator - 自主得分手
+    # 高单打频率
+    if isolation_freq > 12:
+        return "Shot Creator", "Scorer", size
 
-        # Primary ball handlers (high usage + high time of possession)
-        if usg_pct > 28 and time_of_poss > 5.0:
-            return "Primary Initiator", "Primary"
+    # 3. Playmaking Big - 组织型内线
+    # 高助攻率 + 内线身高
+    if ast_pct > 20 and is_big:
+        return "Playmaking Big", "Big", size
 
-        # Movement shooter (high off-screen frequency + elite 3PT rate)
-        # Check this before secondary handler for players like Curry
-        if off_screen_freq > 10 and threept_rate > 55:
-            return "Movement Shooter", "Shooter"
+    # 4. Movement Shooter - 跑位射手
+    # 高绕掩护频率 + 高三分率
+    if off_screen_freq > 8 and threept_rate > 45:
+        return "Movement Shooter", "Shooter", size
 
-        # Elite shooter (high 3PT rate + high usage, even without off-screen data)
-        if threept_rate > 55 and usg_pct > 25:
-            return "Movement Shooter", "Shooter"
+    # 5. Stretch Shooter - 空间射手
+    # 高三分率 + 中高使用率（非跑位型）
+    if threept_rate > 50 and usg_pct > 18:
+        return "Stretch Shooter", "Shooter", size
 
-        # Secondary ball handlers
-        if usg_pct > 20 and pnr_handler_freq > 20:
-            return "Secondary Ball Handler", "Secondary"
+    # 6. Secondary Ball Handler - 副攻手
+    # 中高使用率 + 高挡拆持球频率
+    if usg_pct > 20 and pnr_handler_freq > 15:
+        return "Secondary Ball Handler", "Secondary", size
 
-        # Shot creator
-        if isolation_freq > 15 and unassisted_fg_pct > 50:
-            return "Shot Creator", "Wing"
+    # 7. 3&D Wing - 3D侧翼
+    # 高定点频率
+    if spot_up_freq > 25:
+        return "3&D Wing", "Wing", size
 
-        # 3&D Wing (spot up shooter with decent defense)
-        if spot_up_freq > 40:
-            return "3&D Wing", "Wing"
+    # 8. Post Scorer - 低位单打
+    # 高低位频率
+    if post_up_freq > 12:
+        return "Post Scorer", "Big", size
 
-        # Athletic finisher
-        if (cut_freq + transition_freq) > 30 and rim_freq > 50:
-            return "Athletic Finisher", "Wing"
+    # 9. Roll/Cut Finisher - 终结者
+    # 高顺下、空切或转换频率
+    if roll_man_freq > 15 or cut_freq > 12 or (cut_freq + transition_freq) > 25:
+        return "Finisher", "Finisher", size
 
-        # Slashing creator
-        if rim_freq > 40 and isolation_freq > 10:
-            return "Slashing Creator", "Wing"
+    # 10. Rim Protector - 护框中锋
+    # 优秀的篮下防守 + 内线身高
+    if dfg_rim_pct < 58 and is_big:
+        return "Rim Protector", "Big", size
 
-        # Default
-        return "Role Player", "Role"
+    # 11. Default - 角色球员
+    return "Role Player", "Role", size
 
 
 def classify_players_df(df):
@@ -139,7 +145,7 @@ def classify_players_df(df):
     results = []
 
     for idx, row in df.iterrows():
-        archetype, category = classify_player(row)
+        archetype, category, size = classify_player(row)
         results.append({
             'PLAYER_ID': row.get('PLAYER_ID'),
             'PLAYER': row.get('PLAYER'),
@@ -148,10 +154,12 @@ def classify_players_df(df):
             'Month': row.get('Month'),
             'Archetype': archetype,
             'Category': category,
+            'Size': size,
             # Include key features for reference
             'USG_Pct': row.get('USG_Pct'),
             'AST_Pct': row.get('AST_Pct'),
             'ThreePt_Rate': row.get('ThreePt_Rate'),
+            'Isolation_Freq': row.get('Isolation_Freq'),
             'Height_Inches': row.get('Height_Inches'),
             'GP': row.get('GP'),
             'MPG': row.get('MPG'),
@@ -177,7 +185,7 @@ def generate_summary(df):
 
 def main():
     print("=" * 70)
-    print("Player Classification")
+    print("Player Classification v2 (打法优先)")
     print("=" * 70)
     print(f"Started: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print()
@@ -227,19 +235,24 @@ def main():
 
     # Show some example players
     print("\n" + "=" * 70)
-    print("EXAMPLE CLASSIFICATIONS")
+    print("EXAMPLE CLASSIFICATIONS (2025-26)")
     print("=" * 70)
 
     # Get latest season data
     latest_season = results_df['Season'].dropna().max()
     latest_df = results_df[results_df['Season'] == latest_season].drop_duplicates(subset=['PLAYER_ID'])
 
-    for archetype in results_df['Archetype'].unique():
+    for archetype in sorted(results_df['Archetype'].unique()):
         arch_players = latest_df[latest_df['Archetype'] == archetype]
         if not arch_players.empty:
             # Get top players by points
-            top_players = arch_players.nlargest(3, 'PTS')['PLAYER'].tolist()
-            players_str = ', '.join([str(p) for p in top_players if pd.notna(p)])
+            top_players = arch_players.nlargest(3, 'PTS')
+            players_list = []
+            for _, p in top_players.iterrows():
+                name = p['PLAYER'] if pd.notna(p['PLAYER']) else 'Unknown'
+                size = p['Size'] if pd.notna(p['Size']) else ''
+                players_list.append(f"{name} [{size}]")
+            players_str = ', '.join(players_list)
             print(f"  {archetype}: {players_str}")
 
     print("\n" + "=" * 70)
