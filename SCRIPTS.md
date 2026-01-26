@@ -14,6 +14,36 @@ export PYTHONPATH="${PYTHONPATH}:$(pwd)/src"
 
 ---
 
+## 快速开始：一键抓取
+
+**推荐使用 `scrape_latest.py`**，它可以一次性抓取所有数据：
+
+```bash
+# 抓取上个月的所有数据（球队 + 球员）
+python scripts/scrape_latest.py
+
+# 抓取整个赛季的数据
+python scripts/scrape_latest.py --season
+
+# 只抓取球队数据
+python scripts/scrape_latest.py --team-only
+
+# 只抓取球员数据
+python scripts/scrape_latest.py --player-only
+
+# 指定赛季和月份
+python scripts/scrape_latest.py --year 2025-26 --month january
+```
+
+### 定时任务设置 (cron)
+
+```bash
+# 每月 2 日凌晨 3 点自动抓取上个月数据
+0 3 2 * * cd /path/to/nba_analysis_project && source .venv/bin/activate && PYTHONPATH="${PYTHONPATH}:$(pwd)/src" python scripts/scrape_latest.py >> logs/scrape.log 2>&1
+```
+
+---
+
 ## 一、数据抓取脚本
 
 ### 1.1 球队数据抓取
