@@ -98,6 +98,7 @@ python scripts/scrape_player_playtype_monthly.py
 | `scrape_leverage_full.py` | 抓取完整 Leverage 数据 | `data/newly_scraped/` |
 | `scrape_tight_shots.py` | 抓取紧逼防守投篮数据 | `data/newly_scraped/` |
 | `scrape_tracking_stats.py` | 抓取球员追踪数据 | `data/newly_scraped/` |
+| `scrape_team_schedules.py` | 抓取球队赛程（用于对阵分析） | `data/schedules/` |
 
 ---
 
@@ -145,7 +146,94 @@ python scripts/classify_players.py
 
 ## 三、分析脚本
 
-### 3.1 预测分析
+### 3.1 比赛对阵分析
+
+| 脚本 | 用途 | 输出 |
+|------|------|------|
+| `analyze_matchup.py` | 两队对阵博弈分析 | 控制台/JSON |
+| `scrape_team_schedules.py` | 抓取球队赛程（用于休息天数计算） | `data/schedules/` |
+
+**`analyze_matchup.py` 详细用法：**
+
+```bash
+# 基础分析（使用本地月度数据）
+python scripts/analyze_matchup.py HOU LAL
+
+# 启用实时 Last 10 Games 数据抓取
+python scripts/analyze_matchup.py HOU LAL --live
+
+# 指定分析月份
+python scripts/analyze_matchup.py HOU LAL --month december
+
+# 标记缺阵球员（支持多人）
+python scripts/analyze_matchup.py HOU LAL --out "LeBron James"
+python scripts/analyze_matchup.py HOU LAL --out "LeBron James,Anthony Davis"
+
+# 指定比赛日期（用于休息天数计算）
+python scripts/analyze_matchup.py HOU LAL --live --date 2026-01-28
+
+# JSON 格式输出
+python scripts/analyze_matchup.py HOU LAL --output json
+```
+
+**分析框架（4 个维度）：**
+1. **Four Factors Clash** - 篮板、失误、罚球、命中率的攻防对抗
+2. **Style & Geometry** - 节奏、禁区攻防、PlayType 效率
+3. **Key Matchups** - 球员类型 vs 防守资源
+4. **Context & Form** - 月度趋势、最近 10 场表现、休息天数
+
+**参数说明：**
+| 参数 | 说明 |
+|------|------|
+| `team_a`, `team_b` | 球队缩写 (如 HOU, LAL, BOS) |
+| `--month` | 数据月份 (october/november/december/january) |
+| `--out` | 缺阵球员名单（可多次使用或逗号分隔） |
+| `--live` | 启用实时抓取 Last 10 Games 数据 |
+| `--date` | 比赛日期 (YYYY-MM-DD)，用于计算休息天数 |
+| `--timezone`, `--tz` | 你的时区，自动转换为美东时间 (如 `beijing`, `+8`) |
+| `--output` | 输出格式 (console/json) |
+
+**时区转换示例：**
+```bash
+# 北京时间 2026-01-28 的比赛 -> 自动转换为美东时间
+python scripts/analyze_matchup.py HOU LAL --date 2026-01-28 --tz beijing
+
+# 支持的时区格式: beijing, shanghai, china, Asia/Shanghai, +8, cst
+```
+
+**运行注意事项：**
+
+1. **必须激活虚拟环境并设置 PYTHONPATH**：
+   ```bash
+   source .venv/bin/activate
+   export PYTHONPATH="${PYTHONPATH}:$(pwd)/src"
+
+   # 或一行命令
+   source .venv/bin/activate && PYTHONPATH="$(pwd)/src:$PYTHONPATH" python scripts/analyze_matchup.py HOU LAL
+   ```
+
+2. **`--live` 参数需要额外依赖**：
+   ```bash
+   # 安装实时抓取所需的依赖
+   pip install selenium webdriver-manager mlflow lxml pyyaml dependency-injector
+   ```
+
+3. **常见错误及解决方案**：
+
+   | 错误信息 | 原因 | 解决方案 |
+   |----------|------|----------|
+   | `No module named 'ml_framework'` | PYTHONPATH 未设置 | `export PYTHONPATH="${PYTHONPATH}:$(pwd)/src"` |
+   | `No module named 'mlflow'` | 虚拟环境未激活或依赖未安装 | `source .venv/bin/activate && pip install mlflow` |
+   | `Logger not initialized` | 内部初始化问题 | 已修复，更新代码即可 |
+   | `llvmlite build failed` | LLVM 未安装（shap 依赖） | 只安装最小依赖，跳过 shap |
+
+4. **不使用 `--live` 时的基础运行**：
+   ```bash
+   # 基础分析不需要 mlflow 等依赖，只需要 pandas
+   python scripts/analyze_matchup.py HOU LAL --month january
+   ```
+
+### 3.2 预测分析
 
 | 脚本 | 用途 |
 |------|------|
@@ -154,7 +242,7 @@ python scripts/classify_players.py
 | `residual_analysis.py` | 分析模型残差 |
 | `analyze_prediction_error.py` | 分析预测误差 |
 
-### 3.2 球队分析
+### 3.3 球队分析
 
 | 脚本 | 用途 |
 |------|------|
@@ -163,7 +251,7 @@ python scripts/classify_players.py
 | `analyze_calibration.py` | 分析模型校准度 |
 | `compare_tci_rankings.py` | 比较 TCI 排名 |
 
-### 3.3 教练评估
+### 3.4 教练评估
 
 | 脚本 | 用途 | 输出 |
 |------|------|------|
@@ -282,6 +370,8 @@ data/
 │       ├── 2023_24/
 │       ├── 2024_25/
 │       └── 2025_26/
+├── schedules/                 # 球队赛程数据（用于对阵分析）
+│   └── schedule_2025_26.csv
 └── analysis/                  # 分析结果
     ├── tci_model_monthly.json
     ├── defrtg_model_monthly.json

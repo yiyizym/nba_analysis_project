@@ -1,5 +1,103 @@
 # 工作日志
 
+## 2026-01-27
+
+### 比赛对阵分析系统 - 实时数据功能增强
+
+**背景：** 在完成基础的 4 维度对阵分析框架后，增加了实时数据抓取功能以获取更准确的近期表现数据。
+
+**新增功能：**
+
+#### 1. `--live` 参数 - 实时抓取 Last 10 Games 数据
+从 NBA.com 实时抓取最近 10 场比赛的统计数据：
+- **Four Factors**: eFG%, TOV%, OREB%, FTA Rate
+- **Advanced**: W-L 记录, NetRtg, OffRtg, DefRtg
+
+**实现原理：**
+```python
+# 使用 LastNGames 参数请求 NBA Stats
+extra_params = {"LastNGames": "10"}
+url = "https://www.nba.com/stats/teams/four-factors?LastNGames=10"
+```
+
+#### 2. `--date DATE` 参数 - 比赛日期用于赛程分析
+指定比赛日期（格式: YYYY-MM-DD），配合赛程数据计算：
+- 休息天数 (Rest Days)
+- 背靠背第二场 (Back-to-Back)
+
+#### 3. `--timezone` / `--tz` 参数 - 自动转换时区
+由于 NBA 赛程使用美东时间，可通过此参数将本地日期自动转换为美国日期：
+```bash
+# 北京时间 2026-01-28 -> 自动转换为美东时间
+python scripts/analyze_matchup.py HOU LAL --date 2026-01-28 --timezone beijing
+```
+
+**支持的时区格式：**
+| 格式 | 示例 |
+|------|------|
+| 城市别名 | `beijing`, `shanghai`, `china` |
+| IANA 时区 | `Asia/Shanghai`, `America/New_York` |
+| UTC 偏移 | `+8`, `-5`, `+08:00` |
+| 缩写 | `cst` (中国), `et` (美东), `pt` (美西) |
+
+#### 4. 赛程数据抓取与缓存
+- 创建 `scripts/scrape_team_schedules.py` 用于抓取完整赛季赛程
+- 赛程数据缓存到 `data/schedules/schedule_{season}.csv`
+- 因为赛程是赛季初确定的，只需抓取一次
+
+**使用示例：**
+```bash
+# 基础分析（使用本地月度数据）
+python scripts/analyze_matchup.py HOU LAL
+
+# 启用实时 Last 10 Games 数据
+python scripts/analyze_matchup.py HOU LAL --live
+
+# 指定比赛日期（用于休息天数计算）
+python scripts/analyze_matchup.py HOU LAL --live --date 2026-01-28
+
+# 标记缺阵球员（多人用逗号分隔）
+python scripts/analyze_matchup.py HOU LAL --out "LeBron James,Anthony Davis"
+```
+
+**输出示例（启用 --live 后）：**
+```
+--------------------------------------------------------------------------------
+4. CONTEXT & FORM (状态趋势)
+--------------------------------------------------------------------------------
+【最近10场表现】(实时数据)
+  HOU L10: +3.2 NetRtg | 7-3 | 52.1% eFG | 12.8% TOV
+  LAL L10: -1.5 NetRtg | 4-6 | 49.8% eFG | 14.2% TOV
+  >>> HOU 近期状态明显更佳
+
+【休息与疲劳】
+  HOU: 距上场 2天
+  LAL: 距上场 1天 | 背靠背第2场
+  >>> LAL 体能劣势，背靠背作战
+
+【月度趋势】
+HOU: Oct(+9.2) -> Nov(+12.8) -> Dec(+4.1) -> Jan(+0.0)
+  趋势: 下滑
+```
+
+**修改的文件：**
+| 文件 | 修改内容 |
+|------|----------|
+| `scripts/analyze_matchup.py` | 添加 `--live`, `--date` 参数；实现 `scrape_last_n_games()`, `fetch_last_10_games_data()` 函数；更新输出格式 |
+| `scripts/scrape_team_schedules.py` | 新增赛程抓取脚本 |
+
+**技术细节：**
+- 使用项目已有的 `DIContainer` 和 `TeamStatsScraper` 进行数据抓取
+- 抓取失败时优雅降级，继续使用本地月度数据
+- WebDriver 在抓取完成后自动关闭
+
+**注意事项：**
+- `--live` 需要项目的 `ml_framework` 依赖才能正常工作
+- 实时抓取需要 ~10 秒（两次请求，含延迟）
+- 赛程数据需要先运行 `python scripts/scrape_team_schedules.py` 生成缓存
+
+---
+
 ## 2026-01-23 (续)
 
 ### 教练评估模型 - 基于残差分析
