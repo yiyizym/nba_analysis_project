@@ -32,6 +32,8 @@ import json
 import argparse
 from pathlib import Path
 from datetime import datetime, timedelta
+from io import StringIO
+import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
@@ -71,17 +73,17 @@ TEAM_CATEGORIES = {
     },
 
     # PlayType (11种)
-    "playtype_isolation": {"stat_category": "isolation", "extra_params": None, "is_playtype": True},
-    "playtype_transition": {"stat_category": "transition", "extra_params": None, "is_playtype": True},
-    "playtype_ball_handler": {"stat_category": "ball-handler", "extra_params": None, "is_playtype": True},
-    "playtype_roll_man": {"stat_category": "roll-man", "extra_params": None, "is_playtype": True},
-    "playtype_post_up": {"stat_category": "playtype-post-up", "extra_params": None, "is_playtype": True},
-    "playtype_spot_up": {"stat_category": "spot-up", "extra_params": None, "is_playtype": True},
-    "playtype_handoff": {"stat_category": "hand-off", "extra_params": None, "is_playtype": True},
-    "playtype_cut": {"stat_category": "cut", "extra_params": None, "is_playtype": True},
-    "playtype_off_screen": {"stat_category": "off-screen", "extra_params": None, "is_playtype": True},
-    "playtype_putbacks": {"stat_category": "putbacks", "extra_params": None, "is_playtype": True},
-    "playtype_misc": {"stat_category": "playtype-misc", "extra_params": None, "is_playtype": True},
+    "playtype_isolation": {"stat_category": "isolation", "extra_params": None},
+    "playtype_transition": {"stat_category": "transition", "extra_params": None},
+    "playtype_ball_handler": {"stat_category": "ball-handler", "extra_params": None},
+    "playtype_roll_man": {"stat_category": "roll-man", "extra_params": None},
+    "playtype_post_up": {"stat_category": "playtype-post-up", "extra_params": None},
+    "playtype_spot_up": {"stat_category": "spot-up", "extra_params": None},
+    "playtype_handoff": {"stat_category": "hand-off", "extra_params": None},
+    "playtype_cut": {"stat_category": "cut", "extra_params": None},
+    "playtype_off_screen": {"stat_category": "off-screen", "extra_params": None},
+    "playtype_putbacks": {"stat_category": "putbacks", "extra_params": None},
+    "playtype_misc": {"stat_category": "playtype-misc", "extra_params": None},
 
     # 防守
     "defense_overall": {"stat_category": "defense-dash-overall", "extra_params": None},
@@ -143,6 +145,41 @@ PLAYER_CATEGORIES = {
 # ============================================================================
 # 工具函数
 # ============================================================================
+
+def convert_table_to_dataframe(table):
+    """将 WebElement 表格转换为 DataFrame"""
+    if table is None:
+        return None
+
+    table_html = table.get_attribute('outerHTML')
+    dfs = pd.read_html(StringIO(table_html), header=0)
+
+    if not dfs:
+        return None
+
+    df = pd.concat(dfs, ignore_index=True)
+
+    # 处理多级表头
+    if isinstance(df.columns, pd.MultiIndex):
+        df.columns = ['_'.join(col).strip() for col in df.columns.values]
+
+    return df
+
+
+def extract_player_ids(table):
+    """从表格中提取球员 ID"""
+    try:
+        links = table.find_elements("css selector", "a.Anchor_anchor__cSc3P")
+        player_ids = []
+        for link in links:
+            href = link.get_attribute("href")
+            if href and "/player/" in href:
+                player_id = href.split("/player/")[1].split("/")[0]
+                player_ids.append(player_id)
+        return player_ids
+    except:
+        return []
+
 
 def get_current_season():
     """获取当前赛季（如 2025-26）"""
@@ -265,22 +302,13 @@ def scrape_team_data(scraper, season, month, categories, output_dir, progress):
             if cat_config.get("extra_params"):
                 params.update(cat_config["extra_params"])
 
-            # PlayType 使用不同的 URL
-            if cat_config.get("is_playtype"):
-                df = scraper.scrape_team_stats_for_season(
-                    season=season,
-                    stat_category=cat_config["stat_category"],
-                    season_type="Regular+Season",
-                    extra_params=params,
-                    is_playtype=True
-                )
-            else:
-                df = scraper.scrape_team_stats_for_season(
-                    season=season,
-                    stat_category=cat_config["stat_category"],
-                    season_type="Regular+Season",
-                    extra_params=params
-                )
+            # 统一使用 scrape_team_stats_for_season（包括 PlayType）
+            df = scraper.scrape_team_stats_for_season(
+                season=season,
+                stat_category=cat_config["stat_category"],
+                season_type="Regular+Season",
+                extra_params=params
+            )
 
             if df is not None and not df.empty:
                 df["Month"] = month
@@ -304,7 +332,7 @@ def scrape_team_data(scraper, season, month, categories, output_dir, progress):
     return results
 
 
-def scrape_player_data(page_scraper, season, month, categories, output_dir, progress):
+def scrape_player_data(page_scraper, config, season, month, categories, output_dir, progress):
     """抓取球员数据"""
     results = {"success": 0, "failed": 0, "skipped": 0}
     month_value = MONTH_MAP[month]
@@ -326,14 +354,27 @@ def scrape_player_data(page_scraper, season, month, categories, output_dir, prog
                 for key, value in cat_config["extra_params"].items():
                     url += f"&{key}={value}"
 
-            df = page_scraper.scrape_page(url)
+            # 使用 scrape_page_table 抓取表格
+            table = page_scraper.scrape_page_table(
+                url,
+                config.table_class_name,
+                config.pagination_class_name,
+                config.dropdown_class_name
+            )
+
+            # 转换为 DataFrame
+            df = convert_table_to_dataframe(table)
 
             if df is not None and not df.empty:
                 df["Month"] = month
                 df["Season"] = season
 
-                # 添加 PLAYER_ID
-                if "PLAYER_ID" not in df.columns:
+                # 提取并添加 PLAYER_ID
+                player_ids = extract_player_ids(table)
+                if len(player_ids) == len(df):
+                    df["PLAYER_ID"] = player_ids
+                else:
+                    # 如果提取失败，使用序号
                     df["PLAYER_ID"] = range(1, len(df) + 1)
 
                 filename = f"{cat_name}_{month}.csv"
@@ -354,7 +395,7 @@ def scrape_player_data(page_scraper, season, month, categories, output_dir, prog
     return results
 
 
-def scrape_player_bio(page_scraper, season, output_dir, progress):
+def scrape_player_bio(page_scraper, config, season, output_dir, progress):
     """抓取球员 Bio 数据（赛季级别）"""
     task_key = f"player_bio_{season}"
 
@@ -364,7 +405,17 @@ def scrape_player_bio(page_scraper, season, output_dir, progress):
 
     try:
         url = f"https://www.nba.com/stats/players/bio?SeasonType=Regular+Season&Season={season}"
-        df = page_scraper.scrape_page(url)
+
+        # 使用 scrape_page_table 抓取表格
+        table = page_scraper.scrape_page_table(
+            url,
+            config.table_class_name,
+            config.pagination_class_name,
+            config.dropdown_class_name
+        )
+
+        # 转换为 DataFrame
+        df = convert_table_to_dataframe(table)
 
         if df is not None and not df.empty:
             df["Season"] = season
@@ -380,6 +431,11 @@ def scrape_player_bio(page_scraper, season, output_dir, progress):
                         pass
                     return None
                 df["Height_Inches"] = df["Height"].apply(parse_height)
+
+            # 提取并添加 PLAYER_ID
+            player_ids = extract_player_ids(table)
+            if len(player_ids) == len(df):
+                df["PLAYER_ID"] = player_ids
 
             filename = f"player_bio_{season_to_dir(season)}.csv"
             df.to_csv(output_dir / filename, index=False)
@@ -459,6 +515,7 @@ def main():
         app_logger = container.app_logger()
         app_logger.setup("scrape_latest.log")
 
+        config = container.config()
         team_scraper = container.team_stats_scraper() if scrape_team else None
         page_scraper = container.page_scraper()
 
@@ -485,7 +542,7 @@ def main():
                 player_dir = Path(f"data/newly_scraped/player_monthly/{season_to_dir(season)}")
                 player_dir.mkdir(parents=True, exist_ok=True)
 
-                results = scrape_player_data(page_scraper, season, month, PLAYER_CATEGORIES, player_dir, progress)
+                results = scrape_player_data(page_scraper, config, season, month, PLAYER_CATEGORIES, player_dir, progress)
                 for k, v in results.items():
                     total_results[k] += v
 
@@ -495,7 +552,7 @@ def main():
             player_dir = Path(f"data/newly_scraped/player_monthly")
             player_dir.mkdir(parents=True, exist_ok=True)
 
-            results = scrape_player_bio(page_scraper, season, player_dir, progress)
+            results = scrape_player_bio(page_scraper, config, season, player_dir, progress)
             for k, v in results.items():
                 total_results[k] += v
 
