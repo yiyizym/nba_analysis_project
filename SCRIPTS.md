@@ -4,13 +4,32 @@
 
 ## 运行环境准备
 
-所有 Python 脚本都需要先激活虚拟环境并设置 PYTHONPATH：
+### 方式一：使用 uv（推荐）
+
+项目使用 [uv](https://github.com/astral-sh/uv) 管理依赖，无需手动激活虚拟环境：
+
+```bash
+cd /path/to/nba_analysis_project
+
+# 直接运行脚本（uv 自动处理环境和依赖）
+uv run python scripts/scrape_latest.py
+
+# 安装新依赖
+uv add package_name
+```
+
+### 方式二：传统方式
+
+手动激活虚拟环境并设置 PYTHONPATH：
 
 ```bash
 cd /path/to/nba_analysis_project
 source .venv/bin/activate
 export PYTHONPATH="${PYTHONPATH}:$(pwd)/src"
+python scripts/scrape_latest.py
 ```
+
+> **注意**：本文档中的示例默认使用 `uv run python`，如果使用传统方式请自行替换。
 
 ---
 
@@ -20,25 +39,28 @@ export PYTHONPATH="${PYTHONPATH}:$(pwd)/src"
 
 ```bash
 # 抓取上个月的所有数据（球队 + 球员）
-python scripts/scrape_latest.py
+uv run python scripts/scrape_latest.py
 
 # 抓取整个赛季的数据
-python scripts/scrape_latest.py --season
+uv run python scripts/scrape_latest.py --season
 
 # 只抓取球队数据
-python scripts/scrape_latest.py --team-only
+uv run python scripts/scrape_latest.py --team-only
 
 # 只抓取球员数据
-python scripts/scrape_latest.py --player-only
+uv run python scripts/scrape_latest.py --player-only
 
 # 指定赛季和月份
-python scripts/scrape_latest.py --year 2025-26 --month january
+uv run python scripts/scrape_latest.py --year 2025-26 --month january
 ```
 
 ### 定时任务设置 (cron)
 
 ```bash
-# 每月 2 日凌晨 3 点自动抓取上个月数据
+# 使用 uv（推荐）
+0 3 2 * * cd /path/to/nba_analysis_project && uv run python scripts/scrape_latest.py >> logs/scrape.log 2>&1
+
+# 或使用传统方式
 0 3 2 * * cd /path/to/nba_analysis_project && source .venv/bin/activate && PYTHONPATH="${PYTHONPATH}:$(pwd)/src" python scripts/scrape_latest.py >> logs/scrape.log 2>&1
 ```
 
@@ -62,8 +84,8 @@ python scripts/scrape_latest.py --year 2025-26 --month january
 
 **使用示例：**
 ```bash
-python scripts/scrape_monthly_data.py
-python scripts/scrape_four_factors_monthly.py
+uv run python scripts/scrape_monthly_data.py
+uv run python scripts/scrape_four_factors_monthly.py
 ```
 
 ### 1.2 球员数据抓取
@@ -85,8 +107,8 @@ python scripts/scrape_four_factors_monthly.py
 ./scripts/run_all_player_scrapers.sh
 
 # 或单独运行
-python scripts/scrape_player_stats_monthly.py
-python scripts/scrape_player_playtype_monthly.py
+uv run python scripts/scrape_player_stats_monthly.py
+uv run python scripts/scrape_player_playtype_monthly.py
 ```
 
 ### 1.3 其他数据抓取
@@ -114,7 +136,7 @@ python scripts/scrape_player_playtype_monthly.py
 
 **使用示例：**
 ```bash
-python scripts/build_tci_model_monthly.py
+uv run python scripts/build_tci_model_monthly.py
 ```
 
 ### 2.2 防守模型 (DefRtg)
@@ -125,7 +147,7 @@ python scripts/build_tci_model_monthly.py
 
 **使用示例：**
 ```bash
-python scripts/build_defrtg_model_monthly.py
+uv run python scripts/build_defrtg_model_monthly.py
 ```
 
 ### 2.3 球员分类模型
@@ -138,8 +160,8 @@ python scripts/build_defrtg_model_monthly.py
 **使用示例：**
 ```bash
 # 先构建特征，再分类
-python scripts/build_player_features_monthly.py
-python scripts/classify_players.py
+uv run python scripts/build_player_features_monthly.py
+uv run python scripts/classify_players.py
 ```
 
 ---
@@ -151,29 +173,31 @@ python scripts/classify_players.py
 | 脚本 | 用途 | 输出 |
 |------|------|------|
 | `analyze_matchup.py` | 两队对阵博弈分析 | 控制台/JSON |
+| `generate_game_preview.py` | 生成比赛前瞻 Prompt（用于 Claude 写文章） | `data/prompts/*.md` |
+| `scrape_schedule.py` | 抓取 NBA 球队赛程 | 控制台/CSV |
 | `scrape_team_schedules.py` | 抓取球队赛程（用于休息天数计算） | `data/schedules/` |
 
 **`analyze_matchup.py` 详细用法：**
 
 ```bash
 # 基础分析（使用本地月度数据）
-python scripts/analyze_matchup.py HOU LAL
+uv run python scripts/analyze_matchup.py HOU LAL
 
 # 启用实时 Last 10 Games 数据抓取
-python scripts/analyze_matchup.py HOU LAL --live
+uv run python scripts/analyze_matchup.py HOU LAL --live
 
 # 指定分析月份
-python scripts/analyze_matchup.py HOU LAL --month december
+uv run python scripts/analyze_matchup.py HOU LAL --month december
 
 # 标记缺阵球员（支持多人）
-python scripts/analyze_matchup.py HOU LAL --out "LeBron James"
-python scripts/analyze_matchup.py HOU LAL --out "LeBron James,Anthony Davis"
+uv run python scripts/analyze_matchup.py HOU LAL --out "LeBron James"
+uv run python scripts/analyze_matchup.py HOU LAL --out "LeBron James,Anthony Davis"
 
 # 指定比赛日期（用于休息天数计算）
-python scripts/analyze_matchup.py HOU LAL --live --date 2026-01-28
+uv run python scripts/analyze_matchup.py HOU LAL --live --date 2026-01-28
 
 # JSON 格式输出
-python scripts/analyze_matchup.py HOU LAL --output json
+uv run python scripts/analyze_matchup.py HOU LAL --output json
 ```
 
 **分析框架（4 个维度）：**
@@ -193,45 +217,101 @@ python scripts/analyze_matchup.py HOU LAL --output json
 | `--timezone`, `--tz` | 你的时区，自动转换为美东时间 (如 `beijing`, `+8`) |
 | `--output` | 输出格式 (console/json) |
 
+**伤病自动加载：** 赛季报销 (`out_for_season`) 和长期缺阵 (`long_term`) 球员会从 `configs/nba/injuries.yaml` 自动加载，无需每次手动指定。详见 [5.5 伤病配置](#55-伤病配置)。
+
 **时区转换示例：**
 ```bash
 # 北京时间 2026-01-28 的比赛 -> 自动转换为美东时间
-python scripts/analyze_matchup.py HOU LAL --date 2026-01-28 --tz beijing
+uv run python scripts/analyze_matchup.py HOU LAL --date 2026-01-28 --tz beijing
 
 # 支持的时区格式: beijing, shanghai, china, Asia/Shanghai, +8, cst
 ```
 
 **运行注意事项：**
 
-1. **必须激活虚拟环境并设置 PYTHONPATH**：
+1. **使用 uv（推荐）**：
+   ```bash
+   # uv 自动处理环境，无需手动激活
+   uv run python scripts/analyze_matchup.py HOU LAL
+   ```
+
+2. **传统方式（需手动设置环境）**：
    ```bash
    source .venv/bin/activate
    export PYTHONPATH="${PYTHONPATH}:$(pwd)/src"
-
-   # 或一行命令
-   source .venv/bin/activate && PYTHONPATH="$(pwd)/src:$PYTHONPATH" python scripts/analyze_matchup.py HOU LAL
+   python scripts/analyze_matchup.py HOU LAL
    ```
 
-2. **`--live` 参数需要额外依赖**：
+3. **`--live` 参数需要额外依赖**（使用 uv 会自动安装）：
    ```bash
-   # 安装实时抓取所需的依赖
-   pip install selenium webdriver-manager mlflow lxml pyyaml dependency-injector
+   # 如需手动安装
+   uv add selenium webdriver-manager mlflow lxml pyyaml dependency-injector
    ```
 
-3. **常见错误及解决方案**：
+4. **常见错误及解决方案**：
 
    | 错误信息 | 原因 | 解决方案 |
    |----------|------|----------|
-   | `No module named 'ml_framework'` | PYTHONPATH 未设置 | `export PYTHONPATH="${PYTHONPATH}:$(pwd)/src"` |
-   | `No module named 'mlflow'` | 虚拟环境未激活或依赖未安装 | `source .venv/bin/activate && pip install mlflow` |
+   | `No module named 'ml_framework'` | PYTHONPATH 未设置 | 使用 `uv run python` 或手动设置 PYTHONPATH |
+   | `No module named 'mlflow'` | 依赖未安装 | `uv add mlflow` |
    | `Logger not initialized` | 内部初始化问题 | 已修复，更新代码即可 |
-   | `llvmlite build failed` | LLVM 未安装（shap 依赖） | 只安装最小依赖，跳过 shap |
 
-4. **不使用 `--live` 时的基础运行**：
+5. **不使用 `--live` 时的基础运行**：
    ```bash
    # 基础分析不需要 mlflow 等依赖，只需要 pandas
-   python scripts/analyze_matchup.py HOU LAL --month january
+   uv run python scripts/analyze_matchup.py HOU LAL --month january
    ```
+
+**`generate_game_preview.py` 详细用法：**
+
+生成用于 Claude 写作的完整 Prompt 文件，包含数据分析结果和写作指导。
+
+```bash
+# 基础用法
+uv run python scripts/generate_game_preview.py HOU LAL
+
+# 带缺阵球员和实时数据
+uv run python scripts/generate_game_preview.py HOU IND --out "Kevin Durant" --live
+
+# 指定比赛日期（自动时区转换）
+uv run python scripts/generate_game_preview.py HOU IND --date 2026-02-03 --tz beijing
+
+# 同时打印到终端
+uv run python scripts/generate_game_preview.py HOU IND --print
+```
+
+**工作流程：**
+1. 运行脚本生成 Prompt → `data/prompts/2026-02-03_HOU_vs_IND_prompt.md`
+2. 复制 Prompt 内容到 Claude 对话
+3. Claude 生成文章
+4. 保存文章到 `data/articles/`
+
+**Prompt 包含内容：**
+- 四要素对比（篮板/失误/罚球/投篮）
+- 风格碰撞分析（节奏/禁区攻防）
+- 关键对位（核心球员 vs 防守资源）
+- 状态趋势（月度趋势/近10场）
+- 胜利条件与危险信号
+- 写作结构和风格要求
+
+**`scrape_schedule.py` 详细用法：**
+
+抓取 NBA 球队赛程信息。
+
+```bash
+# 抓取火箭队赛程（默认）
+uv run python scripts/scrape_schedule.py
+
+# 抓取其他球队
+uv run python scripts/scrape_schedule.py --team lakers
+uv run python scripts/scrape_schedule.py --team warriors
+
+# 只显示未来比赛
+uv run python scripts/scrape_schedule.py --upcoming
+
+# 输出到文件
+uv run python scripts/scrape_schedule.py --output data/schedules/rockets_schedule.csv
+```
 
 ### 3.2 预测分析
 
@@ -261,8 +341,8 @@ python scripts/analyze_matchup.py HOU LAL --date 2026-01-28 --tz beijing
 
 **使用示例：**
 ```bash
-python scripts/evaluate_coaches.py
-python scripts/evaluate_coach_career.py  # 会提示输入教练名字
+uv run python scripts/evaluate_coaches.py
+uv run python scripts/evaluate_coach_career.py  # 会提示输入教练名字
 ```
 
 ---
@@ -306,7 +386,111 @@ python scripts/evaluate_coach_career.py  # 会提示输入教练名字
 | `run_with_kaggle_data.sh` | 使用 Kaggle 数据运行 |
 | `run_local_kaggle_refresh.sh` | 本地刷新 Kaggle 数据 |
 
-### 5.4 其他工具
+### 5.4 数据校验
+
+| 脚本 | 用途 |
+|------|------|
+| `validate_scraped_data.py` | 校验抓取数据质量（行数、列、范围等） |
+
+**使用示例：**
+```bash
+# 校验单个文件
+uv run python scripts/validate_scraped_data.py data/newly_scraped/tracking_monthly/2025_26/four_factors_january.csv --type four-factors -v
+
+# 自动检测数据类型
+uv run python scripts/validate_scraped_data.py data/.../team_advanced_january.csv -v
+```
+
+**校验内容：**
+| 校验项 | 严重级别 | 说明 |
+|--------|----------|------|
+| 行数检查 | ERROR | NBA 应有 30 支球队 |
+| 必需列检查 | ERROR | 关键列是否存在 |
+| 数值范围 | WARNING | eFG% 0-100, OffRtg 90-130 等 |
+| 空值检查 | WARNING | 关键列是否有空值 |
+| TEAM_ID 校验 | WARNING | 是否为有效的 NBA 球队 ID |
+
+**注意**：此模块已集成到 `generate_game_preview.py` 中，实时抓取数据时会自动校验。
+
+### 5.5 伤病配置
+
+伤病配置文件 `configs/nba/injuries.yaml` 用于持久化赛季报销或长期缺阵的球员，避免每次运行分析时手动指定 `--out` 参数。
+
+**配置文件位置：** `configs/nba/injuries.yaml`
+
+**配置格式：**
+```yaml
+season: "2025-26"
+
+injuries:
+  # Houston Rockets
+  HOU:
+    - name: "某球员"
+      status: "out_for_season"
+      note: "ACL撕裂"
+
+  # Indiana Pacers
+  IND:
+    - name: "James Wiseman"
+      status: "out_for_season"
+      note: "跟腱手术"
+
+  # Los Angeles Lakers
+  LAL:
+    - name: "某球员"
+      status: "long_term"
+      note: "背部手术，预计休息3个月"
+
+    - name: "另一球员"
+      status: "day_to_day"
+      note: "脚踝扭伤"
+```
+
+**状态说明：**
+
+| 状态 | 说明 | 自动排除 |
+|------|------|----------|
+| `out_for_season` | 赛季报销 | ✅ 是 |
+| `long_term` | 长期缺阵（超过1个月） | ✅ 是 |
+| `day_to_day` | 出战成疑 | ❌ 否，需手动 `--out` |
+
+**使用示例：**
+
+```bash
+# James Wiseman (out_for_season) 会自动排除
+# Kevin Durant (day_to_day) 需手动指定
+uv run python scripts/analyze_matchup.py HOU IND --out "Kevin Durant"
+
+# 输出会显示：
+# Auto-loaded injuries: James Wiseman
+# Manual --out: Kevin Durant
+# Total out players: James Wiseman, Kevin Durant
+```
+
+**适用脚本：**
+- `analyze_matchup.py` - 对阵分析
+- `generate_game_preview.py` - 比赛前瞻 Prompt 生成
+
+**管理工具 `scrape_injuries.py`：**
+
+```bash
+# 查看当前伤病配置
+uv run python scripts/scrape_injuries.py --show
+
+# 添加伤病球员
+uv run python scripts/scrape_injuries.py --add HOU "Jabari Smith Jr." long_term "膝盖伤势"
+uv run python scripts/scrape_injuries.py --add LAL "LeBron James" out_for_season "跟腱断裂"
+
+# 移除球员（球员复出时）
+uv run python scripts/scrape_injuries.py --remove HOU "Kevin Durant"
+
+# 尝试从 ESPN 抓取（可能不稳定，建议手动更新）
+uv run python scripts/scrape_injuries.py --fetch --dry-run
+```
+
+**数据来源：** 手动查阅 [ESPN NBA Injuries](https://www.espn.com/nba/injuries) 获取最新伤病信息。
+
+### 5.6 其他工具
 
 | 脚本 | 用途 |
 |------|------|
@@ -321,17 +505,11 @@ python scripts/evaluate_coach_career.py  # 会提示输入教练名字
 ### 6.1 抓取最新数据并更新模型
 
 ```bash
-# 1. 激活环境
-source .venv/bin/activate
-export PYTHONPATH="${PYTHONPATH}:$(pwd)/src"
-
-# 2. 抓取最新月度数据
-python scripts/scrape_monthly_data.py
-python scripts/scrape_four_factors_monthly.py
-
-# 3. 重新训练模型
-python scripts/build_tci_model_monthly.py
-python scripts/build_defrtg_model_monthly.py
+# 使用 uv（无需手动激活环境）
+uv run python scripts/scrape_monthly_data.py
+uv run python scripts/scrape_four_factors_monthly.py
+uv run python scripts/build_tci_model_monthly.py
+uv run python scripts/build_defrtg_model_monthly.py
 ```
 
 ### 6.2 更新球员分类
@@ -341,42 +519,68 @@ python scripts/build_defrtg_model_monthly.py
 ./scripts/run_all_player_scrapers.sh
 
 # 2. 构建特征并分类
-python scripts/build_player_features_monthly.py
-python scripts/classify_players.py
+uv run python scripts/build_player_features_monthly.py
+uv run python scripts/classify_players.py
 ```
 
 ### 6.3 评估教练
 
 ```bash
-python scripts/evaluate_coaches.py
+uv run python scripts/evaluate_coaches.py
+```
+
+### 6.4 生成比赛前瞻文章
+
+```bash
+# 1. 查看火箭队赛程
+uv run python scripts/scrape_schedule.py --team rockets
+
+# 2. 生成对阵分析 Prompt（带实时数据）
+uv run python scripts/generate_game_preview.py HOU IND --out "Kevin Durant" --live
+
+# 3. 复制 data/prompts/*.md 内容到 Claude 对话
+# 4. Claude 生成文章后，保存到 data/articles/
 ```
 
 ---
 
-## 七、数据目录结构
+## 七、目录结构
 
 ```
-data/
-├── newly_scraped/
-│   ├── tracking_monthly/      # 球队月度数据
-│   │   ├── 2021_22/
-│   │   ├── 2022_23/
-│   │   ├── 2023_24/
-│   │   ├── 2024_25/
-│   │   └── 2025_26/
-│   └── player_monthly/        # 球员月度数据
-│       ├── 2021_22/
-│       ├── 2022_23/
-│       ├── 2023_24/
-│       ├── 2024_25/
-│       └── 2025_26/
-├── schedules/                 # 球队赛程数据（用于对阵分析）
-│   └── schedule_2025_26.csv
-└── analysis/                  # 分析结果
-    ├── tci_model_monthly.json
-    ├── defrtg_model_monthly.json
-    ├── player_features_*.csv
-    └── player_classification_*.csv
+nba_analysis_project/
+├── configs/
+│   └── nba/
+│       ├── injuries.yaml          # 伤病配置（赛季报销/长期缺阵）
+│       ├── app_config.yaml        # 应用配置
+│       └── article_generation.yaml # 文章生成配置
+│
+├── data/
+│   ├── newly_scraped/
+│   │   ├── tracking_monthly/      # 球队月度数据
+│   │   │   ├── 2021_22/
+│   │   │   ├── 2022_23/
+│   │   │   ├── 2023_24/
+│   │   │   ├── 2024_25/
+│   │   │   └── 2025_26/
+│   │   └── player_monthly/        # 球员月度数据
+│   │       ├── 2021_22/
+│   │       ├── 2022_23/
+│   │       ├── 2023_24/
+│   │       ├── 2024_25/
+│   │       └── 2025_26/
+│   ├── schedules/                 # 球队赛程数据（用于对阵分析）
+│   │   └── schedule_2025_26.csv
+│   ├── prompts/                   # 比赛前瞻 Prompt 文件
+│   │   └── 2026-02-03_HOU_vs_IND_prompt.md
+│   ├── articles/                  # 生成的文章（手动保存）
+│   │   └── 2026-02-03_HOU_vs_IND_preview.md
+│   └── analysis/                  # 分析结果
+│       ├── tci_model_monthly.json
+│       ├── defrtg_model_monthly.json
+│       ├── player_features_*.csv
+│       └── player_classification_*.csv
+│
+└── scripts/                       # 脚本目录
 ```
 
 ---

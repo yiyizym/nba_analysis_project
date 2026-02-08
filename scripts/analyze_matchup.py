@@ -25,6 +25,14 @@ from typing import Dict, List, Optional, Tuple, Any
 
 import pandas as pd
 import numpy as np
+import yaml
+
+# Data validation
+try:
+    from validate_scraped_data import validate_live_data, print_validation_summary
+    VALIDATION_AVAILABLE = True
+except ImportError:
+    VALIDATION_AVAILABLE = False
 
 # Try to import zoneinfo (Python 3.9+) or fall back to pytz
 try:
@@ -39,6 +47,7 @@ except ImportError:
 DATA_DIR = Path("data/newly_scraped/tracking_monthly/2025_26")
 ANALYSIS_DIR = Path("data/analysis")
 SCHEDULE_DIR = Path("data/schedules")
+INJURIES_FILE = Path("configs/nba/injuries.yaml")
 CURRENT_SEASON = "2025-26"
 
 # NBA uses US Eastern Time for scheduling
@@ -163,6 +172,54 @@ ABBREV_TO_TEAM_ID = {
 }
 
 TEAM_ID_TO_ABBREV = {v: k for k, v in ABBREV_TO_TEAM_ID.items() if k != 'BKN'}
+
+# ============================================================================
+# Injury Loading
+# ============================================================================
+
+def load_injuries(team_a: str, team_b: str) -> List[str]:
+    """
+    Load injured players for the specified teams from config.
+
+    Only returns players with 'out_for_season' or 'long_term' status.
+    Players with 'day_to_day' status need to be specified manually via --out.
+
+    Args:
+        team_a: First team abbreviation (e.g., 'HOU')
+        team_b: Second team abbreviation (e.g., 'LAL')
+
+    Returns:
+        List of player names that should be excluded from analysis.
+    """
+    if not INJURIES_FILE.exists():
+        return []
+
+    try:
+        with open(INJURIES_FILE, 'r', encoding='utf-8') as f:
+            config = yaml.safe_load(f)
+
+        if not config or 'injuries' not in config:
+            return []
+
+        injuries = config['injuries']
+        out_players = []
+
+        # Auto-exclude statuses
+        auto_exclude_statuses = ['out_for_season', 'long_term']
+
+        for team in [team_a, team_b]:
+            if team in injuries:
+                for player in injuries[team]:
+                    status = player.get('status', '')
+                    if status in auto_exclude_statuses:
+                        out_players.append(player['name'])
+
+        return out_players
+
+    except Exception as e:
+        print(f"Warning: Could not load injuries config: {e}")
+        return []
+
 
 # ============================================================================
 # Data Loading Functions
@@ -815,15 +872,29 @@ def fetch_last_10_games_data(team_a: str, team_b: str) -> Optional[Dict]:
 
         if ff_df is not None:
             print(f"{len(ff_df)} teams")
-            for team in [team_a, team_b]:
-                row = get_team_row(ff_df, team)
-                if row is not None:
-                    result[team] = {
-                        'eFG%': row.get('eFG%', 0),
-                        'TOV%': row.get('TOV%', 0),
-                        'OREB%': row.get('OREB%', 0),
-                        'FTA_Rate': row.get('FTA Rate', 0),
-                    }
+
+            # Validate scraped data
+            if VALIDATION_AVAILABLE:
+                validation = validate_live_data(ff_df, 'four-factors', 'Last 10 Games')
+                if validation.has_errors:
+                    print("    ⚠️ 数据校验失败:")
+                    for e in validation.errors[:2]:
+                        print(f"      {e}")
+                    print("    跳过此数据源")
+                    ff_df = None
+                elif validation.has_warnings:
+                    print(f"    ⚠️ 数据校验警告: {len(validation.warnings)} 个")
+
+            if ff_df is not None:
+                for team in [team_a, team_b]:
+                    row = get_team_row(ff_df, team)
+                    if row is not None:
+                        result[team] = {
+                            'eFG%': row.get('eFG%', 0),
+                            'TOV%': row.get('TOV%', 0),
+                            'OREB%': row.get('OREB%', 0),
+                            'FTA_Rate': row.get('FTA Rate', 0),
+                        }
         else:
             print("failed")
 
@@ -834,18 +905,32 @@ def fetch_last_10_games_data(team_a: str, team_b: str) -> Optional[Dict]:
 
         if adv_df is not None:
             print(f"{len(adv_df)} teams")
-            for team in [team_a, team_b]:
-                row = get_team_row(adv_df, team)
-                if row is not None:
-                    if team not in result:
-                        result[team] = {}
-                    result[team].update({
-                        'W': row.get('W', 0),
-                        'L': row.get('L', 0),
-                        'NetRtg': row.get('NetRtg', 0),
-                        'OffRtg': row.get('OffRtg', 0),
-                        'DefRtg': row.get('DefRtg', 0),
-                    })
+
+            # Validate scraped data
+            if VALIDATION_AVAILABLE:
+                validation = validate_live_data(adv_df, 'advanced', 'Last 10 Games')
+                if validation.has_errors:
+                    print("    ⚠️ 数据校验失败:")
+                    for e in validation.errors[:2]:
+                        print(f"      {e}")
+                    print("    跳过此数据源")
+                    adv_df = None
+                elif validation.has_warnings:
+                    print(f"    ⚠️ 数据校验警告: {len(validation.warnings)} 个")
+
+            if adv_df is not None:
+                for team in [team_a, team_b]:
+                    row = get_team_row(adv_df, team)
+                    if row is not None:
+                        if team not in result:
+                            result[team] = {}
+                        result[team].update({
+                            'W': row.get('W', 0),
+                            'L': row.get('L', 0),
+                            'NetRtg': row.get('NetRtg', 0),
+                            'OffRtg': row.get('OffRtg', 0),
+                            'DefRtg': row.get('DefRtg', 0),
+                        })
         else:
             print("failed")
 
@@ -1256,10 +1341,25 @@ def main():
 
     args = parser.parse_args()
 
-    # Parse out players
-    out_players = []
+    # Normalize team abbreviations to uppercase
+    team_a = args.team_a.upper()
+    team_b = args.team_b.upper()
+
+    # Parse out players from command line
+    manual_out_players = []
     for out_arg in args.out:
-        out_players.extend([p.strip() for p in out_arg.split(',')])
+        manual_out_players.extend([p.strip() for p in out_arg.split(',')])
+
+    # Load injuries from config file
+    config_out_players = load_injuries(team_a, team_b)
+
+    # Merge and deduplicate (case-insensitive)
+    seen = set()
+    out_players = []
+    for p in config_out_players + manual_out_players:
+        if p.lower() not in seen:
+            seen.add(p.lower())
+            out_players.append(p)
 
     # Parse game date with optional timezone conversion
     game_date = None
@@ -1278,14 +1378,14 @@ def main():
         except ValueError:
             print(f"Warning: Invalid date format '{args.date}', expected YYYY-MM-DD")
 
-    # Normalize team abbreviations to uppercase
-    team_a = args.team_a.upper()
-    team_b = args.team_b.upper()
-
     print(f"Analyzing: {team_a} vs {team_b}")
     print(f"Data month: {args.month}")
+    if config_out_players:
+        print(f"Auto-loaded injuries: {', '.join(config_out_players)}")
+    if manual_out_players:
+        print(f"Manual --out: {', '.join(manual_out_players)}")
     if out_players:
-        print(f"Out players: {', '.join(out_players)}")
+        print(f"Total out players: {', '.join(out_players)}")
     if args.live:
         print("Live data: Enabled (will fetch Last 10 Games from NBA.com)")
     if game_date:

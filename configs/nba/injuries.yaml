@@ -1,0 +1,104 @@
+# NBA 伤病名单配置
+# 赛季报销或长期缺阵的球员会自动从对阵分析中排除
+# 更新时间: 2026-02-06
+# 数据来源: ESPN NBA Injuries
+
+# 格式说明:
+#   - 按球队缩写分组
+#   - 每个球员包含: 名字、状态、预计复出时间（可选）
+#   - status: "out_for_season" (赛季报销) | "long_term" (长期缺阵) | "day_to_day" (出战成疑)
+
+season: "2025-26"
+
+injuries:
+  # BOS
+  BOS:
+    - name: "Jayson Tatum"
+      status: "long_term"
+      note: "跟腱伤势，复出时间不确定"
+
+  # CHI
+  CHI:
+    - name: "Noa Essengue"
+      status: "out_for_season"
+      note: "左肩手术"
+
+  # DAL
+  DAL:
+    - name: "Dereck Lively II"
+      status: "out_for_season"
+      note: "右脚手术"
+    - name: "Kyrie Irving"
+      status: "long_term"
+      note: "膝伤，预计全明星赛前无法复出"
+
+  # DEN
+  DEN:
+    - name: "Aaron Gordon"
+      status: "long_term"
+      note: "腿筋伤势，4-6周后复查"
+
+  # GSW
+  GSW:
+    - name: "Jimmy Butler III"
+      status: "out_for_season"
+      note: "右膝ACL撕裂"
+
+  # HOU
+  HOU:
+    - name: "Fred VanVleet"
+      status: "out_for_season"
+      note: "ACL撕裂"
+    - name: "Steven Adams"
+      status: "out_for_season"
+      note: "左脚踝手术"
+    - name: "Kevin Durant"
+      status: "day_to_day"
+      note: "小腿伤势"
+
+  # IND
+  IND:
+    - name: "Tyrese Haliburton"
+      status: "long_term"
+      note: "右跟腱手术，有限度训练中"
+    - name: "James Wiseman"
+      status: "out_for_season"
+      note: "跟腱手术"
+
+  # NOP
+  NOP:
+    - name: "Dejounte Murray"
+      status: "long_term"
+      note: "跟腱伤势，恢复中但近期无法复出"
+
+  # OKC
+  OKC:
+    - name: "Thomas Sorber"
+      status: "out_for_season"
+      note: "右膝ACL撕裂（休赛期受伤）"
+    - name: "Nikola Topic"
+      status: "out_for_season"
+      note: "健康问题"
+
+  # POR
+  POR:
+    - name: "Damian Lillard"
+      status: "out_for_season"
+      note: "本赛季不会复出"
+
+  # UTA
+  UTA:
+    - name: "Walker Kessler"
+      status: "out_for_season"
+      note: "左肩手术"
+
+  # WAS
+  WAS:
+    - name: "Cam Whitmore"
+      status: "out_for_season"
+      note: "静脉疾病，需要恢复"
+
+# 自动排除规则:
+# - out_for_season: 总是排除
+# - long_term: 总是排除
+# - day_to_day: 不自动排除，需要手动用 --out 指定
