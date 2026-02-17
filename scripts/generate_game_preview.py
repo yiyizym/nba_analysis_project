@@ -36,6 +36,20 @@ from analyze_matchup import (
 # Configuration
 PROMPTS_DIR = Path("data/prompts")
 ARTICLES_DIR = Path("data/articles")
+SYSTEM_PROMPT_FILE = Path("data/prompts/system_prompt.md")
+
+
+def load_system_prompt() -> str:
+    """
+    加载 system_prompt.md 内容。
+
+    Returns:
+        system_prompt 内容，如果文件不存在则返回空字符串
+    """
+    if SYSTEM_PROMPT_FILE.exists():
+        with open(SYSTEM_PROMPT_FILE, 'r', encoding='utf-8') as f:
+            return f.read().strip()
+    return ""
 
 
 def build_prompt(team_a: str, team_b: str, analysis: Dict,
@@ -87,6 +101,14 @@ def build_prompt(team_a: str, team_b: str, analysis: Dict,
     # 格式化危险信号
     danger_text = format_danger_zones(danger_zones, team_a, team_b)
 
+    # 格式化历史交手
+    h2h = analysis.get('head_to_head')
+    h2h_text = format_head_to_head(h2h, team_a, team_b)
+
+    # 格式化新闻和排名
+    news_data = analysis.get('team_news')
+    news_text = format_team_news(news_data, team_a, team_b)
+
     # 缺阵球员
     out_text = ""
     if out_players:
@@ -101,6 +123,12 @@ def build_prompt(team_a: str, team_b: str, analysis: Dict,
 - **对阵**: {team_a_full} vs {team_b_full}
 - **日期**: {date_str}
 {out_text}
+---
+
+## 历史交手
+
+{h2h_text}
+
 ---
 
 ## 数据分析
@@ -140,6 +168,12 @@ def build_prompt(team_a: str, team_b: str, analysis: Dict,
 
 ### {team_b} 需警惕:
 {danger_text[team_b]}
+
+---
+
+## 新闻动态
+
+{news_text}
 
 ---
 
@@ -366,10 +400,103 @@ def format_danger_zones(danger_zones: Dict, team_a: str, team_b: str) -> Dict[st
     return result
 
 
+def format_head_to_head(h2h: Optional[Dict], team_a: str, team_b: str) -> str:
+    """格式化历史交手记录"""
+    if not h2h:
+        return "本赛季两队尚未交手"
+
+    lines = []
+    lines.append(f"**上次交手**: {h2h.get('game_date', 'N/A')}")
+
+    home_team = h2h.get('home_team', '')
+    away_team = h2h.get('away_team', '')
+    home_score = h2h.get('home_score', 0)
+    away_score = h2h.get('away_score', 0)
+    winner = h2h.get('winner', '')
+
+    # 主客场
+    if home_team and away_team:
+        lines.append(f"- 主场: {home_team} | 客场: {away_team}")
+
+    # 比分
+    if home_score and away_score:
+        lines.append(f"- 比分: {home_team} {home_score} - {away_score} {away_team}")
+
+    # 胜者
+    if winner:
+        lines.append(f"- 胜者: **{winner}**")
+
+    # 赛季战绩
+    season_series = h2h.get('season_series', '')
+    if season_series:
+        lines.append(f"- 赛季交手: {team_a} {season_series} {team_b}")
+
+    return "\n".join(lines)
+
+
+def format_team_news(news_data: Optional[Dict], team_a: str, team_b: str) -> str:
+    """格式化球队新闻和排名"""
+    if not news_data:
+        return ""
+
+    lines = []
+
+    for team in [team_a, team_b]:
+        if team not in news_data:
+            continue
+
+        team_data = news_data[team]
+        lines.append(f"\n### {team} 近期动态\n")
+
+        # 排名
+        standings = team_data.get('standings')
+        if standings:
+            conf = standings.get('conference', '')
+            rank = standings.get('rank', 0)
+            wins = standings.get('wins', 0)
+            losses = standings.get('losses', 0)
+            streak = standings.get('streak', '')
+            last_10 = standings.get('last_10', '')
+
+            lines.append(f"**当前排名**: {conf}区第{rank}名")
+            lines.append(f"- 战绩: {wins}-{losses}")
+            if streak:
+                lines.append(f"- 连胜/连败: {streak}")
+            if last_10:
+                lines.append(f"- 近10场: {last_10}")
+            lines.append("")
+
+        # 新闻
+        news_items = team_data.get('news', [])
+        if news_items:
+            lines.append("**近期新闻**:")
+            for item in news_items[:3]:
+                type_cn = {
+                    'injury': '[伤病]',
+                    'player_quote': '[发言]',
+                    'coach_quote': '[教练]',
+                    'trade': '[交易]',
+                    'team_news': '[动态]',
+                    'game_recap': '[战报]'
+                }.get(item.get('news_type', ''), '[新闻]')
+                lines.append(f"- {type_cn} {item.get('headline', '')}")
+            lines.append("")
+
+    return "\n".join(lines) if lines else ""
+
+
 def save_prompt(content: str, team_a: str, team_b: str,
-                game_date: Optional[datetime] = None) -> Path:
+                game_date: Optional[datetime] = None,
+                include_system_prompt: bool = True) -> Path:
     """
     保存 prompt 到文件。
+
+    Args:
+        content: prompt 内容
+        team_a: 球队 A 缩写
+        team_b: 球队 B 缩写
+        game_date: 比赛日期
+        include_system_prompt: 是否在开头添加 system_prompt.md 内容
 
     Returns:
         保存的文件路径
@@ -380,8 +507,15 @@ def save_prompt(content: str, team_a: str, team_b: str,
     filename = f"{date_str}_{team_a}_vs_{team_b}_prompt.md"
     filepath = PROMPTS_DIR / filename
 
+    # 合并 system_prompt 和数据 prompt
+    final_content = content
+    if include_system_prompt:
+        system_prompt = load_system_prompt()
+        if system_prompt:
+            final_content = f"{system_prompt}\n\n---\n\n{content}"
+
     with open(filepath, 'w', encoding='utf-8') as f:
-        f.write(content)
+        f.write(final_content)
 
     return filepath
 
@@ -417,8 +551,22 @@ def main():
                         help='您的时区，用于转换为美东时间 (如 "beijing", "+8")')
     parser.add_argument('--print', action='store_true',
                         help='同时打印 prompt 到终端')
+    parser.add_argument('--no-system-prompt', action='store_true',
+                        help='不添加 system_prompt.md 内容')
+    parser.add_argument('--h2h', action='store_true',
+                        help='获取历史交手数据')
+    parser.add_argument('--news', action='store_true',
+                        help='获取球队最新新闻和排名')
+    parser.add_argument('--full', action='store_true',
+                        help='获取所有数据 (等同于 --live --h2h --news)')
 
     args = parser.parse_args()
+
+    # 处理 --full 参数
+    if args.full:
+        args.live = True
+        args.h2h = True
+        args.news = True
 
     # 标准化球队缩写
     team_a = args.team_a.upper()
@@ -463,6 +611,10 @@ def main():
         print(f"全部缺阵球员: {', '.join(out_players)}")
     if args.live:
         print("实时数据: 已启用")
+    if args.h2h:
+        print("历史交手: 已启用")
+    if args.news:
+        print("新闻排名: 已启用")
     if game_date:
         print(f"比赛日期: {game_date.strftime('%Y-%m-%d')}")
     print()
@@ -471,7 +623,8 @@ def main():
     print("[1/3] 运行对阵分析...")
     analysis = run_analysis(
         team_a, team_b, args.month, out_players,
-        fetch_live=args.live, game_date=game_date
+        fetch_live=args.live, game_date=game_date,
+        fetch_h2h=args.h2h, fetch_news=args.news
     )
 
     if 'error' in analysis:
@@ -487,8 +640,12 @@ def main():
 
     # 步骤 3: 保存文件
     print("[3/3] 保存文件...")
-    filepath = save_prompt(prompt, team_a, team_b, game_date)
+    include_sys_prompt = not getattr(args, 'no_system_prompt', False)
+    filepath = save_prompt(prompt, team_a, team_b, game_date,
+                          include_system_prompt=include_sys_prompt)
     print(f"      已保存到: {filepath}")
+    if include_sys_prompt:
+        print("      (已包含 system_prompt.md)")
 
     # 可选: 打印到终端
     if getattr(args, 'print', False):

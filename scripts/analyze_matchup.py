@@ -47,6 +47,7 @@ except ImportError:
 DATA_DIR = Path("data/newly_scraped/tracking_monthly/2025_26")
 ANALYSIS_DIR = Path("data/analysis")
 SCHEDULE_DIR = Path("data/schedules")
+H2H_CACHE_DIR = Path("data/h2h")
 INJURIES_FILE = Path("configs/nba/injuries.yaml")
 CURRENT_SEASON = "2025-26"
 
@@ -69,8 +70,9 @@ TIMEZONE_SHORTCUTS = {
     'gmt': 'UTC',
 }
 
-# Add project root to path for imports
+# Add project root and src to path for imports
 sys.path.insert(0, str(Path(__file__).parent.parent))
+sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
 
 
 def convert_to_us_eastern(local_date: datetime, local_tz_str: str) -> datetime:
@@ -219,6 +221,266 @@ def load_injuries(team_a: str, team_b: str) -> List[str]:
     except Exception as e:
         print(f"Warning: Could not load injuries config: {e}")
         return []
+
+
+# ============================================================================
+# Head-to-Head (H2H) Functions
+# ============================================================================
+
+def _load_h2h_cache(team_a: str, team_b: str, season: str = CURRENT_SEASON) -> Optional[Dict]:
+    """
+    Load H2H data from local cache.
+
+    Args:
+        team_a: First team abbreviation
+        team_b: Second team abbreviation
+        season: Season string (e.g., "2025-26")
+
+    Returns:
+        Cached H2H data if valid, None otherwise.
+    """
+    # Normalize team order for consistent cache keys
+    teams = sorted([team_a, team_b])
+    cache_file = H2H_CACHE_DIR / f"{season}_{teams[0]}_{teams[1]}.json"
+
+    if not cache_file.exists():
+        return None
+
+    try:
+        with open(cache_file, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+
+        # Check if cache is still valid (updated today or yesterday)
+        cache_date = datetime.strptime(data.get('cache_date', ''), '%Y-%m-%d')
+        today = datetime.now()
+        if (today - cache_date).days <= 1:
+            return data
+        return None
+    except Exception:
+        return None
+
+
+def _save_h2h_cache(team_a: str, team_b: str, data: Dict, season: str = CURRENT_SEASON) -> None:
+    """Save H2H data to local cache."""
+    H2H_CACHE_DIR.mkdir(parents=True, exist_ok=True)
+
+    teams = sorted([team_a, team_b])
+    cache_file = H2H_CACHE_DIR / f"{season}_{teams[0]}_{teams[1]}.json"
+
+    data['cache_date'] = datetime.now().strftime('%Y-%m-%d')
+
+    with open(cache_file, 'w', encoding='utf-8') as f:
+        json.dump(data, f, indent=2, ensure_ascii=False)
+
+
+def _scrape_h2h_from_nba(team_a: str, team_b: str, season: str = CURRENT_SEASON) -> Optional[List[Dict]]:
+    """
+    Scrape head-to-head game data from NBA Stats API.
+
+    Uses the leaguegamefinder endpoint to find games between two teams.
+
+    Args:
+        team_a: First team abbreviation
+        team_b: Second team abbreviation
+        season: Season string (e.g., "2025-26")
+
+    Returns:
+        List of game dictionaries, sorted by date descending.
+    """
+    import requests
+
+    team_a_id = ABBREV_TO_TEAM_ID.get(team_a)
+    team_b_id = ABBREV_TO_TEAM_ID.get(team_b)
+
+    if not team_a_id or not team_b_id:
+        print(f"  Warning: Unknown team ID for {team_a} or {team_b}")
+        return None
+
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        'Referer': 'https://www.nba.com/',
+        'Origin': 'https://www.nba.com',
+        'Accept': 'application/json',
+        'Accept-Language': 'en-US,en;q=0.9',
+        'x-nba-stats-origin': 'stats',
+        'x-nba-stats-token': 'true'
+    }
+
+    # Convert season format: "2025-26" -> "2025-26"
+    url = "https://stats.nba.com/stats/leaguegamefinder"
+    params = {
+        "TeamID": team_a_id,
+        "VsTeamID": team_b_id,
+        "Season": season,
+        "SeasonType": "Regular Season",
+        "LeagueID": "00"
+    }
+
+    try:
+        print(f"    Fetching H2H data: {team_a} vs {team_b}...", end=" ")
+        time.sleep(random.uniform(1, 2))
+
+        response = requests.get(url, headers=headers, params=params, timeout=30)
+        response.raise_for_status()
+
+        data = response.json()
+        result_sets = data.get('resultSets', [])
+
+        if not result_sets:
+            print("no data")
+            return None
+
+        # Parse the response
+        headers_list = result_sets[0].get('headers', [])
+        rows = result_sets[0].get('rowSet', [])
+
+        if not rows:
+            print("no games found")
+            return None
+
+        print(f"{len(rows)} game(s) found")
+
+        games = []
+        for row in rows:
+            game_dict = dict(zip(headers_list, row))
+            games.append({
+                'game_id': game_dict.get('GAME_ID'),
+                'game_date': game_dict.get('GAME_DATE'),
+                'matchup': game_dict.get('MATCHUP'),
+                'wl': game_dict.get('WL'),
+                'pts': game_dict.get('PTS'),
+                'team_id': game_dict.get('TEAM_ID'),
+                'team_abbrev': game_dict.get('TEAM_ABBREVIATION'),
+                'opp_pts': None  # Will be filled from the other row
+            })
+
+        # Sort by date descending
+        games.sort(key=lambda x: x.get('game_date', ''), reverse=True)
+
+        return games
+
+    except requests.exceptions.RequestException as e:
+        print(f"failed: {e}")
+        return None
+    except Exception as e:
+        print(f"error: {e}")
+        return None
+
+
+def fetch_head_to_head(
+    team_a: str,
+    team_b: str,
+    season: str = CURRENT_SEASON,
+    use_cache: bool = True
+) -> Optional[Dict]:
+    """
+    Fetch head-to-head record for the last game between two teams.
+
+    Args:
+        team_a: First team abbreviation
+        team_b: Second team abbreviation
+        season: Season string (e.g., "2025-26")
+        use_cache: Whether to use local cache
+
+    Returns:
+        Dictionary with last H2H game info:
+        {
+            'game_date': '2026-01-15',
+            'home_team': 'HOU',
+            'away_team': 'IND',
+            'home_score': 115,
+            'away_score': 108,
+            'winner': 'HOU',
+            'season_series': '1-0'  # team_a - team_b
+        }
+        Returns None if no games found or error occurred.
+    """
+    # Try cache first
+    if use_cache:
+        cached = _load_h2h_cache(team_a, team_b, season)
+        if cached and cached.get('last_game'):
+            print(f"    Using cached H2H data for {team_a} vs {team_b}")
+            return cached.get('last_game')
+
+    # Scrape from NBA.com
+    games = _scrape_h2h_from_nba(team_a, team_b, season)
+
+    if not games:
+        return None
+
+    # Process games to find last matchup
+    # Games come in pairs (one for each team in the same game)
+    game_ids = {}
+    for g in games:
+        gid = g['game_id']
+        if gid not in game_ids:
+            game_ids[gid] = []
+        game_ids[gid].append(g)
+
+    # Count wins for season series
+    team_a_wins = 0
+    team_b_wins = 0
+
+    last_game = None
+    for gid, game_pair in game_ids.items():
+        if len(game_pair) >= 1:
+            g = game_pair[0]
+            winner = g['team_abbrev'] if g['wl'] == 'W' else None
+            if winner == team_a or (winner and winner == team_a.replace('BRK', 'BKN')):
+                team_a_wins += 1
+            elif winner:
+                team_b_wins += 1
+
+            # Capture last game details
+            if last_game is None:
+                # Determine home/away from matchup string
+                matchup = g.get('matchup', '')
+                is_home = ' vs. ' in matchup
+                is_away = ' @ ' in matchup
+
+                if len(game_pair) >= 2:
+                    # We have both team's data
+                    g1, g2 = game_pair[0], game_pair[1]
+                    if ' vs. ' in g1.get('matchup', ''):
+                        home_team_data, away_team_data = g1, g2
+                    else:
+                        home_team_data, away_team_data = g2, g1
+
+                    last_game = {
+                        'game_date': g['game_date'],
+                        'home_team': home_team_data['team_abbrev'],
+                        'away_team': away_team_data['team_abbrev'],
+                        'home_score': home_team_data['pts'],
+                        'away_score': away_team_data['pts'],
+                        'winner': home_team_data['team_abbrev'] if home_team_data['wl'] == 'W' else away_team_data['team_abbrev'],
+                        'game_id': gid
+                    }
+                else:
+                    # Only one team's data available
+                    opponent_abbrev = team_b if g['team_abbrev'] == team_a else team_a
+                    last_game = {
+                        'game_date': g['game_date'],
+                        'home_team': g['team_abbrev'] if is_home else opponent_abbrev,
+                        'away_team': opponent_abbrev if is_home else g['team_abbrev'],
+                        'home_score': g['pts'] if is_home else None,
+                        'away_score': None if is_home else g['pts'],
+                        'winner': g['team_abbrev'] if g['wl'] == 'W' else opponent_abbrev,
+                        'game_id': gid
+                    }
+
+    if last_game:
+        last_game['season_series'] = f"{team_a_wins}-{team_b_wins}"
+
+        # Save to cache
+        cache_data = {
+            'last_game': last_game,
+            'all_games': list(game_ids.keys()),
+            'team_a_wins': team_a_wins,
+            'team_b_wins': team_b_wins
+        }
+        _save_h2h_cache(team_a, team_b, cache_data, season)
+
+    return last_game
 
 
 # ============================================================================
@@ -1255,7 +1517,9 @@ def format_console_output(team_a: str, team_b: str, analysis: Dict) -> str:
 def run_analysis(team_a: str, team_b: str, month: str = "january",
                  out_players: List[str] = None,
                  fetch_live: bool = False,
-                 game_date: Optional[datetime] = None) -> Dict:
+                 game_date: Optional[datetime] = None,
+                 fetch_h2h: bool = False,
+                 fetch_news: bool = False) -> Dict:
     """
     Run full matchup analysis.
 
@@ -1266,6 +1530,8 @@ def run_analysis(team_a: str, team_b: str, month: str = "january",
         out_players: List of players that are out
         fetch_live: Whether to fetch live Last 10 Games data
         game_date: Date of the matchup (for schedule analysis)
+        fetch_h2h: Whether to fetch head-to-head record
+        fetch_news: Whether to fetch team news and standings
 
     Returns:
         Dictionary with full analysis results.
@@ -1313,6 +1579,29 @@ def run_analysis(team_a: str, team_b: str, month: str = "january",
         team_a: identify_danger_zones(team_a, team_b, analysis),
         team_b: identify_danger_zones(team_b, team_a, analysis)
     }
+
+    # Head-to-Head record (optional)
+    if fetch_h2h:
+        analysis['head_to_head'] = fetch_head_to_head(team_a, team_b)
+    else:
+        analysis['head_to_head'] = None
+
+    # Team news and standings (optional)
+    if fetch_news:
+        try:
+            from scrape_team_news import fetch_team_news
+            analysis['team_news'] = {
+                team_a: fetch_team_news(team_a),
+                team_b: fetch_team_news(team_b)
+            }
+        except ImportError:
+            print("  Warning: scrape_team_news module not available")
+            analysis['team_news'] = None
+        except Exception as e:
+            print(f"  Warning: Error fetching team news: {e}")
+            analysis['team_news'] = None
+    else:
+        analysis['team_news'] = None
 
     return analysis
 
