@@ -197,6 +197,7 @@ def build_prompt(team_a: str, team_b: str, analysis: Dict,
 - 直接分析数据，不要使用比喻和类比
 - 总字数控制在 **800-1200字**
 - 使用 Markdown 格式，方便发布
+- 请不要用小标题，直接用段落分隔内容
 
 ---
 

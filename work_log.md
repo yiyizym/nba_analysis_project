@@ -1,5 +1,162 @@
 # 工作日志
 
+## 2026-02-17
+
+### 文章语音生成功能
+
+**新增脚本：** `scripts/text_to_speech.py`
+
+使用 edge-tts 将生成的比赛前瞻文章转换为语音。
+
+**功能特点：**
+- 使用微软 Edge TTS API，默认 `zh-CN-YunxiNeural` 男声
+- 智能分段处理长文章（每段不超过 2000 字符）
+- 自动清理 Markdown 格式符号
+- 使用 pydub 拼接多个音频片段
+- 支持自定义语音和语速
+
+**依赖安装：**
+```bash
+pip install edge-tts pydub
+# 系统需要安装 ffmpeg
+```
+
+**使用示例：**
+```bash
+# 基本用法
+python scripts/text_to_speech.py data/prompts/2026-02-19_HOU_vs_CHA_prompt.md
+
+# 指定输出文件
+python scripts/text_to_speech.py article.md -o output.mp3
+
+# 使用女声
+python scripts/text_to_speech.py article.md --voice zh-CN-XiaoxiaoNeural
+
+# 加快语速
+python scripts/text_to_speech.py article.md --rate "+10%"
+
+# 测试简单文本
+python scripts/text_to_speech.py --test "这是一个测试"
+
+# 列出可用语音
+python scripts/text_to_speech.py --list-voices
+```
+
+**输出位置：** `data/audio/*.mp3`
+
+---
+
+### 文章生成风格优化
+
+**修改文件：** `scripts/generate_game_preview.py`
+
+在风格要求中新增：
+- 请不要用小标题，直接用段落分隔内容
+
+---
+
+### 2月份比赛数据更新
+
+**抓取时间：** 2026-02-17 11:00-11:17
+
+**抓取内容：**
+- 球队数据：19个类别全部成功
+- 球员数据：19/21成功（defense_lt6 无数据，hustle 超时）
+
+**2月份球队 NetRtg 排名 (交易后)：**
+
+| 排名 | 球队 | 战绩 | OffRtg | DefRtg | NetRtg |
+|------|------|------|--------|--------|--------|
+| 1 | Detroit Pistons | 5-1 | 122.8 | 102.9 | **+19.9** |
+| 2 | Cleveland Cavaliers | 5-0 | 126.6 | 109.4 | **+17.2** |
+| 3 | San Antonio Spurs | 6-0 | 122.3 | 107.4 | **+14.8** |
+| 4 | New York Knicks | 5-2 | 119.0 | 107.3 | +11.6 |
+| 5 | Miami Heat | 3-3 | 115.0 | 103.9 | +11.2 |
+| 6 | Boston Celtics | 5-1 | 115.9 | 105.0 | +10.8 |
+| ... | ... | ... | ... | ... | ... |
+| 28 | Dallas Mavericks | 0-5 | 109.1 | 122.2 | -13.1 |
+| 29 | Washington Wizards | 2-4 | 109.7 | 124.3 | -14.6 |
+| 30 | Chicago Bulls | 0-6 | 106.9 | 127.4 | **-20.6** |
+
+**2月份得分榜 Top 5：**
+
+| 排名 | 球员 | 球队 | PTS | REB | AST |
+|------|------|------|-----|-----|-----|
+| 1 | Joel Embiid | PHI | 30.7 | 7.0 | 4.3 |
+| 2 | Kawhi Leonard | LAC | 28.9 | 8.0 | 4.4 |
+| 3 | Anthony Edwards | MIN | 28.5 | 5.7 | 3.7 |
+| 4 | Jaylen Brown | BOS | 28.4 | 7.4 | 3.0 |
+| 5 | Donovan Mitchell | CLE | 28.0 | 2.2 | 7.4 |
+
+**被交易球员新球队表现：**
+
+| 球员 | 新球队 | GP | PTS | AST |
+|------|--------|----|----|-----|
+| James Harden | CLE | 3 | 19.3 | 8.7 |
+| Jaren Jackson Jr. | UTA | 4 | 24.3 | 2.5 |
+| Ayo Dosunmu | MIN | 5 | 14.2 | 3.4 |
+| Luke Kennard | LAL | 5 | 10.4 | 2.4 |
+| Jared McCain | OKC | 6 | 7.2 | 1.7 |
+
+**关键发现：**
+- Detroit Pistons 2月份表现惊人，NetRtg +19.9 联盟第一
+- Cleveland Cavaliers 获得 Harden 后 5-0 全胜
+- San Antonio Spurs 6-0 完美开局，Wembanyama 场均 26.3 分 10.8 篮板
+- Dallas Mavericks 交易 AD 后 0-5，阵容磨合需要时间
+- Chicago Bulls 大幅重建后 0-6，NetRtg -20.6 联盟垫底
+
+**输出文件：**
+- `data/newly_scraped/tracking_monthly/2025_26/*_february.csv` (19个球队文件)
+- `data/newly_scraped/player_monthly/2025_26/*_february.csv` (19个球员文件)
+
+---
+
+### 2026 NBA 交易截止日球员名单更新
+
+**背景：** 2026年2月5日交易截止日创下历史纪录，共完成28笔交易，涉及73名球员。需要更新各球队最新阵容信息以支持后续比赛分析。
+
+**数据来源：**
+- NBA.com Trade Tracker
+- Hoops Rumors
+
+**重磅交易汇总：**
+
+| 交易 | 获得方 | 送出方 |
+|------|--------|--------|
+| James Harden ↔ Darius Garland | CLE ↔ LAC | 互换全明星后卫 |
+| Anthony Davis | WAS | DAL (三方) |
+| Jaren Jackson Jr. | UTA | MEM + 3首轮 |
+| Kristaps Porzingis ↔ Jonathan Kuminga | GSW ↔ ATL | 互换核心球员 |
+| Nikola Vucevic | BOS | CHI |
+| Jared McCain | OKC | PHI |
+| Trae Young | WAS | ATL (1月9日) |
+
+**阵容变化最大的球队：**
+
+| 球队 | 主要变动 |
+|------|----------|
+| Cleveland Cavaliers | +Harden, +Schroder / -Garland, -Hunter |
+| Washington Wizards | +AD, +Trae Young / -McCollum, -Middleton |
+| LA Clippers | +Garland, +Mathurin / -Harden, -Zubac |
+| Utah Jazz | +JJJ, +Lonzo Ball / -Anderson, -Niang |
+| Golden State Warriors | +Porzingis / -Kuminga, -Hield |
+| Chicago Bulls | +Simons, +Ivey, +Dillingham / -Vucevic, -Dosunmu |
+
+**未被交易的重要球星：**
+- Giannis Antetokounmpo (MIL)
+- Ja Morant (MEM)
+- Domantas Sabonis (SAC)
+
+**输出文件：**
+- `data/rosters/trade_deadline_2026.md` - 完整交易记录与各队阵容变动
+
+**对分析系统的影响：**
+- 比赛预测模型需考虑新阵容磨合期
+- 球队进攻/防守风格可能发生变化
+- 建议等待 10-15 场比赛后再更新月度数据
+
+---
+
 ## 2026-01-27
 
 ### 比赛对阵分析系统 - 实时数据功能增强
