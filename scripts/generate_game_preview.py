@@ -54,7 +54,8 @@ def load_system_prompt() -> str:
 
 def build_prompt(team_a: str, team_b: str, analysis: Dict,
                  game_date: Optional[datetime] = None,
-                 out_players: List[str] = None) -> str:
+                 out_players: List[str] = None,
+                 fan_team: Optional[str] = None) -> str:
     """
     构建完整的 Claude prompt。
 
@@ -64,6 +65,7 @@ def build_prompt(team_a: str, team_b: str, analysis: Dict,
         analysis: run_analysis() 返回的分析结果
         game_date: 比赛日期
         out_players: 缺阵球员列表
+        fan_team: 主队视角 (如 "HOU")，None 表示中立视角
 
     Returns:
         完整的 prompt 字符串
@@ -114,7 +116,25 @@ def build_prompt(team_a: str, team_b: str, analysis: Dict,
     if out_players:
         out_text = f"\n**已知缺阵球员**: {', '.join(out_players)}\n"
 
+    # 主队视角说明
+    if fan_team:
+        fan_team_full = ABBREV_TO_FULL.get(fan_team, fan_team)
+        perspective_text = f"""
+## 写作视角
+
+本文的目标读者是**{fan_team_full}球迷**。请以{fan_team_full}的视角撰写文章：
+- 更多关注{fan_team_full}的表现、战术和球员
+- 分析对手时，着重分析{fan_team_full}如何应对
+- 胜负预测时，侧重分析{fan_team_full}的获胜条件
+- 但仍需保持专业客观，不要盲目乐观或贬低对手
+
+---
+"""
+    else:
+        perspective_text = ""
+
     prompt = f"""请根据以下数据撰写一篇中文赛前预览文章。请用【专业新闻风】或【直白分析风】写作，不要比喻，直接分析数据。
+{perspective_text}
 
 ---
 
@@ -198,6 +218,7 @@ def build_prompt(team_a: str, team_b: str, analysis: Dict,
 - 总字数控制在 **800-1200字**
 - 使用 Markdown 格式，方便发布
 - 请不要用小标题，直接用段落分隔内容
+- 球员名字只使用姓氏（如 "Durant" 而不是 "Kevin Durant"，"VanVleet" 而不是 "Fred VanVleet"）
 
 ---
 
@@ -560,6 +581,8 @@ def main():
                         help='获取球队最新新闻和排名')
     parser.add_argument('--full', action='store_true',
                         help='获取所有数据 (等同于 --live --h2h --news)')
+    parser.add_argument('--fan', type=str, default='HOU',
+                        help='主队视角，写作面向该队球迷 (如 HOU)，设为 "neutral" 表示中立视角')
 
     args = parser.parse_args()
 
@@ -618,6 +641,10 @@ def main():
         print("新闻排名: 已启用")
     if game_date:
         print(f"比赛日期: {game_date.strftime('%Y-%m-%d')}")
+    if args.fan and args.fan.lower() != 'neutral':
+        print(f"主队视角: {args.fan.upper()} 球迷")
+    else:
+        print("主队视角: 中立")
     print()
 
     # 步骤 1: 运行对阵分析
@@ -634,9 +661,12 @@ def main():
 
     print("      分析完成")
 
+    # 处理主队视角
+    fan_team = args.fan.upper() if args.fan and args.fan.lower() != 'neutral' else None
+
     # 步骤 2: 构建 prompt
     print("[2/3] 构建 Prompt...")
-    prompt = build_prompt(team_a, team_b, analysis, game_date, out_players)
+    prompt = build_prompt(team_a, team_b, analysis, game_date, out_players, fan_team)
     print("      Prompt 构建完成")
 
     # 步骤 3: 保存文件
