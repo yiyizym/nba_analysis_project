@@ -218,7 +218,7 @@ def build_prompt(team_a: str, team_b: str, analysis: Dict,
 - 总字数控制在 **800-1200字**
 - 使用 Markdown 格式，方便发布
 - 请不要用小标题，直接用段落分隔内容
-- 球员名字只使用姓氏（如 "Durant" 而不是 "Kevin Durant"，"VanVleet" 而不是 "Fred VanVleet"）
+- 球员名字只使用中文姓氏（如 "杜兰特" 而不是 "凯文·杜兰特"，"范弗里特" 而不是 "弗雷德·范弗里特"）
 
 ---
 
@@ -581,8 +581,8 @@ def main():
                         help='获取球队最新新闻和排名')
     parser.add_argument('--full', action='store_true',
                         help='获取所有数据 (等同于 --live --h2h --news)')
-    parser.add_argument('--fan', type=str, default='HOU',
-                        help='主队视角，写作面向该队球迷 (如 HOU)，设为 "neutral" 表示中立视角')
+    parser.add_argument('--fan', type=str, default=None,
+                        help='主队视角，写作面向该队球迷 (如 --fan HOU)，默认中立视角')
 
     args = parser.parse_args()
 

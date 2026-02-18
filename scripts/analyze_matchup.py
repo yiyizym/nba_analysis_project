@@ -984,10 +984,14 @@ def analyze_key_matchups(team_a: str, team_b: str,
             'usg': p.get('USG_Pct', 0)
         })
 
-    # Defensive resources
+    # Defensive resources (filter by minimum minutes to exclude bench warmers)
     defensive_archetypes = ['Rim Protector', '3&D Wing']
+    min_minutes = 20  # Minimum minutes per game to be considered a rotation player
 
-    a_defenders = a_active[a_active['Archetype'].isin(defensive_archetypes)]
+    a_defenders = a_active[
+        (a_active['Archetype'].isin(defensive_archetypes)) &
+        (a_active['MPG'] >= min_minutes)
+    ]
     for _, p in a_defenders.iterrows():
         analysis['team_a_defenders'].append({
             'player': p['PLAYER'],
@@ -995,7 +999,10 @@ def analyze_key_matchups(team_a: str, team_b: str,
             'size': p.get('Size', 'Unknown')
         })
 
-    b_defenders = b_active[b_active['Archetype'].isin(defensive_archetypes)]
+    b_defenders = b_active[
+        (b_active['Archetype'].isin(defensive_archetypes)) &
+        (b_active['MPG'] >= min_minutes)
+    ]
     for _, p in b_defenders.iterrows():
         analysis['team_b_defenders'].append({
             'player': p['PLAYER'],
