@@ -81,6 +81,7 @@ def classify_player(row):
     # Size label (for output, not classification)
     size = get_size_label(height_inches)
     is_big = height_inches is not None and height_inches >= 82
+    is_wing = height_inches is not None and height_inches >= 76  # 6-4 or taller for wing players
 
     # ========================================
     # 分类逻辑（打法优先）
@@ -117,8 +118,8 @@ def classify_player(row):
         return "Secondary Ball Handler", "Secondary", size
 
     # 7. 3&D Wing - 3D侧翼
-    # 高定点频率
-    if spot_up_freq > 25:
+    # 高定点频率 + 侧翼身高 (6-4 以上)
+    if spot_up_freq > 25 and is_wing:
         return "3&D Wing", "Wing", size
 
     # 8. Post Scorer - 低位单打
