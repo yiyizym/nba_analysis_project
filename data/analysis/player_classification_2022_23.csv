@@ -20,9 +20,9 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 1630217,Desmond Bane,MEM,2022-23,october,Movement Shooter,Shooter,Guard,27.2,22.6,50.27027027027028,7.0,77,6,33.0,24.2
 1629640,Keldon Johnson,SAS,2022-23,october,Stretch Shooter,Shooter,Guard,26.5,18.7,50.56818181818181,3.9,77,7,33.5,23.9
 203076,Anthony Davis,LAL,2022-23,october,Post Scorer,Big,Big,25.2,9.6,11.956521739130435,11.5,82,5,35.4,23.8
-1630178,Tyrese Maxey,PHI,2022-23,october,Shot Creator,Scorer,Guard,25.3,14.8,39.053254437869825,14.5,74,8,37.1,23.3
+1630178,Tyrese Maxey,PHI,2022-23,october,Shot Creator,Scorer,Guard,25.3,14.8,39.05325443786983,14.5,74,8,37.1,23.3
 1630595,Cade Cunningham,DET,2022-23,october,Primary Initiator,Primary,Forward,30.3,31.8,24.87562189054726,11.5,79,8,34.7,23.1
-1630162,Anthony Edwards,MIN,2022-23,october,Shot Creator,Scorer,Guard,26.7,18.6,40.932642487046635,23.4,76,7,36.4,23.0
+1630162,Anthony Edwards,MIN,2022-23,october,Shot Creator,Scorer,Guard,26.7,18.6,40.93264248704664,23.4,76,7,36.4,23.0
 202711,Bojan Bogdanovic,DET,2022-23,october,Stretch Shooter,Shooter,Forward,21.2,10.2,53.23741007194245,,79,8,32.1,22.8
 1631094,Paolo Banchero,ORL,2022-23,october,Primary Initiator,Primary,Big,30.5,20.0,25.43352601156069,14.7,82,7,33.2,22.7
 1628374,Lauri Markkanen,UTA,2022-23,october,Finisher,Finisher,Big,24.7,13.5,40.0,4.0,84,8,34.0,22.6
@@ -60,7 +60,7 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 1626174,Christian Wood,DAL,2022-23,october,Role Player,Role,Forward,25.8,5.7,30.927835051546392,,81,6,25.9,16.7
 202685,Jonas Valančiūnas,NOP,2022-23,october,Post Scorer,Big,Big,22.0,15.4,13.636363636363637,,83,6,26.3,16.7
 203903,Jordan Clarkson,UTA,2022-23,october,Stretch Shooter,Shooter,Guard,23.2,24.0,55.94405594405594,5.2,77,8,30.8,16.5
-1626162,Kelly Oubre Jr.,CHA,2022-23,october,Shot Creator,Scorer,Forward,24.8,7.3,42.857142857142854,12.1,78,7,29.4,16.4
+1626162,Kelly Oubre Jr.,CHA,2022-23,october,Shot Creator,Scorer,Forward,24.8,7.3,42.85714285714285,12.1,78,7,29.4,16.4
 203915,Spencer Dinwiddie,BKN,2022-23,october,Role Player,Role,Guard,21.2,20.2,45.08196721311475,,77,6,31.4,16.2
 1630596,Evan Mobley,CLE,2022-23,october,Finisher,Finisher,Big,19.5,10.2,12.037037037037036,4.7,83,6,34.6,15.8
 1631093,Jaden Ivey,DET,2022-23,october,3&D Wing,Wing,Guard,21.0,19.1,32.28346456692913,5.6,76,7,31.3,15.7
@@ -75,9 +75,9 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 1630532,Franz Wagner,ORL,2022-23,october,Secondary Ball Handler,Secondary,Big,23.4,18.3,30.76923076923077,7.6,82,7,33.3,15.1
 1630530,Trey Murphy III,NOP,2022-23,october,Finisher,Finisher,Forward,15.4,4.1,57.99999999999999,6.6,80,6,31.6,15.0
 1627747,Caris LeVert,CLE,2022-23,october,Secondary Ball Handler,Secondary,Forward,21.4,26.8,44.0,6.2,78,6,34.9,14.7
-201569,Eric Gordon,LAC,2022-23,october,3&D Wing,Wing,Guard,18.4,15.5,48.148148148148145,,75,6,31.6,14.5
+201569,Eric Gordon,LAC,2022-23,october,Role Player,Role,Guard,18.4,15.5,48.14814814814815,,75,6,31.6,14.5
 203501,Tim Hardaway Jr.,DAL,2022-23,october,Movement Shooter,Shooter,Guard,22.5,9.5,56.36363636363636,2.2,77,5,26.1,14.4
-1629022,Lonnie Walker IV,LAL,2022-23,october,Role Player,Role,Guard,19.9,11.6,40.15151515151515,,76,6,31.4,14.2
+1629022,Lonnie Walker IV,LAL,2022-23,october,Role Player,Role,Guard,19.9,11.6,40.15151515151516,,76,6,31.4,14.2
 1627751,Jakob Poeltl,TOR,2022-23,october,Finisher,Finisher,Big,17.5,18.4,0.0,,85,7,29.4,14.1
 203497,Rudy Gobert,MIN,2022-23,october,Finisher,Finisher,Big,16.1,4.5,1.0638297872340423,,85,7,32.5,14.1
 1628976,Wendell Carter Jr.,ORL,2022-23,october,3&D Wing,Wing,Big,20.3,14.0,31.19266055045871,,82,7,32.2,14.1
@@ -91,7 +91,7 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 1628384,OG Anunoby,TOR,2022-23,october,3&D Wing,Wing,Forward,17.0,6.9,46.728971962616825,5.9,79,7,35.5,13.6
 1627734,Domantas Sabonis,SAC,2022-23,october,Playmaking Big,Big,Big,20.5,27.1,12.903225806451612,,85,6,29.2,13.5
 203994,Jusuf Nurkić,POR,2022-23,october,Finisher,Finisher,Big,20.1,11.6,6.999999999999999,,84,6,30.6,13.5
-201566,Russell Westbrook,LAC,2022-23,october,Shot Creator,Scorer,Guard,23.7,22.9,29.850746268656714,13.4,75,5,30.0,13.4
+201566,Russell Westbrook,LAC,2022-23,october,Shot Creator,Scorer,Guard,23.7,22.9,29.850746268656717,13.4,75,5,30.0,13.4
 1626171,Bobby Portis,MIL,2022-23,october,3&D Wing,Wing,Big,21.0,8.4,31.62393162393163,3.2,83,6,24.8,13.3
 1627832,Fred VanVleet,TOR,2022-23,october,Role Player,Role,Guard,15.7,28.8,54.86725663716814,,72,6,38.0,13.3
 1627763,Malcolm Brogdon,BOS,2022-23,october,Role Player,Role,Guard,24.5,25.6,35.0,,76,6,22.9,13.3
@@ -101,16 +101,16 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 1629622,Max Strus,MIA,2022-23,october,Role Player,Role,Guard,17.2,7.9,64.60176991150442,,77,7,30.8,13.0
 1630200,Tre Jones,SAS,2022-23,october,Finisher,Finisher,Guard,19.0,23.4,21.698113207547166,4.8,73,7,30.9,13.0
 1630544,Tre Mann,OKC,2022-23,october,Secondary Ball Handler,Secondary,Guard,21.5,15.6,45.45454545454546,8.5,75,6,27.4,13.0
-203482,Kelly Olynyk,UTA,2022-23,october,Rim Protector,Big,Big,18.5,17.5,41.666666666666664,,83,8,27.3,12.9
+203482,Kelly Olynyk,UTA,2022-23,october,Rim Protector,Big,Big,18.5,17.5,41.66666666666666,,83,8,27.3,12.9
 1629669,Jaylen Nowell,MIN,2022-23,october,Role Player,Role,Guard,26.8,16.1,37.98449612403101,,76,7,19.9,12.7
 1630245,Ayo Dosunmu,CHI,2022-23,october,3&D Wing,Wing,Guard,16.0,16.2,40.81632653061224,2.2,77,6,29.9,12.5
 1629661,Cameron Johnson,BKN,2022-23,october,Stretch Shooter,Shooter,Forward,18.6,8.2,60.74766355140188,,80,6,27.3,12.5
 1629012,Collin Sexton,UTA,2022-23,october,Secondary Ball Handler,Secondary,Guard,23.6,12.5,35.294117647058826,5.2,74,8,19.7,12.5
 200768,Kyle Lowry,MIA,2022-23,october,Role Player,Role,Guard,16.6,23.0,67.74193548387096,,72,7,34.0,12.4
 202691,Klay Thompson,GSW,2022-23,october,Movement Shooter,Shooter,Forward,23.6,13.2,63.07692307692307,,78,6,24.9,12.3
-1628372,Dennis Smith Jr.,CHA,2022-23,october,Role Player,Role,Guard,17.8,31.0,23.853211009174313,,74,7,30.7,12.3
+1628372,Dennis Smith Jr.,CHA,2022-23,october,Role Player,Role,Guard,17.8,31.0,23.853211009174316,,74,7,30.7,12.3
 1629651,Nic Claxton,BKN,2022-23,october,Shot Creator,Scorer,Big,17.2,4.5,1.25,14.1,83,7,28.1,12.1
-1630538,Bones Hyland,LAC,2022-23,october,Stretch Shooter,Shooter,Guard,31.5,32.4,50.476190476190474,10.9,74,6,18.1,12.0
+1630538,Bones Hyland,LAC,2022-23,october,Stretch Shooter,Shooter,Guard,31.5,32.4,50.47619047619048,10.9,74,6,18.1,12.0
 1628386,Jarrett Allen,CLE,2022-23,october,Finisher,Finisher,Forward,15.4,7.3,3.260869565217391,,81,6,32.5,12.0
 1631095,Jabari Smith Jr.,HOU,2022-23,october,Stretch Shooter,Shooter,Big,18.2,4.2,53.78151260504202,5.6,83,8,31.1,11.9
 1630188,Jalen Smith,IND,2022-23,october,3&D Wing,Wing,Forward,19.6,5.0,35.35353535353536,,81,8,25.2,11.9
@@ -119,7 +119,7 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 203926,Doug McDermott,SAS,2022-23,october,Stretch Shooter,Shooter,Forward,19.8,10.7,63.82978723404255,,78,7,20.9,11.7
 1626196,Josh Richardson,NOP,2022-23,october,Role Player,Role,Forward,16.6,20.0,62.65060240963856,,78,6,24.4,11.7
 201567,Kevin Love,MIA,2022-23,october,Stretch Shooter,Shooter,Forward,19.8,11.8,73.17073170731709,,80,6,20.1,11.7
-201144,Mike Conley,MIN,2022-23,october,3&D Wing,Wing,Guard,15.8,30.6,61.855670103092784,,73,7,30.5,11.6
+201144,Mike Conley,MIN,2022-23,october,Role Player,Role,Guard,15.8,30.6,61.855670103092784,,73,7,30.5,11.6
 203082,Terrence Ross,PHX,2022-23,october,Role Player,Role,Forward,14.4,6.2,55.208333333333336,,79,7,30.9,11.6
 1626224,Cedi Osman,CLE,2022-23,october,Stretch Shooter,Shooter,Forward,18.6,10.9,54.34782608695653,,79,6,25.6,11.5
 203084,Harrison Barnes,SAC,2022-23,october,3&D Wing,Wing,Forward,15.8,10.9,36.14457831325301,8.0,80,6,32.6,11.3
@@ -139,7 +139,7 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 1630537,Chris Duarte,IND,2022-23,october,Stretch Shooter,Shooter,Guard,20.0,6.3,53.48837209302325,,77,8,21.5,10.0
 1627826,Ivica Zubac,LAC,2022-23,october,Post Scorer,Big,Big,14.7,6.6,1.5151515151515154,,84,7,29.3,9.7
 1630583,Santi Aldama,MEM,2022-23,october,3&D Wing,Wing,Big,13.3,4.2,40.96385542168674,,84,7,29.5,9.7
-1628401,Derrick White,BOS,2022-23,october,3&D Wing,Wing,Guard,15.3,14.2,52.054794520547944,4.7,76,6,26.2,9.7
+1628401,Derrick White,BOS,2022-23,october,3&D Wing,Wing,Guard,15.3,14.2,52.05479452054794,4.7,76,6,26.2,9.7
 1629684,Grant Williams,BOS,2022-23,october,3&D Wing,Wing,Forward,10.1,11.4,65.21739130434783,,78,5,24.7,9.6
 203110,Draymond Green,GSW,2022-23,october,3&D Wing,Wing,Forward,15.1,24.5,15.714285714285715,,78,7,28.5,9.6
 1629001,De'Anthony Melton,PHI,2022-23,october,Role Player,Role,Guard,15.8,14.8,45.33333333333333,,74,8,22.5,9.5
@@ -147,13 +147,13 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 1630167,Obi Toppin,NYK,2022-23,october,3&D Wing,Wing,Forward,20.3,13.0,44.11764705882353,,81,6,15.5,9.5
 1630168,Onyeka Okongwu,ATL,2022-23,october,3&D Wing,Wing,Forward,16.0,5.2,0.0,1.6,81,7,19.9,9.4
 1626220,Royce O'Neale,BKN,2022-23,october,3&D Wing,Wing,Forward,12.5,11.1,64.8936170212766,,78,7,37.4,9.4
-101108,Chris Paul,PHX,2022-23,october,Role Player,Role,Guard,15.7,40.4,40.229885057471265,,72,6,32.7,9.3
+101108,Chris Paul,PHX,2022-23,october,Role Player,Role,Guard,15.7,40.4,40.22988505747127,,72,6,32.7,9.3
 1628960,Grayson Allen,MIL,2022-23,october,3&D Wing,Wing,Guard,16.2,11.6,65.0,2.8,76,6,26.1,9.3
 1631101,Shaedon Sharpe,POR,2022-23,october,Shot Creator,Scorer,Guard,19.4,5.8,31.506849315068493,12.3,77,6,18.6,9.3
 1629634,Brandon Clarke,MEM,2022-23,october,Role Player,Role,Forward,19.1,13.0,6.779661016949152,,80,7,17.2,9.3
 1628420,Monte Morris,WAS,2022-23,october,Role Player,Role,Guard,15.1,24.7,32.53012048192771,,74,7,28.2,9.3
 203115,Will Barton,TOR,2022-23,october,Role Player,Role,Guard,17.0,13.8,42.5,,77,7,24.6,9.3
-1628392,Isaiah Hartenstein,NYK,2022-23,october,Finisher,Finisher,Big,14.5,6.2,18.055555555555554,,84,6,25.1,9.2
+1628392,Isaiah Hartenstein,NYK,2022-23,october,Finisher,Finisher,Big,14.5,6.2,18.055555555555557,,84,6,25.1,9.2
 1628379,Luke Kennard,MEM,2022-23,october,Movement Shooter,Shooter,Guard,16.6,4.4,52.702702702702695,,77,7,24.7,9.1
 202704,Reggie Jackson,DEN,2022-23,october,Role Player,Role,Guard,18.7,24.0,42.71844660194175,,74,7,28.4,9.1
 203083,Andre Drummond,CHI,2022-23,october,Finisher,Finisher,Big,23.7,7.9,4.166666666666666,,83,6,16.8,9.0
@@ -176,11 +176,11 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 1631110,Jeremy Sochan,SAS,2022-23,october,3&D Wing,Wing,Forward,15.3,10.7,37.33333333333333,,80,6,23.5,8.0
 1626204,Larry Nance Jr.,NOP,2022-23,october,3&D Wing,Wing,Forward,15.9,17.1,12.6984126984127,,80,6,21.1,8.0
 203486,Mason Plumlee,LAC,2022-23,october,Playmaking Big,Big,Big,14.0,24.4,0.0,,84,7,24.4,8.0
-1630631,Jose Alvarado,NOP,2022-23,october,3&D Wing,Wing,Guard,17.4,15.8,54.41176470588236,4.2,72,6,21.4,7.8
+1630631,Jose Alvarado,NOP,2022-23,october,Role Player,Role,Guard,17.4,15.8,54.41176470588236,4.2,72,6,21.4,7.8
 201609,Goran Dragic,MIL,2022-23,october,Role Player,Role,Guard,19.4,33.3,36.61971830985916,,76,7,17.4,7.7
 1629659,Talen Horton-Tucker,UTA,2022-23,october,Role Player,Role,Guard,22.3,16.9,44.73684210526316,,76,8,16.7,7.6
 1626159,Justise Winslow,POR,2022-23,october,Role Player,Role,Forward,15.4,17.3,25.0,,78,5,24.8,7.6
-1630558,Davion Mitchell,SAC,2022-23,october,Shot Creator,Scorer,Guard,19.4,16.2,48.387096774193544,28.6,72,6,18.1,7.5
+1630558,Davion Mitchell,SAC,2022-23,october,Shot Creator,Scorer,Guard,19.4,16.2,48.38709677419354,28.6,72,6,18.1,7.5
 1629723,John Konchar,MEM,2022-23,october,3&D Wing,Wing,Guard,10.3,2.3,66.15384615384615,,77,6,27.3,7.5
 1631105,Jalen Duren,DET,2022-23,october,Finisher,Finisher,Big,15.4,1.2,1.694915254237288,8.9,83,7,20.7,7.4
 1630598,Aaron Wiggins,OKC,2022-23,october,3&D Wing,Wing,Guard,12.2,8.4,37.49999999999999,6.3,77,5,26.4,7.4
@@ -213,7 +213,7 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 1630587,Isaiah Livers,DET,2022-23,october,3&D Wing,Wing,Forward,12.2,5.5,80.85106382978722,,78,6,18.2,5.7
 1628470,Torrey Craig,PHX,2022-23,october,Role Player,Role,Forward,11.2,9.4,59.45945945945946,,79,6,15.0,5.7
 1629611,Terance Mann,LAC,2022-23,october,3&D Wing,Wing,Guard,14.3,5.9,25.64102564102565,3.7,77,7,16.2,5.6
-1628988,Aaron Holiday,ATL,2022-23,october,3&D Wing,Wing,Guard,12.2,10.1,26.829268292682933,,72,7,17.9,5.4
+1628988,Aaron Holiday,ATL,2022-23,october,Role Player,Role,Guard,12.2,10.1,26.829268292682933,,72,7,17.9,5.4
 1627936,Alex Caruso,CHI,2022-23,october,3&D Wing,Wing,Guard,12.0,17.9,59.09090909090908,,77,7,25.3,5.4
 1629614,Andrew Nembhard,IND,2022-23,october,Role Player,Role,Guard,13.5,22.9,61.22448979591836,8.9,75,7,15.6,5.4
 201976,Patrick Beverley,CHI,2022-23,october,Role Player,Role,Guard,9.9,14.3,74.46808510638297,,74,6,27.8,5.3
@@ -221,7 +221,7 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 203496,Robert Covington,LAC,2022-23,october,Role Player,Role,Forward,12.5,12.1,68.42105263157895,,79,5,17.3,5.2
 203500,Steven Adams,MEM,2022-23,october,Finisher,Finisher,Big,11.8,9.4,0.0,,83,7,25.9,5.1
 1630182,Josh Green,DAL,2022-23,october,3&D Wing,Wing,Forward,11.2,7.6,65.21739130434783,,79,6,15.4,5.0
-1631223,David Roddy,MEM,2022-23,october,Role Player,Role,Guard,15.1,5.5,54.545454545454554,,76,7,20.1,4.9
+1631223,David Roddy,MEM,2022-23,october,Role Player,Role,Guard,15.1,5.5,54.54545454545456,,76,7,20.1,4.9
 1630166,Deni Avdija,WAS,2022-23,october,Shot Creator,Scorer,Forward,13.3,9.2,41.463414634146346,14.0,81,7,17.1,4.9
 1629670,Jordan Nwora,IND,2022-23,october,Role Player,Role,Forward,15.5,2.9,52.083333333333336,,81,6,15.0,4.8
 1631128,Christian Braun,DEN,2022-23,october,Finisher,Finisher,Forward,10.8,8.5,42.5,,78,7,17.7,4.6
@@ -229,13 +229,13 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 202083,Wesley Matthews,MIL,2022-23,october,Role Player,Role,Guard,11.7,5.8,78.94736842105263,,77,6,16.2,4.2
 1629643,Chuma Okeke,ORL,2022-23,october,Role Player,Role,Forward,10.1,12.5,78.37837837837837,,80,7,17.2,4.0
 203210,JaMychal Green,GSW,2022-23,october,Role Player,Role,Forward,10.7,5.4,51.35135135135135,,81,7,18.2,4.0
-1628975,Jevon Carter,MIL,2022-23,october,3&D Wing,Wing,Guard,10.6,8.6,70.0,,73,6,24.4,3.8
-202709,Cory Joseph,DET,2022-23,october,Role Player,Role,Guard,10.3,23.6,46.666666666666664,,75,7,15.8,3.7
+1628975,Jevon Carter,MIL,2022-23,october,Role Player,Role,Guard,10.6,8.6,70.0,,73,6,24.4,3.8
+202709,Cory Joseph,DET,2022-23,october,Role Player,Role,Guard,10.3,23.6,46.66666666666666,,75,7,15.8,3.7
 1629162,Jordan McLaughlin,MIN,2022-23,october,Role Player,Role,Guard,10.6,21.0,47.05882352941177,,72,5,16.6,3.4
 1631132,Christian Koloko,TOR,2022-23,october,Role Player,Role,Big,9.8,4.1,0.0,,84,7,15.4,3.3
 1627863,Danuel House Jr.,PHI,2022-23,october,Role Player,Role,Forward,9.4,7.8,66.66666666666666,,78,8,15.6,2.6
 1630165,Killian Hayes,DET,2022-23,october,Role Player,Role,Guard,17.0,29.5,32.20338983050847,,77,8,17.1,2.5
-1630171,Isaac Okoro,CLE,2022-23,october,3&D Wing,Wing,Guard,10.8,2.7,56.666666666666664,,77,6,16.2,1.7
+1630171,Isaac Okoro,CLE,2022-23,october,3&D Wing,Wing,Guard,10.8,2.7,56.66666666666666,,77,6,16.2,1.7
 203954,Joel Embiid,PHI,2022-23,november,Shot Creator,Scorer,Big,39.8,35.6,17.22488038277512,12.3,84,8,35.2,34.1
 1629029,Luka Dončić,DAL,2022-23,november,Primary Initiator,Primary,Forward,36.0,41.9,33.48837209302326,16.0,79,13,37.7,32.0
 1628369,Jayson Tatum,BOS,2022-23,november,Role Player,Role,Forward,32.6,19.7,46.57534246575342,,80,15,36.8,31.9
@@ -249,7 +249,7 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 1628378,Donovan Mitchell,CLE,2022-23,november,Primary Initiator,Primary,Guard,29.0,20.7,46.596858638743456,11.4,73,14,35.2,26.8
 201942,DeMar DeRozan,CHI,2022-23,november,Shot Creator,Scorer,Forward,29.2,21.7,8.465608465608467,19.9,78,14,34.9,26.5
 1627759,Jaylen Brown,BOS,2022-23,november,Shot Creator,Scorer,Forward,30.9,17.3,32.631578947368425,20.6,78,14,34.5,26.4
-203078,Bradley Beal,WAS,2022-23,november,Secondary Ball Handler,Secondary,Guard,26.6,22.7,28.804347826086957,,76,9,37.5,25.8
+203078,Bradley Beal,WAS,2022-23,november,Secondary Ball Handler,Secondary,Guard,26.6,22.7,28.80434782608696,,76,9,37.5,25.8
 2544,LeBron James,LAL,2022-23,november,Primary Initiator,Primary,Forward,30.5,26.3,35.92233009708738,12.8,81,8,34.7,25.8
 1629630,Ja Morant,MEM,2022-23,november,Primary Initiator,Primary,Guard,35.0,40.2,23.474178403755868,14.1,74,12,33.2,25.7
 1629014,Anfernee Simons,POR,2022-23,november,Shot Creator,Scorer,Guard,27.2,23.3,55.276381909547744,18.2,75,14,37.4,25.2
@@ -264,7 +264,7 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 1630224,Jalen Green,HOU,2022-23,november,Role Player,Role,Guard,27.2,24.5,48.14814814814815,,76,13,34.6,22.8
 1631094,Paolo Banchero,ORL,2022-23,november,Shot Creator,Scorer,Big,28.0,15.5,18.181818181818183,14.7,82,8,36.2,22.6
 204001,Kristaps Porziņģis,WAS,2022-23,november,Post Scorer,Big,Big,27.3,12.3,38.853503184713375,,87,14,32.8,22.6
-1628973,Jalen Brunson,NYK,2022-23,november,Shot Creator,Scorer,Guard,26.0,31.7,26.543209876543212,14.4,74,16,31.9,22.5
+1628973,Jalen Brunson,NYK,2022-23,november,Shot Creator,Scorer,Guard,26.0,31.7,26.54320987654321,14.4,74,16,31.9,22.5
 1630178,Tyrese Maxey,PHI,2022-23,november,Primary Initiator,Primary,Guard,28.7,27.5,35.53299492385787,14.5,74,7,35.6,22.4
 1628389,Bam Adebayo,MIA,2022-23,november,3&D Wing,Wing,Forward,27.7,17.9,2.976190476190476,8.0,81,13,34.5,22.4
 1628398,Kyle Kuzma,WAS,2022-23,november,3&D Wing,Wing,Forward,27.4,19.6,45.16129032258064,5.1,81,14,35.4,22.4
@@ -276,11 +276,11 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 1627749,Dejounte Murray,ATL,2022-23,november,Role Player,Role,Guard,25.5,25.4,33.85416666666667,,77,15,37.3,21.3
 1628384,OG Anunoby,TOR,2022-23,november,3&D Wing,Wing,Forward,24.0,10.9,26.90058479532163,5.9,79,14,36.7,21.2
 203903,Jordan Clarkson,UTA,2022-23,november,3&D Wing,Wing,Guard,27.0,21.2,45.08670520231214,5.2,77,16,33.1,21.1
-1630170,Devin Vassell,SAS,2022-23,november,3&D Wing,Wing,Guard,23.8,15.1,42.592592592592595,2.7,77,13,32.5,20.9
+1630170,Devin Vassell,SAS,2022-23,november,3&D Wing,Wing,Guard,23.8,15.1,42.5925925925926,2.7,77,13,32.5,20.9
 1627742,Brandon Ingram,NOP,2022-23,november,Shot Creator,Scorer,Forward,26.4,21.4,27.32919254658385,13.8,80,12,33.5,20.5
-202710,Jimmy Butler III,MIA,2022-23,november,Shot Creator,Scorer,Forward,22.1,29.7,19.230769230769234,17.7,79,6,36.1,20.5
+202710,Jimmy Butler III,MIA,2022-23,november,Shot Creator,Scorer,Forward,22.1,29.7,19.230769230769237,17.7,79,6,36.1,20.5
 1626157,Karl-Anthony Towns,MIN,2022-23,november,Playmaking Big,Big,Big,24.0,24.1,39.41605839416059,10.0,84,14,33.0,20.5
-203897,Zach LaVine,CHI,2022-23,november,Movement Shooter,Shooter,Guard,26.9,20.7,46.448087431693985,9.3,77,13,34.7,20.5
+203897,Zach LaVine,CHI,2022-23,november,Movement Shooter,Shooter,Guard,26.9,20.7,46.44808743169399,9.3,77,13,34.7,20.5
 1627832,Fred VanVleet,TOR,2022-23,november,Stretch Shooter,Shooter,Guard,25.7,25.2,55.93220338983051,,72,9,35.0,20.3
 1627750,Jamal Murray,DEN,2022-23,november,Shot Creator,Scorer,Guard,27.4,25.7,31.51515151515152,14.6,76,11,31.0,20.0
 1626179,Terry Rozier,CHA,2022-23,november,Role Player,Role,Guard,25.9,21.5,42.99516908212561,,73,11,38.0,20.0
@@ -312,7 +312,7 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 1627741,Buddy Hield,IND,2022-23,november,Movement Shooter,Shooter,Guard,22.5,7.7,66.89655172413794,,76,13,32.1,16.8
 1626181,Norman Powell,LAC,2022-23,november,3&D Wing,Wing,Guard,24.6,10.9,38.05309734513274,10.9,76,15,24.9,16.7
 1631093,Jaden Ivey,DET,2022-23,november,3&D Wing,Wing,Guard,24.9,23.5,34.50704225352113,5.6,76,12,32.0,16.5
-1626174,Christian Wood,DAL,2022-23,november,Role Player,Role,Forward,27.4,8.2,31.092436974789916,,81,12,25.4,16.2
+1626174,Christian Wood,DAL,2022-23,november,Role Player,Role,Forward,27.4,8.2,31.09243697478992,,81,12,25.4,16.2
 1628969,Mikal Bridges,BKN,2022-23,november,3&D Wing,Wing,Forward,16.3,12.7,32.28346456692913,2.3,78,15,38.2,15.8
 1629018,Gary Trent Jr.,TOR,2022-23,november,3&D Wing,Wing,Guard,22.9,9.9,43.07692307692307,,77,11,27.8,15.7
 1630578,Alperen Sengun,HOU,2022-23,november,Shot Creator,Scorer,Big,23.8,16.0,8.333333333333332,14.9,83,12,27.2,15.7
@@ -323,7 +323,7 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 1629023,P.J. Washington,CHA,2022-23,november,3&D Wing,Wing,Forward,20.6,9.9,41.86046511627907,4.1,79,14,32.2,15.3
 1629008,Michael Porter Jr.,DEN,2022-23,november,Movement Shooter,Shooter,Big,20.3,6.0,50.4,6.9,82,10,29.1,15.2
 202692,Alec Burks,DET,2022-23,november,Role Player,Role,Forward,26.9,14.0,44.89795918367347,,78,10,20.6,15.0
-1629673,Jordan Poole,GSW,2022-23,november,Stretch Shooter,Shooter,Guard,26.4,24.3,52.307692307692314,7.9,76,15,26.8,15.0
+1629673,Jordan Poole,GSW,2022-23,november,Stretch Shooter,Shooter,Guard,26.4,24.3,52.30769230769232,7.9,76,15,26.8,15.0
 202696,Nikola Vučević,CHI,2022-23,november,Post Scorer,Big,Big,20.3,14.0,35.24590163934426,,82,14,32.2,14.9
 1626166,Cameron Payne,PHX,2022-23,november,Role Player,Role,Guard,23.4,28.7,40.298507462686565,,73,13,29.8,14.9
 1627763,Malcolm Brogdon,BOS,2022-23,november,Role Player,Role,Guard,25.3,23.4,42.00000000000001,,76,12,22.9,14.9
@@ -354,12 +354,12 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 1630559,Austin Reaves,LAL,2022-23,november,Shot Creator,Scorer,Guard,12.9,9.6,41.42857142857142,13.5,77,14,31.3,12.4
 203935,Marcus Smart,BOS,2022-23,november,3&D Wing,Wing,Guard,16.9,32.0,50.0,4.2,76,14,31.6,12.4
 1628997,Caleb Martin,MIA,2022-23,november,3&D Wing,Wing,Guard,14.5,10.0,40.42553191489361,,77,15,34.4,12.3
-1628960,Grayson Allen,MIL,2022-23,november,3&D Wing,Wing,Guard,14.2,14.2,61.111111111111114,2.8,76,12,27.5,12.2
+1628960,Grayson Allen,MIL,2022-23,november,3&D Wing,Wing,Guard,14.2,14.2,61.11111111111112,2.8,76,12,27.5,12.2
 1627751,Jakob Poeltl,TOR,2022-23,november,Finisher,Finisher,Big,19.9,19.2,0.0,,85,13,26.1,12.2
 1630530,Trey Murphy III,NOP,2022-23,november,Finisher,Finisher,Forward,15.4,6.9,66.27906976744187,6.6,80,13,26.4,12.2
 201143,Al Horford,BOS,2022-23,november,3&D Wing,Wing,Forward,12.1,12.4,52.5,,81,13,32.0,12.0
 1630200,Tre Jones,SAS,2022-23,november,Finisher,Finisher,Guard,19.3,34.9,23.423423423423426,4.8,73,14,29.7,12.0
-1629060,Rui Hachimura,LAL,2022-23,november,3&D Wing,Wing,Forward,21.5,8.1,23.076923076923077,3.7,80,9,23.9,11.9
+1629060,Rui Hachimura,LAL,2022-23,november,3&D Wing,Wing,Forward,21.5,8.1,23.07692307692308,3.7,80,9,23.9,11.9
 1629001,De'Anthony Melton,PHI,2022-23,november,Stretch Shooter,Shooter,Guard,20.9,18.4,55.833333333333336,,74,12,31.7,11.8
 1630191,Isaiah Stewart,DET,2022-23,november,Finisher,Finisher,Forward,17.3,8.1,47.36842105263158,,80,8,24.9,11.8
 1628971,Bruce Brown,DEN,2022-23,november,Finisher,Finisher,Guard,17.7,23.8,33.663366336633665,4.1,76,14,30.3,11.7
@@ -371,20 +371,20 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 1629651,Nic Claxton,BKN,2022-23,november,Shot Creator,Scorer,Big,15.8,7.9,0.0,14.1,83,15,27.1,11.5
 1631095,Jabari Smith Jr.,HOU,2022-23,november,3&D Wing,Wing,Big,17.5,4.3,60.19417475728155,5.6,83,12,29.4,11.5
 1629216,Gabe Vincent,MIA,2022-23,november,Movement Shooter,Shooter,Guard,17.9,15.3,62.7450980392157,,74,10,28.4,11.4
-1628975,Jevon Carter,MIL,2022-23,november,3&D Wing,Wing,Guard,15.2,20.5,46.067415730337075,,73,14,28.9,11.4
+1628975,Jevon Carter,MIL,2022-23,november,Role Player,Role,Guard,15.2,20.5,46.06741573033708,,73,14,28.9,11.4
 1630529,Herbert Jones,NOP,2022-23,november,3&D Wing,Wing,Forward,17.8,10.2,35.22727272727273,,79,14,27.4,11.3
 203484,Kentavious Caldwell-Pope,DEN,2022-23,november,3&D Wing,Wing,Guard,14.2,6.9,52.38095238095239,3.1,77,14,31.2,11.3
-201569,Eric Gordon,LAC,2022-23,november,3&D Wing,Wing,Guard,16.1,11.3,60.22727272727272,,75,12,28.6,11.3
+201569,Eric Gordon,LAC,2022-23,november,Role Player,Role,Guard,16.1,11.3,60.22727272727272,,75,12,28.6,11.3
 1630231,KJ Martin,HOU,2022-23,november,Role Player,Role,Forward,15.5,9.2,38.888888888888886,,79,13,24.3,11.2
 1627777,Georges Niang,PHI,2022-23,november,Stretch Shooter,Shooter,Forward,18.4,11.2,72.09302325581396,,79,14,22.4,11.1
 1630188,Jalen Smith,IND,2022-23,november,3&D Wing,Wing,Forward,20.3,6.9,50.0,,81,13,22.9,11.1
 1627826,Ivica Zubac,LAC,2022-23,november,Post Scorer,Big,Big,15.4,6.2,0.0,,84,16,31.2,11.1
-1630197,Aleksej Pokusevski,OKC,2022-23,november,Role Player,Role,Big,17.1,8.7,40.229885057471265,,84,13,24.5,11.0
+1630197,Aleksej Pokusevski,OKC,2022-23,november,Role Player,Role,Big,17.1,8.7,40.22988505747127,,84,13,24.5,11.0
 1631114,Jalen Williams,OKC,2022-23,november,Shot Creator,Scorer,Guard,16.6,14.2,30.232558139534888,14.8,77,16,26.2,10.9
 203552,Seth Curry,BKN,2022-23,november,Stretch Shooter,Shooter,Guard,18.7,11.7,56.62650602409638,,73,12,23.6,10.8
 1627747,Caris LeVert,CLE,2022-23,november,3&D Wing,Wing,Forward,17.3,17.1,35.71428571428571,6.2,78,12,30.7,10.6
 203914,Gary Harris,ORL,2022-23,november,3&D Wing,Wing,Guard,16.9,11.3,47.5,,76,6,25.8,10.3
-1629669,Jaylen Nowell,MIN,2022-23,november,Role Player,Role,Guard,25.2,19.0,44.827586206896555,,76,15,17.0,10.3
+1629669,Jaylen Nowell,MIN,2022-23,november,Role Player,Role,Guard,25.2,19.0,44.82758620689656,,76,15,17.0,10.3
 1630172,Patrick Williams,CHI,2022-23,november,3&D Wing,Wing,Forward,15.6,5.5,40.0,3.6,79,14,28.2,10.2
 1626204,Larry Nance Jr.,NOP,2022-23,november,3&D Wing,Wing,Forward,13.7,9.6,13.114754098360656,,80,13,22.9,10.1
 1626220,Royce O'Neale,BKN,2022-23,november,3&D Wing,Wing,Forward,14.0,20.2,63.85542168674698,,78,16,35.1,9.9
@@ -393,7 +393,7 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 1630245,Ayo Dosunmu,CHI,2022-23,november,3&D Wing,Wing,Guard,15.4,14.0,33.75,2.2,77,14,28.6,9.9
 1628964,Mo Bamba,LAL,2022-23,november,Role Player,Role,Big,18.2,9.2,45.07042253521127,,84,12,21.8,9.8
 1630165,Killian Hayes,DET,2022-23,november,Role Player,Role,Guard,18.5,27.9,32.29166666666667,,77,15,27.1,9.8
-1630193,Immanuel Quickley,NYK,2022-23,november,3&D Wing,Wing,Guard,18.4,19.1,45.78313253012048,6.1,74,16,22.6,9.6
+1630193,Immanuel Quickley,NYK,2022-23,november,Finisher,Finisher,Guard,18.4,19.1,45.78313253012048,6.1,74,16,22.6,9.6
 1627827,Dorian Finney-Smith,BKN,2022-23,november,Role Player,Role,Forward,13.1,4.7,70.37037037037037,,79,14,33.1,9.6
 203501,Tim Hardaway Jr.,DAL,2022-23,november,Movement Shooter,Shooter,Guard,21.6,13.2,68.93203883495144,2.2,77,14,23.4,9.6
 1627732,Ben Simmons,BKN,2022-23,november,Playmaking Big,Big,Big,15.3,25.7,0.0,,82,11,26.0,9.5
@@ -401,25 +401,25 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 1626196,Josh Richardson,NOP,2022-23,november,Stretch Shooter,Shooter,Forward,21.4,17.0,51.72413793103448,,78,11,22.0,9.5
 1627814,Damion Lee,PHX,2022-23,november,Role Player,Role,Guard,14.0,8.1,67.18749999999999,,77,15,22.3,9.3
 1630526,Jeremiah Robinson-Earl,OKC,2022-23,november,3&D Wing,Wing,Forward,15.5,5.9,43.24324324324324,,80,15,22.3,9.3
-201144,Mike Conley,MIN,2022-23,november,3&D Wing,Wing,Guard,15.0,38.8,51.24999999999999,,73,10,28.4,9.3
+201144,Mike Conley,MIN,2022-23,november,Role Player,Role,Guard,15.0,38.8,51.24999999999999,,73,10,28.4,9.3
 1630205,Lamar Stevens,CLE,2022-23,november,Role Player,Role,Forward,14.1,2.2,26.5625,,78,7,27.1,9.3
 203486,Mason Plumlee,LAC,2022-23,november,Playmaking Big,Big,Big,14.9,20.9,0.0,,84,14,28.4,9.3
 203500,Steven Adams,MEM,2022-23,november,Finisher,Finisher,Big,14.4,10.7,1.5625,,83,13,27.2,9.2
 1630173,Precious Achiuwa,TOR,2022-23,november,Finisher,Finisher,Forward,22.6,13.5,26.31578947368421,,80,5,17.6,9.2
-1629629,Cam Reddish,POR,2022-23,november,Role Player,Role,Forward,14.2,6.3,42.857142857142854,,79,13,24.3,9.2
+1629629,Cam Reddish,POR,2022-23,november,Role Player,Role,Forward,14.2,6.3,42.85714285714285,,79,13,24.3,9.2
 1629667,Jalen McDaniels,PHI,2022-23,november,Role Player,Role,Forward,16.2,11.7,42.6829268292683,,81,14,26.2,9.1
-1628404,Josh Hart,NYK,2022-23,november,3&D Wing,Wing,Guard,12.6,17.4,28.767123287671236,,76,15,35.6,9.1
+1628404,Josh Hart,NYK,2022-23,november,3&D Wing,Wing,Guard,12.6,17.4,28.76712328767124,,76,15,35.6,9.1
 1630583,Santi Aldama,MEM,2022-23,november,3&D Wing,Wing,Big,15.0,6.4,50.0,,84,13,23.2,9.1
 1630557,Corey Kispert,WAS,2022-23,november,Movement Shooter,Shooter,Forward,12.4,9.5,59.67741935483871,,78,14,26.1,9.0
 1629611,Terance Mann,LAC,2022-23,november,3&D Wing,Wing,Guard,14.8,14.7,33.84615384615385,3.7,77,16,23.5,9.0
 1630166,Deni Avdija,WAS,2022-23,november,Shot Creator,Scorer,Forward,16.9,14.8,39.50617283950618,14.0,81,15,27.6,8.8
 1629723,John Konchar,MEM,2022-23,november,3&D Wing,Wing,Guard,11.0,9.3,62.121212121212125,,77,14,27.6,8.8
-1631106,Tari Eason,HOU,2022-23,november,3&D Wing,Wing,Forward,20.7,9.0,28.749999999999996,5.0,80,13,19.0,8.7
-1626145,Tyus Jones,MEM,2022-23,november,3&D Wing,Wing,Guard,15.9,25.4,40.50632911392405,,74,14,23.0,8.6
+1631106,Tari Eason,HOU,2022-23,november,3&D Wing,Wing,Forward,20.7,9.0,28.75,5.0,80,13,19.0,8.7
+1626145,Tyus Jones,MEM,2022-23,november,Role Player,Role,Guard,15.9,25.4,40.50632911392405,,74,14,23.0,8.6
 203110,Draymond Green,GSW,2022-23,november,3&D Wing,Wing,Forward,11.4,28.3,22.807017543859647,,78,13,31.7,8.6
-1630631,Jose Alvarado,NOP,2022-23,november,3&D Wing,Wing,Guard,18.4,23.2,50.0,4.2,72,15,20.5,8.6
+1630631,Jose Alvarado,NOP,2022-23,november,Role Player,Role,Guard,18.4,23.2,50.0,4.2,72,15,20.5,8.6
 1629634,Brandon Clarke,MEM,2022-23,november,Role Player,Role,Forward,17.1,9.0,3.278688524590164,,80,14,19.7,8.6
-1629684,Grant Williams,BOS,2022-23,november,3&D Wing,Wing,Forward,11.2,8.6,61.904761904761905,,78,16,29.4,8.5
+1629684,Grant Williams,BOS,2022-23,november,3&D Wing,Wing,Forward,11.2,8.6,61.90476190476191,,78,16,29.4,8.5
 1630208,Nick Richards,CHA,2022-23,november,Role Player,Role,Big,16.4,4.1,0.0,,84,14,19.1,8.5
 203925,Joe Harris,BKN,2022-23,november,Role Player,Role,Forward,15.1,8.5,73.75,,78,16,26.5,8.4
 203471,Dennis Schröder,LAL,2022-23,november,Shot Creator,Scorer,Guard,15.1,19.5,30.434782608695656,14.8,73,7,25.3,8.4
@@ -429,7 +429,7 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 1628380,Zach Collins,SAS,2022-23,november,3&D Wing,Wing,Big,16.6,13.5,40.0,,83,5,22.5,8.4
 1626159,Justise Winslow,POR,2022-23,november,Role Player,Role,Forward,15.1,19.7,21.428571428571427,,78,14,30.2,8.4
 1626224,Cedi Osman,CLE,2022-23,november,Role Player,Role,Forward,16.2,9.2,57.57575757575758,,79,16,22.1,8.3
-201609,Goran Dragic,MIL,2022-23,november,Role Player,Role,Guard,21.5,21.6,41.666666666666664,,76,13,17.7,8.3
+201609,Goran Dragic,MIL,2022-23,november,Role Player,Role,Guard,21.5,21.6,41.66666666666666,,76,13,17.7,8.3
 1629020,Jarred Vanderbilt,LAL,2022-23,november,3&D Wing,Wing,Forward,13.3,13.7,15.517241379310343,,80,14,25.0,8.3
 1630573,Sam Hauser,BOS,2022-23,november,Movement Shooter,Shooter,Forward,13.8,5.8,87.50000000000001,,79,16,19.1,8.3
 1629614,Andrew Nembhard,IND,2022-23,november,Role Player,Role,Guard,13.0,17.4,51.51515151515152,8.9,75,9,25.4,8.2
@@ -442,18 +442,18 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 1628972,Troy Brown Jr.,LAL,2022-23,november,Role Player,Role,Forward,12.9,4.8,48.48484848484849,,79,13,25.9,7.9
 1631101,Shaedon Sharpe,POR,2022-23,november,Shot Creator,Scorer,Guard,15.9,3.0,37.31343283582089,12.3,77,15,21.0,7.8
 1629011,Mitchell Robinson,NYK,2022-23,november,Finisher,Finisher,Big,11.5,5.0,0.0,,84,8,21.7,7.8
-1627752,Taurean Prince,MIN,2022-23,november,3&D Wing,Wing,Forward,17.3,8.0,48.387096774193544,,78,11,20.0,7.7
+1627752,Taurean Prince,MIN,2022-23,november,3&D Wing,Wing,Forward,17.3,8.0,48.38709677419354,,78,11,20.0,7.7
 1628410,Edmond Sumner,BKN,2022-23,november,Role Player,Role,Guard,20.4,10.4,39.34426229508197,,76,14,16.9,7.7
 1630181,R.J. Hampton,DET,2022-23,november,Role Player,Role,Guard,19.3,15.6,50.0,,76,13,17.1,7.7
-1630167,Obi Toppin,NYK,2022-23,november,Stretch Shooter,Shooter,Forward,18.3,7.5,61.111111111111114,,81,16,18.3,7.7
+1630167,Obi Toppin,NYK,2022-23,november,Stretch Shooter,Shooter,Forward,18.3,7.5,61.11111111111112,,81,16,18.3,7.7
 1630182,Josh Green,DAL,2022-23,november,3&D Wing,Wing,Forward,11.9,6.1,56.81818181818181,,79,14,21.3,7.6
 203937,Kyle Anderson,MIN,2022-23,november,Shot Creator,Scorer,Forward,13.8,15.8,24.561403508771928,12.6,81,14,23.7,7.6
-203082,Terrence Ross,PHX,2022-23,november,Stretch Shooter,Shooter,Forward,18.8,9.8,52.054794520547944,,79,12,21.1,7.5
+203082,Terrence Ross,PHX,2022-23,november,Stretch Shooter,Shooter,Forward,18.8,9.8,52.05479452054794,,79,12,21.1,7.5
 1630228,Jonathan Kuminga,GSW,2022-23,november,Shot Creator,Scorer,Forward,19.4,8.9,42.1875,12.6,79,12,18.1,7.4
 1629659,Talen Horton-Tucker,UTA,2022-23,november,Role Player,Role,Guard,21.0,20.0,40.298507462686565,,76,15,16.6,7.4
 1629660,Ty Jerome,GSW,2022-23,november,Role Player,Role,Guard,13.6,23.2,54.16666666666667,,77,5,19.3,7.4
 1629670,Jordan Nwora,IND,2022-23,november,Role Player,Role,Forward,18.0,11.8,52.85714285714286,,81,13,19.9,7.4
-1630692,Jordan Goodwin,WAS,2022-23,november,3&D Wing,Wing,Guard,13.0,20.6,32.72727272727273,,75,13,22.4,7.3
+1630692,Jordan Goodwin,WAS,2022-23,november,Role Player,Role,Guard,13.0,20.6,32.72727272727273,,75,13,22.4,7.3
 1630560,Cam Thomas,BKN,2022-23,november,Shot Creator,Scorer,Guard,21.8,16.3,22.033898305084744,16.4,75,15,16.6,7.3
 1629013,Landry Shamet,PHX,2022-23,november,3&D Wing,Wing,Guard,17.9,7.7,67.79661016949152,,76,8,17.1,7.3
 201145,Jeff Green,DEN,2022-23,november,Role Player,Role,Forward,15.5,7.0,19.607843137254903,,80,9,20.2,7.2
@@ -463,7 +463,7 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 1629130,Duncan Robinson,MIA,2022-23,november,Movement Shooter,Shooter,Forward,16.4,9.2,76.11940298507463,,79,10,20.9,6.9
 1628427,Vlatko Čančar,DEN,2022-23,november,Role Player,Role,Forward,16.8,11.3,52.941176470588246,,80,10,15.3,6.8
 1631223,David Roddy,MEM,2022-23,november,Role Player,Role,Guard,14.8,3.2,54.54545454545454,,76,14,17.2,6.8
-1628372,Dennis Smith Jr.,CHA,2022-23,november,Role Player,Role,Guard,14.4,28.2,20.547945205479454,,74,8,25.5,6.8
+1628372,Dennis Smith Jr.,CHA,2022-23,november,Role Player,Role,Guard,14.4,28.2,20.54794520547945,,74,8,25.5,6.8
 1628995,Kevin Knox II,POR,2022-23,november,Role Player,Role,Forward,14.3,4.8,65.95744680851064,,79,11,16.2,6.7
 201152,Thaddeus Young,TOR,2022-23,november,Role Player,Role,Forward,13.0,16.5,11.320754716981131,,80,14,20.9,6.7
 204456,T.J. McConnell,IND,2022-23,november,Role Player,Role,Guard,16.3,41.2,14.545454545454549,5.9,73,13,19.6,6.6
@@ -473,7 +473,7 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 1630237,Anthony Lamb,GSW,2022-23,november,Role Player,Role,Forward,13.2,12.9,65.21739130434783,,78,13,18.9,6.5
 1627788,Furkan Korkmaz,PHI,2022-23,november,Role Player,Role,Forward,18.4,11.2,48.97959183673469,,79,9,15.3,6.4
 1629643,Chuma Okeke,ORL,2022-23,november,Role Player,Role,Forward,12.0,7.4,65.45454545454545,,80,11,24.7,6.4
-1630558,Davion Mitchell,SAC,2022-23,november,Shot Creator,Scorer,Guard,14.9,15.3,43.859649122807014,28.6,72,14,19.5,6.4
+1630558,Davion Mitchell,SAC,2022-23,november,Shot Creator,Scorer,Guard,14.9,15.3,43.85964912280701,28.6,72,14,19.5,6.4
 1626172,Kevon Looney,GSW,2022-23,november,Finisher,Finisher,Forward,9.3,14.9,0.0,,81,15,22.6,6.3
 1628379,Luke Kennard,MEM,2022-23,november,Movement Shooter,Shooter,Guard,12.1,3.0,75.0,,77,7,17.9,6.3
 1629641,Romeo Langford,SAS,2022-23,november,Role Player,Role,Guard,13.5,6.5,35.08771929824561,,77,7,20.8,6.3
@@ -484,14 +484,14 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 1627936,Alex Caruso,CHI,2022-23,november,3&D Wing,Wing,Guard,10.0,17.6,55.81395348837209,,77,14,25.6,6.0
 1629026,Kenrich Williams,OKC,2022-23,november,3&D Wing,Wing,Forward,11.5,7.7,32.0,,78,14,20.2,6.0
 1629052,Oshae Brissett,IND,2022-23,november,Role Player,Role,Forward,13.1,4.5,62.22222222222222,,79,12,16.8,6.0
-1630598,Aaron Wiggins,OKC,2022-23,november,3&D Wing,Wing,Guard,12.8,12.0,42.857142857142854,6.3,77,11,16.8,5.9
+1630598,Aaron Wiggins,OKC,2022-23,november,3&D Wing,Wing,Guard,12.8,12.0,42.85714285714285,6.3,77,11,16.8,5.9
 1630587,Isaiah Livers,DET,2022-23,november,3&D Wing,Wing,Forward,12.0,4.2,75.51020408163265,,78,15,21.0,5.9
 203939,Dwight Powell,DAL,2022-23,november,Finisher,Finisher,Big,12.5,5.5,0.0,,82,14,18.0,5.8
 201599,DeAndre Jordan,DEN,2022-23,november,Role Player,Role,Big,12.9,10.1,0.0,,83,11,18.5,5.7
 1630700,Dyson Daniels,NOP,2022-23,november,Finisher,Finisher,Forward,12.4,17.2,38.095238095238095,5.6,79,11,18.4,5.7
 1629312,Haywood Highsmith,MIA,2022-23,november,Role Player,Role,Guard,12.5,5.6,50.84745762711864,,77,9,24.3,5.7
 1629642,Nassir Little,POR,2022-23,november,Role Player,Role,Guard,15.7,8.2,45.45454545454545,,77,15,15.5,5.6
-1629750,Javonte Green,CHI,2022-23,november,3&D Wing,Wing,Guard,12.8,6.1,30.555555555555557,,77,14,15.3,5.6
+1629750,Javonte Green,CHI,2022-23,november,3&D Wing,Wing,Guard,12.8,6.1,30.55555555555556,,77,14,15.3,5.6
 203490,Otto Porter Jr.,TOR,2022-23,november,Role Player,Role,Forward,10.4,7.8,55.26315789473685,,80,8,18.3,5.5
 1629656,Quentin Grimes,NYK,2022-23,november,3&D Wing,Wing,Guard,11.9,12.2,58.333333333333336,10.4,77,12,18.8,5.5
 1630570,Trendon Watford,POR,2022-23,november,Role Player,Role,Forward,12.9,13.7,20.0,7.8,80,13,17.4,5.5
@@ -504,7 +504,7 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 1628978,Donte DiVincenzo,GSW,2022-23,november,Movement Shooter,Shooter,Guard,13.4,17.9,75.55555555555556,1.9,76,11,17.6,5.0
 1630547,James Bouknight,CHA,2022-23,november,Role Player,Role,Guard,15.8,13.4,44.44444444444444,,76,12,17.3,5.0
 1631103,Malaki Branham,SAS,2022-23,november,Role Player,Role,Guard,16.2,14.0,60.0,,76,8,15.6,5.0
-1630586,Usman Garuba,HOU,2022-23,november,Role Player,Role,Forward,10.2,10.7,21.874999999999996,,80,13,17.9,4.8
+1630586,Usman Garuba,HOU,2022-23,november,Role Player,Role,Forward,10.2,10.7,21.875,,80,13,17.9,4.8
 1630230,Naji Marshall,NOP,2022-23,november,3&D Wing,Wing,Forward,14.0,14.4,44.89795918367347,5.6,79,13,18.2,4.8
 1631117,Walker Kessler,UTA,2022-23,november,Finisher,Finisher,Big,10.3,4.0,0.0,,84,16,15.0,4.8
 1630194,Paul Reed,PHI,2022-23,november,Finisher,Finisher,Forward,12.7,8.3,6.060606060606061,,81,14,15.1,4.6
@@ -517,9 +517,9 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 203085,Austin Rivers,MIN,2022-23,november,Role Player,Role,Guard,10.8,7.4,70.0,,76,8,15.8,4.3
 1629162,Jordan McLaughlin,MIN,2022-23,november,Role Player,Role,Guard,11.7,32.5,58.333333333333336,,72,10,15.4,4.2
 1631222,Jake LaRavia,MEM,2022-23,november,3&D Wing,Wing,Forward,12.6,9.0,72.09302325581396,2.5,79,11,18.6,4.2
-1628988,Aaron Holiday,ATL,2022-23,november,3&D Wing,Wing,Guard,11.6,10.7,35.8974358974359,,72,13,16.6,3.7
+1628988,Aaron Holiday,ATL,2022-23,november,Role Player,Role,Guard,11.6,10.7,35.8974358974359,,72,13,16.6,3.7
 203493,Reggie Bullock Jr.,DAL,2022-23,november,Role Player,Role,Forward,9.9,6.3,82.6923076923077,,78,13,25.7,3.7
-201976,Patrick Beverley,CHI,2022-23,november,Role Player,Role,Guard,9.5,11.9,60.416666666666664,,74,9,26.5,3.4
+201976,Patrick Beverley,CHI,2022-23,november,Role Player,Role,Guard,9.5,11.9,60.41666666666666,,74,9,26.5,3.4
 1630227,Daishen Nix,HOU,2022-23,november,Role Player,Role,Guard,12.8,20.3,68.75,,76,13,15.3,3.3
 202083,Wesley Matthews,MIL,2022-23,november,Role Player,Role,Guard,9.2,4.1,80.64516129032258,,77,11,15.6,2.9
 203095,Evan Fournier,NYK,2022-23,november,Role Player,Role,Forward,15.9,16.0,65.9090909090909,,78,7,15.4,2.7
@@ -533,10 +533,10 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 1628369,Jayson Tatum,BOS,2022-23,december,Role Player,Role,Forward,32.0,15.0,40.35874439461883,,80,13,37.4,30.1
 1629627,Zion Williamson,NOP,2022-23,december,Primary Initiator,Primary,Forward,31.1,25.4,4.519774011299436,23.8,78,12,35.1,29.8
 203999,Nikola Jokić,DEN,2022-23,december,Primary Initiator,Primary,Big,29.5,42.0,15.591397849462362,5.3,83,14,36.2,29.2
-203081,Damian Lillard,POR,2022-23,december,Primary Initiator,Primary,Guard,30.7,29.7,61.083743842364534,,74,12,35.6,29.2
+203081,Damian Lillard,POR,2022-23,december,Primary Initiator,Primary,Guard,30.7,29.7,61.08374384236453,,74,12,35.6,29.2
 1627759,Jaylen Brown,BOS,2022-23,december,Shot Creator,Scorer,Forward,31.2,15.5,40.35874439461883,20.6,78,14,36.9,28.4
 203944,Julius Randle,NYK,2022-23,december,Shot Creator,Scorer,Forward,28.5,19.1,46.90721649484536,15.8,80,15,37.1,28.3
-201142,Kevin Durant,PHX,2022-23,december,Primary Initiator,Primary,Big,30.7,22.7,28.333333333333332,20.8,82,12,35.3,28.3
+201142,Kevin Durant,PHX,2022-23,december,Primary Initiator,Primary,Big,30.7,22.7,28.33333333333333,20.8,82,12,35.3,28.3
 1627783,Pascal Siakam,TOR,2022-23,december,Primary Initiator,Primary,Forward,29.4,26.9,21.393034825870643,13.3,80,15,38.4,28.3
 202681,Kyrie Irving,DAL,2022-23,december,Primary Initiator,Primary,Guard,29.6,22.0,41.87192118226601,,74,11,36.7,28.3
 1628378,Donovan Mitchell,CLE,2022-23,december,Primary Initiator,Primary,Guard,31.0,17.9,46.07843137254902,11.4,73,13,36.3,27.5
@@ -544,13 +544,13 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 1629673,Jordan Poole,GSW,2022-23,december,Primary Initiator,Primary,Guard,34.3,21.5,47.23618090452262,7.9,76,15,32.0,26.8
 1629027,Trae Young,ATL,2022-23,december,Primary Initiator,Primary,Guard,31.4,42.2,34.35897435897436,12.0,73,11,35.9,26.5
 201942,DeMar DeRozan,CHI,2022-23,december,Shot Creator,Scorer,Forward,27.8,22.0,6.521739130434782,19.9,78,15,37.8,26.1
-202331,Paul George,LAC,2022-23,december,Primary Initiator,Primary,Forward,29.8,29.2,45.744680851063826,18.4,80,12,35.1,25.5
+202331,Paul George,LAC,2022-23,december,Primary Initiator,Primary,Forward,29.8,29.2,45.74468085106383,18.4,80,12,35.1,25.5
 1630162,Anthony Edwards,MIN,2022-23,december,Primary Initiator,Primary,Guard,28.6,20.6,32.98969072164949,23.4,76,15,37.6,25.3
 201939,Stephen Curry,GSW,2022-23,december,Primary Initiator,Primary,Guard,29.1,28.7,59.45945945945946,10.1,74,6,33.3,25.2
 1629630,Ja Morant,MEM,2022-23,december,Primary Initiator,Primary,Guard,33.8,45.8,29.807692307692307,14.1,74,12,31.6,25.1
 1630163,LaMelo Ball,CHA,2022-23,december,Primary Initiator,Primary,Forward,28.8,36.6,55.02392344497608,12.2,79,10,34.8,25.0
 203897,Zach LaVine,CHI,2022-23,december,Secondary Ball Handler,Secondary,Guard,27.1,17.0,36.51685393258427,9.3,77,15,35.9,24.5
-1629639,Tyler Herro,MIA,2022-23,december,Shot Creator,Scorer,Guard,25.6,21.2,54.696132596685075,13.3,77,15,37.4,24.3
+1629639,Tyler Herro,MIA,2022-23,december,Shot Creator,Scorer,Guard,25.6,21.2,54.69613259668508,13.3,77,15,37.4,24.3
 203078,Bradley Beal,WAS,2022-23,december,Secondary Ball Handler,Secondary,Guard,30.6,23.4,22.360248447204967,,76,7,29.3,23.4
 1629640,Keldon Johnson,SAS,2022-23,december,3&D Wing,Wing,Guard,28.3,10.5,28.494623655913976,3.9,77,12,33.6,23.3
 204001,Kristaps Porziņģis,WAS,2022-23,december,Post Scorer,Big,Big,28.0,11.3,30.18867924528302,,87,12,34.3,23.2
@@ -562,7 +562,7 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 1628389,Bam Adebayo,MIA,2022-23,december,3&D Wing,Wing,Forward,26.8,15.1,0.6211180124223602,8.0,81,13,35.7,22.2
 203903,Jordan Clarkson,UTA,2022-23,december,3&D Wing,Wing,Guard,28.1,18.6,40.93567251461988,5.2,77,14,32.9,22.1
 1626164,Devin Booker,PHX,2022-23,december,Shot Creator,Scorer,Guard,32.9,27.0,31.521739130434785,14.0,77,8,29.3,22.1
-201935,James Harden,PHI,2022-23,december,Shot Creator,Scorer,Guard,24.7,45.2,54.109589041095894,42.5,77,11,39.1,21.8
+201935,James Harden,PHI,2022-23,december,Shot Creator,Scorer,Guard,24.7,45.2,54.10958904109589,42.5,77,11,39.1,21.8
 1627734,Domantas Sabonis,SAC,2022-23,december,Playmaking Big,Big,Big,19.8,29.4,10.169491525423728,,85,13,36.4,21.7
 1630224,Jalen Green,HOU,2022-23,december,Role Player,Role,Guard,27.5,14.1,37.85310734463277,,76,15,34.7,21.7
 202711,Bojan Bogdanovic,DET,2022-23,december,Role Player,Role,Forward,26.6,15.0,41.21621621621621,,79,16,30.8,21.6
@@ -574,7 +574,7 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 201950,Jrue Holiday,MIL,2022-23,december,Secondary Ball Handler,Secondary,Guard,24.2,32.0,41.02564102564103,10.1,77,10,35.0,20.7
 202695,Kawhi Leonard,LAC,2022-23,december,Shot Creator,Scorer,Forward,26.6,22.0,27.044025157232703,16.5,79,11,31.9,20.6
 1630532,Franz Wagner,ORL,2022-23,december,Secondary Ball Handler,Secondary,Big,23.7,13.4,32.25806451612903,7.6,82,15,33.3,20.3
-1629014,Anfernee Simons,POR,2022-23,december,Shot Creator,Scorer,Guard,24.4,15.2,56.28742514970059,18.2,75,13,34.2,20.2
+1629014,Anfernee Simons,POR,2022-23,december,Shot Creator,Scorer,Guard,24.4,15.2,56.2874251497006,18.2,75,13,34.2,20.2
 1629645,Kevin Porter Jr.,HOU,2022-23,december,Secondary Ball Handler,Secondary,Guard,25.4,26.4,42.76315789473684,9.8,76,15,34.1,19.9
 1629636,Darius Garland,CLE,2022-23,december,Secondary Ball Handler,Secondary,Guard,24.5,31.9,35.294117647058826,6.7,73,14,36.3,19.7
 1627749,Dejounte Murray,ATL,2022-23,december,Role Player,Role,Guard,24.0,22.9,29.166666666666668,,77,9,33.9,19.6
@@ -586,7 +586,7 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 1627741,Buddy Hield,IND,2022-23,december,Movement Shooter,Shooter,Guard,20.8,12.2,60.14492753623188,,76,16,32.3,18.8
 1627750,Jamal Murray,DEN,2022-23,december,Shot Creator,Scorer,Guard,23.0,25.7,41.09589041095891,14.6,76,12,35.2,18.7
 1628384,OG Anunoby,TOR,2022-23,december,3&D Wing,Wing,Forward,19.8,8.0,39.70588235294118,5.9,79,11,37.5,18.6
-1629028,Deandre Ayton,PHX,2022-23,december,Finisher,Finisher,Big,25.1,9.9,2.9850746268656714,,84,14,28.9,18.6
+1629028,Deandre Ayton,PHX,2022-23,december,Finisher,Finisher,Big,25.1,9.9,2.985074626865672,,84,14,28.9,18.6
 1628973,Jalen Brunson,NYK,2022-23,december,Shot Creator,Scorer,Guard,26.5,31.0,25.949367088607588,14.4,74,12,32.4,18.2
 1630170,Devin Vassell,SAS,2022-23,december,3&D Wing,Wing,Guard,25.4,18.8,41.77215189873417,2.7,77,11,29.9,18.0
 202696,Nikola Vučević,CHI,2022-23,december,Post Scorer,Big,Big,20.9,12.1,33.81294964028777,,82,15,34.2,17.9
@@ -601,7 +601,7 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 1626167,Myles Turner,IND,2022-23,december,3&D Wing,Wing,Big,19.9,7.4,37.864077669902905,,83,15,29.8,16.3
 1630581,Josh Giddey,OKC,2022-23,december,Secondary Ball Handler,Secondary,Forward,21.8,24.6,23.308270676691727,5.0,80,12,31.4,15.8
 1628969,Mikal Bridges,BKN,2022-23,december,3&D Wing,Wing,Forward,19.9,10.0,44.85294117647059,2.3,78,16,34.6,15.8
-203994,Jusuf Nurkić,POR,2022-23,december,Finisher,Finisher,Big,21.1,18.2,24.210526315789473,,84,11,28.0,15.7
+203994,Jusuf Nurkić,POR,2022-23,december,Finisher,Finisher,Big,21.1,18.2,24.210526315789476,,84,11,28.0,15.7
 101108,Chris Paul,PHX,2022-23,december,Secondary Ball Handler,Secondary,Guard,21.8,40.6,41.12903225806451,,72,13,32.6,15.7
 203915,Spencer Dinwiddie,BKN,2022-23,december,Stretch Shooter,Shooter,Guard,18.9,24.3,54.46428571428571,,77,16,33.8,15.4
 1630567,Scottie Barnes,TOR,2022-23,december,Finisher,Finisher,Forward,20.0,16.3,18.939393939393938,7.9,80,15,35.6,15.3
@@ -610,7 +610,7 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 1630193,Immanuel Quickley,NYK,2022-23,december,Secondary Ball Handler,Secondary,Guard,21.2,20.1,48.41269841269841,6.1,74,15,30.0,15.1
 1627736,Malik Beasley,LAL,2022-23,december,Stretch Shooter,Shooter,Guard,23.0,8.1,66.42857142857143,,76,15,27.5,15.1
 1629012,Collin Sexton,UTA,2022-23,december,Secondary Ball Handler,Secondary,Guard,21.7,14.6,27.368421052631582,5.2,74,8,24.4,14.9
-1630217,Desmond Bane,MEM,2022-23,december,Movement Shooter,Shooter,Guard,24.0,6.9,45.714285714285715,7.0,77,5,26.5,14.8
+1630217,Desmond Bane,MEM,2022-23,december,Movement Shooter,Shooter,Guard,24.0,6.9,45.71428571428572,7.0,77,5,26.5,14.8
 1628991,Jaren Jackson Jr.,MEM,2022-23,december,3&D Wing,Wing,Big,21.5,6.0,36.19047619047619,11.1,82,13,25.5,14.8
 1631097,Bennedict Mathurin,IND,2022-23,december,Secondary Ball Handler,Secondary,Guard,23.2,6.9,33.88429752066116,9.0,77,16,28.3,14.7
 1626171,Bobby Portis,MIL,2022-23,december,3&D Wing,Wing,Big,22.0,7.8,27.27272727272727,3.2,83,15,25.3,14.6
@@ -625,7 +625,7 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 1629001,De'Anthony Melton,PHI,2022-23,december,Role Player,Role,Guard,16.1,13.3,71.29629629629629,,74,12,33.9,13.8
 1629023,P.J. Washington,CHA,2022-23,december,3&D Wing,Wing,Forward,18.7,12.4,42.63565891472868,4.1,79,15,31.8,13.8
 1630596,Evan Mobley,CLE,2022-23,december,Finisher,Finisher,Big,16.6,14.6,15.625,4.7,83,14,34.4,13.8
-1630200,Tre Jones,SAS,2022-23,december,Finisher,Finisher,Guard,19.5,27.2,23.89380530973451,4.8,73,14,30.2,13.8
+1630200,Tre Jones,SAS,2022-23,december,Finisher,Finisher,Guard,19.5,27.2,23.893805309734518,4.8,73,14,30.2,13.8
 1631093,Jaden Ivey,DET,2022-23,december,3&D Wing,Wing,Guard,24.8,21.7,31.858407079646017,5.6,76,16,27.7,13.8
 1629675,Naz Reid,MIN,2022-23,december,3&D Wing,Wing,Forward,23.0,8.8,33.33333333333333,3.8,81,15,23.1,13.7
 203497,Rudy Gobert,MIN,2022-23,december,Finisher,Finisher,Big,16.4,4.4,1.2987012987012987,,85,11,30.7,13.7
@@ -635,7 +635,7 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 1630180,Saddiq Bey,ATL,2022-23,december,3&D Wing,Wing,Forward,20.8,9.0,50.0,6.5,79,16,25.3,13.1
 1628381,John Collins,ATL,2022-23,december,3&D Wing,Wing,Forward,18.8,5.9,24.271844660194173,,81,6,26.1,13.0
 1631100,AJ Griffin,ATL,2022-23,december,Role Player,Role,Forward,18.7,7.7,49.10714285714286,,78,14,27.0,12.8
-1630578,Alperen Sengun,HOU,2022-23,december,Shot Creator,Scorer,Big,20.0,16.2,3.1914893617021276,14.9,83,14,25.8,12.8
+1630578,Alperen Sengun,HOU,2022-23,december,Shot Creator,Scorer,Big,20.0,16.2,3.191489361702128,14.9,83,14,25.8,12.8
 1631095,Jabari Smith Jr.,HOU,2022-23,december,3&D Wing,Wing,Big,18.7,4.3,46.84684684684685,5.6,83,15,29.8,12.7
 1631099,Keegan Murray,SAC,2022-23,december,Movement Shooter,Shooter,Forward,16.0,3.0,61.22448979591836,4.2,80,14,28.6,12.7
 203486,Mason Plumlee,LAC,2022-23,december,Role Player,Role,Big,15.0,15.4,0.0,,84,16,28.2,12.7
@@ -673,7 +673,7 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 1630183,Jaden McDaniels,MIN,2022-23,december,3&D Wing,Wing,Forward,14.3,8.7,35.22727272727273,2.3,81,15,31.8,10.9
 1630191,Isaiah Stewart,DET,2022-23,december,Finisher,Finisher,Forward,16.0,5.3,48.88888888888889,,80,16,29.5,10.9
 203926,Doug McDermott,SAS,2022-23,december,Stretch Shooter,Shooter,Forward,19.5,12.1,57.14285714285714,,78,11,20.0,10.8
-1628404,Josh Hart,NYK,2022-23,december,3&D Wing,Wing,Guard,12.4,13.0,28.767123287671236,,76,12,33.2,10.7
+1628404,Josh Hart,NYK,2022-23,december,3&D Wing,Wing,Guard,12.4,13.0,28.76712328767124,,76,12,33.2,10.7
 1630559,Austin Reaves,LAL,2022-23,december,Shot Creator,Scorer,Guard,14.9,8.3,55.00000000000001,13.5,77,14,29.2,10.4
 1626196,Josh Richardson,NOP,2022-23,december,Stretch Shooter,Shooter,Forward,21.0,17.1,51.61290322580645,,78,9,22.4,10.3
 1629626,Bol Bol,ORL,2022-23,december,Role Player,Role,Big,16.9,5.4,20.0,,86,15,24.7,10.3
@@ -695,23 +695,23 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 1628997,Caleb Martin,MIA,2022-23,december,3&D Wing,Wing,Guard,13.4,6.1,54.87804878048781,,77,11,31.9,9.6
 1628978,Donte DiVincenzo,GSW,2022-23,december,Movement Shooter,Shooter,Guard,14.2,17.7,65.85365853658539,1.9,76,13,28.6,9.6
 1630228,Jonathan Kuminga,GSW,2022-23,december,Shot Creator,Scorer,Forward,18.6,17.9,23.943661971830988,12.6,79,15,22.2,9.6
-201569,Eric Gordon,LAC,2022-23,december,3&D Wing,Wing,Guard,16.1,10.5,56.98924731182795,,75,12,29.6,9.6
+201569,Eric Gordon,LAC,2022-23,december,Role Player,Role,Guard,16.1,10.5,56.98924731182795,,75,12,29.6,9.6
 203933,T.J. Warren,PHX,2022-23,december,Role Player,Role,Forward,19.2,10.6,23.68421052631579,,80,12,20.0,9.6
-1626145,Tyus Jones,MEM,2022-23,december,3&D Wing,Wing,Guard,16.9,30.5,46.75324675324675,,74,14,22.4,9.6
+1626145,Tyus Jones,MEM,2022-23,december,Role Player,Role,Guard,16.9,30.5,46.75324675324675,,74,14,22.4,9.6
 1629622,Max Strus,MIA,2022-23,december,Role Player,Role,Guard,17.5,11.5,72.44897959183673,,77,15,25.8,9.5
 1628963,Marvin Bagley III,DET,2022-23,december,Finisher,Finisher,Big,18.8,4.3,15.789473684210526,7.3,82,14,20.4,9.5
 1631117,Walker Kessler,UTA,2022-23,december,Finisher,Finisher,Big,12.7,3.7,0.0,,84,15,23.7,9.5
 1628380,Zach Collins,SAS,2022-23,december,3&D Wing,Wing,Big,18.4,15.8,18.333333333333336,,83,13,22.3,9.5
-1629684,Grant Williams,BOS,2022-23,december,3&D Wing,Wing,Forward,12.2,6.3,61.904761904761905,,78,14,27.0,9.4
+1629684,Grant Williams,BOS,2022-23,december,3&D Wing,Wing,Forward,12.2,6.3,61.90476190476191,,78,14,27.0,9.4
 1630529,Herbert Jones,NOP,2022-23,december,3&D Wing,Wing,Forward,15.2,11.4,43.37349397590361,,79,7,29.0,9.4
 1630166,Deni Avdija,WAS,2022-23,december,Shot Creator,Scorer,Forward,14.2,15.5,50.0,14.0,81,13,29.0,9.4
 1627826,Ivica Zubac,LAC,2022-23,december,Post Scorer,Big,Big,13.4,3.0,0.0,,84,13,28.2,9.4
 203506,Victor Oladipo,MIA,2022-23,december,Role Player,Role,Guard,17.6,16.0,53.57142857142857,,75,11,26.2,9.4
 1628467,Maxi Kleber,DAL,2022-23,december,Rim Protector,Big,Big,11.1,2.7,64.61538461538461,,82,6,27.6,9.3
 201587,Nicolas Batum,LAC,2022-23,december,3&D Wing,Wing,Forward,12.6,7.7,84.84848484848484,,80,14,24.8,9.3
-201144,Mike Conley,MIN,2022-23,december,3&D Wing,Wing,Guard,17.0,33.0,60.91954022988506,,73,11,29.0,9.3
+201144,Mike Conley,MIN,2022-23,december,Role Player,Role,Guard,17.0,33.0,60.91954022988506,,73,11,29.0,9.3
 1629614,Andrew Nembhard,IND,2022-23,december,Role Player,Role,Guard,13.6,19.4,44.303797468354425,8.9,75,16,31.8,9.2
-1629026,Kenrich Williams,OKC,2022-23,december,3&D Wing,Wing,Forward,13.1,12.1,37.878787878787875,,78,8,23.8,9.1
+1629026,Kenrich Williams,OKC,2022-23,december,3&D Wing,Wing,Forward,13.1,12.1,37.87878787878788,,78,8,23.8,9.1
 203937,Kyle Anderson,MIN,2022-23,december,Shot Creator,Scorer,Forward,14.6,19.5,15.942028985507248,12.6,81,10,29.8,9.1
 1629130,Duncan Robinson,MIA,2022-23,december,Movement Shooter,Shooter,Forward,17.6,8.7,88.73239436619718,,79,10,20.2,9.0
 1626220,Royce O'Neale,BKN,2022-23,december,3&D Wing,Wing,Forward,12.0,11.3,74.28571428571429,,78,11,33.7,9.0
@@ -719,15 +719,15 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 1628960,Grayson Allen,MIL,2022-23,december,3&D Wing,Wing,Guard,13.4,10.4,57.89473684210527,2.8,76,14,27.9,8.9
 1627814,Damion Lee,PHX,2022-23,december,Role Player,Role,Guard,14.2,7.0,58.06451612903226,,77,16,23.1,8.8
 1629637,Jaxson Hayes,NOP,2022-23,december,Finisher,Finisher,Big,13.0,9.4,24.39024390243903,,84,7,19.2,8.7
-1630526,Jeremiah Robinson-Earl,OKC,2022-23,december,3&D Wing,Wing,Forward,14.9,6.1,30.555555555555557,,80,5,23.0,8.6
+1630526,Jeremiah Robinson-Earl,OKC,2022-23,december,3&D Wing,Wing,Forward,14.9,6.1,30.55555555555556,,80,5,23.0,8.6
 203115,Will Barton,TOR,2022-23,december,Stretch Shooter,Shooter,Guard,18.9,20.1,55.84415584415584,,77,10,20.7,8.6
 1631105,Jalen Duren,DET,2022-23,december,Finisher,Finisher,Big,11.6,8.2,0.0,8.9,83,16,26.7,8.4
 1629057,Robert Williams III,BOS,2022-23,december,Finisher,Finisher,Forward,12.6,8.6,0.0,,81,6,18.9,8.3
 203500,Steven Adams,MEM,2022-23,december,Finisher,Finisher,Big,13.6,11.3,0.0,,83,12,26.1,8.3
 1630245,Ayo Dosunmu,CHI,2022-23,december,3&D Wing,Wing,Guard,14.9,13.0,36.36363636363637,2.2,77,14,24.0,8.3
-1629006,Josh Okogie,PHX,2022-23,december,3&D Wing,Wing,Guard,17.7,15.2,42.622950819672134,,76,14,19.1,8.3
+1629006,Josh Okogie,PHX,2022-23,december,3&D Wing,Wing,Guard,17.7,15.2,42.62295081967213,,76,14,19.1,8.3
 1627777,Georges Niang,PHI,2022-23,december,Role Player,Role,Forward,17.8,6.0,81.33333333333333,,79,11,20.9,8.3
-1630198,Isaiah Joe,OKC,2022-23,december,3&D Wing,Wing,Guard,15.7,9.5,78.94736842105263,,75,13,17.4,8.2
+1630198,Isaiah Joe,OKC,2022-23,december,Finisher,Finisher,Guard,15.7,9.5,78.94736842105263,,75,13,17.4,8.2
 201567,Kevin Love,MIA,2022-23,december,Stretch Shooter,Shooter,Forward,18.6,11.1,67.16417910447761,,80,13,19.9,8.2
 1628401,Derrick White,BOS,2022-23,december,3&D Wing,Wing,Guard,14.8,14.3,50.70422535211267,4.7,76,14,26.5,8.2
 1628449,Chris Boucher,TOR,2022-23,december,Role Player,Role,Forward,16.0,3.3,38.70967741935484,,81,14,20.1,8.1
@@ -740,7 +740,7 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 1630182,Josh Green,DAL,2022-23,december,3&D Wing,Wing,Forward,12.9,14.8,35.714285714285715,,79,5,23.3,7.8
 1629139,Yuta Watanabe,BKN,2022-23,december,Role Player,Role,Forward,13.3,5.9,52.54237288135592,,80,9,21.5,7.8
 201609,Goran Dragic,MIL,2022-23,december,Role Player,Role,Guard,20.7,19.6,44.776119402985074,,76,13,16.3,7.8
-1630692,Jordan Goodwin,WAS,2022-23,december,3&D Wing,Wing,Guard,18.4,21.8,29.5774647887324,,75,13,19.5,7.8
+1630692,Jordan Goodwin,WAS,2022-23,december,Role Player,Role,Guard,18.4,21.8,29.5774647887324,,75,13,19.5,7.8
 1629632,Coby White,CHI,2022-23,december,Role Player,Role,Guard,15.9,12.0,68.25396825396825,7.7,77,15,20.6,7.7
 1630201,Malachi Flynn,TOR,2022-23,december,Role Player,Role,Guard,16.2,12.4,57.14285714285715,,73,10,21.8,7.7
 1629641,Romeo Langford,SAS,2022-23,december,Role Player,Role,Guard,14.9,7.7,22.033898305084744,,77,10,20.2,7.7
@@ -758,7 +758,7 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 1626192,Pat Connaughton,MIL,2022-23,december,Role Player,Role,Guard,15.2,6.8,75.36231884057972,,77,15,21.4,7.0
 1626204,Larry Nance Jr.,NOP,2022-23,december,3&D Wing,Wing,Forward,11.1,10.0,20.0,,80,10,23.8,6.9
 201933,Blake Griffin,BOS,2022-23,december,Role Player,Role,Forward,13.6,12.9,40.81632653061224,,81,7,18.5,6.9
-1631223,David Roddy,MEM,2022-23,december,Role Player,Role,Guard,17.1,6.3,54.545454545454554,,76,12,20.1,6.8
+1631223,David Roddy,MEM,2022-23,december,Role Player,Role,Guard,17.1,6.3,54.54545454545456,,76,12,20.1,6.8
 1626172,Kevon Looney,GSW,2022-23,december,Finisher,Finisher,Forward,10.4,15.7,0.0,,81,15,23.2,6.8
 1631101,Shaedon Sharpe,POR,2022-23,december,Shot Creator,Scorer,Guard,16.6,3.1,39.0625,12.3,77,13,17.9,6.7
 1627884,Derrick Jones Jr.,CHI,2022-23,december,3&D Wing,Wing,Forward,14.9,7.0,39.130434782608695,,78,9,15.8,6.7
@@ -775,27 +775,27 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 1630171,Isaac Okoro,CLE,2022-23,december,3&D Wing,Wing,Guard,13.2,9.7,48.93617021276595,,77,15,18.0,6.2
 203552,Seth Curry,BKN,2022-23,december,Role Player,Role,Guard,16.2,15.7,50.0,,73,11,18.5,6.2
 1630205,Lamar Stevens,CLE,2022-23,december,Role Player,Role,Forward,14.7,4.9,40.57971014492753,,78,12,24.1,6.2
-1628988,Aaron Holiday,ATL,2022-23,december,3&D Wing,Wing,Guard,13.6,14.6,42.5531914893617,,72,12,16.9,6.1
+1628988,Aaron Holiday,ATL,2022-23,december,Role Player,Role,Guard,13.6,14.6,42.5531914893617,,72,12,16.9,6.1
 1629647,Darius Bazley,PHX,2022-23,december,Role Player,Role,Forward,15.8,4.3,27.659574468085108,,81,7,18.6,6.0
 203939,Dwight Powell,DAL,2022-23,december,Finisher,Finisher,Big,11.0,5.3,3.4482758620689653,,82,15,18.2,6.0
 203493,Reggie Bullock Jr.,DAL,2022-23,december,Role Player,Role,Forward,8.4,5.0,85.1063829787234,,78,16,28.7,5.9
 1629723,John Konchar,MEM,2022-23,december,3&D Wing,Wing,Guard,10.3,8.2,45.28301886792453,,77,13,22.7,5.8
-1630541,Moses Moody,GSW,2022-23,december,Movement Shooter,Shooter,Guard,11.6,9.6,58.139534883720934,4.9,77,14,16.4,5.8
+1630541,Moses Moody,GSW,2022-23,december,Movement Shooter,Shooter,Guard,11.6,9.6,58.13953488372093,4.9,77,14,16.4,5.8
 1630237,Anthony Lamb,GSW,2022-23,december,Role Player,Role,Forward,12.7,11.3,73.33333333333333,,78,15,18.8,5.7
 1629216,Gabe Vincent,MIA,2022-23,december,Movement Shooter,Shooter,Guard,15.7,13.6,59.70149253731343,,74,6,21.3,5.7
 1630177,Theo Maledon,CHA,2022-23,december,Role Player,Role,Guard,16.3,20.1,43.47826086956522,,77,16,15.5,5.6
 1630558,Davion Mitchell,SAC,2022-23,december,Shot Creator,Scorer,Guard,14.4,21.7,40.74074074074075,28.6,72,13,20.3,5.6
-1628975,Jevon Carter,MIL,2022-23,december,3&D Wing,Wing,Guard,12.8,15.5,53.703703703703695,,73,15,22.6,5.6
+1628975,Jevon Carter,MIL,2022-23,december,Role Player,Role,Guard,12.8,15.5,53.703703703703695,,73,15,22.6,5.6
 1630570,Trendon Watford,POR,2022-23,december,Role Player,Role,Forward,12.7,15.2,25.71428571428572,7.8,80,13,17.2,5.5
 204060,Joe Ingles,MIL,2022-23,december,Role Player,Role,Forward,17.0,19.1,82.45614035087719,,81,6,18.7,5.5
-1630540,Miles McBride,NYK,2022-23,december,3&D Wing,Wing,Guard,13.6,11.7,67.9245283018868,4.7,74,15,19.7,5.2
+1630540,Miles McBride,NYK,2022-23,december,Role Player,Role,Guard,13.6,11.7,67.9245283018868,4.7,74,15,19.7,5.2
 204456,T.J. McConnell,IND,2022-23,december,Role Player,Role,Guard,15.7,39.2,10.0,5.9,73,14,16.4,5.1
 1630235,Trent Forrest,ATL,2022-23,december,Role Player,Role,Guard,12.0,18.6,5.88235294117647,,76,7,21.2,5.1
-1628972,Troy Brown Jr.,LAL,2022-23,december,Role Player,Role,Forward,11.7,2.5,61.904761904761905,,79,16,18.2,5.1
+1628972,Troy Brown Jr.,LAL,2022-23,december,Role Player,Role,Forward,11.7,2.5,61.90476190476191,,79,16,18.2,5.1
 1627863,Danuel House Jr.,PHI,2022-23,december,Role Player,Role,Forward,12.2,8.2,56.41025641025642,,78,9,15.5,5.1
 203496,Robert Covington,LAC,2022-23,december,Role Player,Role,Forward,17.2,15.6,57.627118644067785,,79,7,15.3,5.0
 1629312,Haywood Highsmith,MIA,2022-23,december,Role Player,Role,Guard,11.1,7.0,41.86046511627907,,77,13,20.3,4.8
-200752,Rudy Gay,UTA,2022-23,december,Role Player,Role,Forward,15.2,4.3,47.916666666666664,,80,13,15.5,4.6
+200752,Rudy Gay,UTA,2022-23,december,Role Player,Role,Forward,15.2,4.3,47.91666666666666,,80,13,15.5,4.6
 1630533,Ziaire Williams,MEM,2022-23,december,3&D Wing,Wing,Forward,16.7,11.7,50.0,,81,10,17.1,4.6
 1631128,Christian Braun,DEN,2022-23,december,Finisher,Finisher,Forward,11.4,2.0,36.11111111111111,,78,12,16.6,4.6
 1627936,Alex Caruso,CHI,2022-23,december,3&D Wing,Wing,Guard,9.5,18.4,47.05882352941177,,77,11,23.5,4.5
@@ -817,7 +817,7 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 203954,Joel Embiid,PHI,2022-23,january,Shot Creator,Scorer,Big,38.7,18.3,17.84037558685446,12.3,84,10,33.1,34.9
 203081,Damian Lillard,POR,2022-23,january,Primary Initiator,Primary,Guard,32.9,35.5,50.71090047393364,,74,15,36.7,34.5
 2544,LeBron James,LAL,2022-23,january,Primary Initiator,Primary,Forward,34.6,35.3,30.522088353413658,12.8,81,13,37.8,33.8
-1629029,Luka Dončić,DAL,2022-23,january,Primary Initiator,Primary,Forward,38.0,35.5,31.797235023041477,16.0,79,12,36.4,31.3
+1629029,Luka Dončić,DAL,2022-23,january,Primary Initiator,Primary,Forward,38.0,35.5,31.79723502304148,16.0,79,12,36.4,31.3
 1628369,Jayson Tatum,BOS,2022-23,january,Primary Initiator,Primary,Forward,33.2,23.7,41.44144144144144,,80,14,38.7,31.3
 1628983,Shai Gilgeous-Alexander,OKC,2022-23,january,Primary Initiator,Primary,Forward,30.3,22.5,11.34020618556701,26.3,78,13,35.4,31.1
 203507,Giannis Antetokounmpo,MIL,2022-23,january,Primary Initiator,Primary,Big,36.0,26.7,15.104166666666666,10.9,84,10,32.7,31.0
@@ -826,14 +826,14 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 1628973,Jalen Brunson,NYK,2022-23,january,Primary Initiator,Primary,Guard,28.7,23.7,23.72093023255814,14.4,74,15,39.5,28.7
 1628374,Lauri Markkanen,UTA,2022-23,january,Finisher,Finisher,Big,27.1,6.0,42.45810055865922,4.0,84,11,35.1,28.5
 1629630,Ja Morant,MEM,2022-23,january,Primary Initiator,Primary,Guard,32.5,40.6,24.519230769230766,14.1,74,12,33.1,28.0
-202695,Kawhi Leonard,LAC,2022-23,january,Shot Creator,Scorer,Forward,28.2,19.8,27.47252747252747,16.5,79,12,35.1,27.7
+202695,Kawhi Leonard,LAC,2022-23,january,Shot Creator,Scorer,Forward,28.2,19.8,27.472527472527474,16.5,79,12,35.1,27.7
 1630162,Anthony Edwards,MIN,2022-23,january,Primary Initiator,Primary,Guard,32.1,22.3,39.71291866028709,23.4,76,16,35.7,27.3
 202691,Klay Thompson,GSW,2022-23,january,Movement Shooter,Shooter,Forward,28.1,10.4,53.21100917431192,,78,10,34.9,27.0
 1627759,Jaylen Brown,BOS,2022-23,january,Shot Creator,Scorer,Forward,30.3,13.6,36.09756097560976,20.6,78,11,36.5,26.8
 1629027,Trae Young,ATL,2022-23,january,Primary Initiator,Primary,Guard,30.9,37.5,30.89887640449438,12.0,73,13,36.0,26.7
 201942,DeMar DeRozan,CHI,2022-23,january,Primary Initiator,Primary,Forward,28.7,20.7,9.424083769633508,19.9,78,11,36.8,26.5
-203944,Julius Randle,NYK,2022-23,january,Shot Creator,Scorer,Forward,29.7,19.9,42.857142857142854,15.8,80,15,38.5,26.3
-1628378,Donovan Mitchell,CLE,2022-23,january,Primary Initiator,Primary,Guard,31.2,27.3,54.973821989528794,11.4,73,10,34.2,26.1
+203944,Julius Randle,NYK,2022-23,january,Shot Creator,Scorer,Forward,29.7,19.9,42.85714285714285,15.8,80,15,38.5,26.3
+1628378,Donovan Mitchell,CLE,2022-23,january,Primary Initiator,Primary,Guard,31.2,27.3,54.9738219895288,11.4,73,10,34.2,26.1
 203897,Zach LaVine,CHI,2022-23,january,Primary Initiator,Primary,Guard,28.1,17.2,43.548387096774185,9.3,77,14,37.8,26.1
 1628368,De'Aaron Fox,SAC,2022-23,january,Primary Initiator,Primary,Guard,28.2,26.9,21.76165803108808,10.1,75,15,35.6,25.2
 1626179,Terry Rozier,CHA,2022-23,january,Role Player,Role,Guard,27.4,19.1,45.273631840796014,,73,15,35.6,25.1
@@ -874,7 +874,7 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 203084,Harrison Barnes,SAC,2022-23,january,3&D Wing,Wing,Forward,17.9,4.8,55.75221238938053,8.0,80,15,35.4,19.1
 1630178,Tyrese Maxey,PHI,2022-23,january,Shot Creator,Scorer,Guard,23.0,15.8,40.54054054054054,14.5,74,14,31.9,18.9
 1630581,Josh Giddey,OKC,2022-23,january,Secondary Ball Handler,Secondary,Forward,26.2,29.7,19.49685534591195,5.0,80,14,30.9,18.8
-101108,Chris Paul,PHX,2022-23,january,Secondary Ball Handler,Secondary,Guard,21.7,39.1,37.404580152671755,,72,8,32.5,18.6
+101108,Chris Paul,PHX,2022-23,january,Secondary Ball Handler,Secondary,Guard,21.7,39.1,37.40458015267176,,72,8,32.5,18.6
 1626181,Norman Powell,LAC,2022-23,january,Movement Shooter,Shooter,Guard,25.1,10.9,47.05882352941176,10.9,76,16,26.3,18.5
 1630578,Alperen Sengun,HOU,2022-23,january,Shot Creator,Scorer,Big,22.0,28.9,4.132231404958678,14.9,83,13,32.1,18.3
 201566,Russell Westbrook,LAC,2022-23,january,Primary Initiator,Primary,Guard,28.8,35.1,27.92207792207792,13.4,75,16,30.1,18.3
@@ -887,7 +887,7 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 1629639,Tyler Herro,MIA,2022-23,january,Shot Creator,Scorer,Guard,24.2,15.8,44.171779141104295,13.3,77,11,33.8,17.1
 1629631,De'Andre Hunter,ATL,2022-23,january,3&D Wing,Wing,Forward,18.8,5.8,40.76923076923077,7.5,80,13,35.0,17.1
 1630596,Evan Mobley,CLE,2022-23,january,Finisher,Finisher,Big,21.8,11.1,9.923664122137406,4.7,83,15,34.7,17.1
-203078,Bradley Beal,WAS,2022-23,january,Secondary Ball Handler,Secondary,Guard,26.7,27.7,22.302158273381295,,76,7,27.4,17.0
+203078,Bradley Beal,WAS,2022-23,january,Secondary Ball Handler,Secondary,Guard,26.7,27.7,22.30215827338129,,76,7,27.4,17.0
 1630180,Saddiq Bey,ATL,2022-23,january,3&D Wing,Wing,Forward,21.1,8.0,47.32824427480916,6.5,79,13,30.6,16.7
 202685,Jonas Valančiūnas,NOP,2022-23,january,Post Scorer,Big,Big,26.1,7.7,11.965811965811966,,83,16,25.4,16.7
 203486,Mason Plumlee,LAC,2022-23,january,Role Player,Role,Big,16.6,14.8,0.0,,84,15,30.0,16.5
@@ -898,14 +898,14 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 1629008,Michael Porter Jr.,DEN,2022-23,january,Movement Shooter,Shooter,Big,20.5,2.7,56.77966101694915,6.9,82,13,28.2,15.6
 1630169,Tyrese Haliburton,IND,2022-23,january,Role Player,Role,Guard,22.5,45.2,48.48484848484849,,77,5,33.3,15.6
 1628381,John Collins,ATL,2022-23,january,3&D Wing,Wing,Forward,17.7,5.2,29.82456140350877,,81,15,33.9,15.5
-1630193,Immanuel Quickley,NYK,2022-23,january,3&D Wing,Wing,Guard,16.3,12.3,43.925233644859816,6.1,74,14,33.1,15.4
-201569,Eric Gordon,LAC,2022-23,january,3&D Wing,Wing,Guard,18.3,15.8,46.08695652173913,,75,13,30.7,15.4
+1630193,Immanuel Quickley,NYK,2022-23,january,Finisher,Finisher,Guard,16.3,12.3,43.925233644859816,6.1,74,14,33.1,15.4
+201569,Eric Gordon,LAC,2022-23,january,Role Player,Role,Guard,18.3,15.8,46.08695652173913,,75,13,30.7,15.4
 203552,Seth Curry,BKN,2022-23,january,Role Player,Role,Guard,20.8,10.9,49.10714285714286,,73,13,27.3,15.4
 1629661,Cameron Johnson,BKN,2022-23,january,Stretch Shooter,Shooter,Forward,19.3,7.7,59.04761904761905,,80,6,26.7,15.3
 1629012,Collin Sexton,UTA,2022-23,january,Secondary Ball Handler,Secondary,Guard,24.7,16.1,21.21212121212121,5.2,74,7,23.2,15.3
 1629023,P.J. Washington,CHA,2022-23,january,3&D Wing,Wing,Forward,16.9,11.1,51.69491525423729,4.1,79,15,34.2,15.2
 1631093,Jaden Ivey,DET,2022-23,january,3&D Wing,Wing,Guard,24.2,27.3,32.786885245901644,5.6,76,13,30.3,15.2
-202699,Tobias Harris,PHI,2022-23,january,3&D Wing,Wing,Forward,18.7,10.0,31.147540983606557,4.2,79,13,32.1,15.2
+202699,Tobias Harris,PHI,2022-23,january,3&D Wing,Wing,Forward,18.7,10.0,31.14754098360656,4.2,79,13,32.1,15.2
 1629652,Luguentz Dort,OKC,2022-23,january,3&D Wing,Wing,Guard,19.9,9.0,47.5,,76,12,30.3,14.7
 203471,Dennis Schröder,LAL,2022-23,january,Shot Creator,Scorer,Guard,17.7,14.2,37.16814159292035,14.8,73,16,34.8,14.5
 1628418,Thomas Bryant,DEN,2022-23,january,Role Player,Role,Big,18.6,2.6,13.978494623655912,,82,16,25.1,14.4
@@ -923,7 +923,7 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 1626196,Josh Richardson,NOP,2022-23,january,Role Player,Role,Forward,19.5,21.6,50.0,,78,12,24.2,13.3
 1629060,Rui Hachimura,LAL,2022-23,january,3&D Wing,Wing,Forward,20.7,6.4,33.04347826086956,3.7,80,13,25.9,13.1
 1630231,KJ Martin,HOU,2022-23,january,Role Player,Role,Forward,17.0,6.8,30.526315789473685,,79,14,28.3,13.1
-1627747,Caris LeVert,CLE,2022-23,january,3&D Wing,Wing,Forward,18.9,18.5,45.370370370370374,6.2,78,16,31.3,13.1
+1627747,Caris LeVert,CLE,2022-23,january,3&D Wing,Wing,Forward,18.9,18.5,45.37037037037037,6.2,78,16,31.3,13.1
 1628365,Markelle Fultz,ORL,2022-23,january,Role Player,Role,Guard,20.0,31.9,9.0,,76,14,29.3,12.9
 203991,Clint Capela,ATL,2022-23,january,Finisher,Finisher,Big,15.9,4.5,1.162790697674419,,82,8,25.9,12.9
 1631105,Jalen Duren,DET,2022-23,january,Finisher,Finisher,Big,14.4,5.5,0.0,8.9,83,8,26.1,12.9
@@ -945,15 +945,15 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 1630530,Trey Murphy III,NOP,2022-23,january,Finisher,Finisher,Forward,15.0,5.4,53.06122448979592,6.6,80,16,30.6,12.1
 1629634,Brandon Clarke,MEM,2022-23,january,Role Player,Role,Forward,17.8,10.0,0.0,,80,9,20.5,12.0
 1627736,Malik Beasley,LAL,2022-23,january,Stretch Shooter,Shooter,Guard,19.9,11.0,74.78260869565217,,76,13,27.6,12.0
-1626145,Tyus Jones,MEM,2022-23,january,3&D Wing,Wing,Guard,18.0,26.5,48.51485148514852,,74,15,24.4,11.9
+1626145,Tyus Jones,MEM,2022-23,january,Role Player,Role,Guard,18.0,26.5,48.51485148514852,,74,15,24.4,11.9
 1628420,Monte Morris,WAS,2022-23,january,Role Player,Role,Guard,15.4,24.9,40.69767441860465,,74,11,27.4,11.7
 1628971,Bruce Brown,DEN,2022-23,january,Finisher,Finisher,Guard,17.9,13.7,41.48936170212766,4.1,76,16,27.5,11.7
 1629667,Jalen McDaniels,PHI,2022-23,january,Role Player,Role,Forward,18.2,7.3,39.80582524271844,,81,15,29.5,11.7
 1628415,Dillon Brooks,MEM,2022-23,january,3&D Wing,Wing,Forward,20.0,9.8,38.235294117647065,9.3,78,14,30.6,11.6
 1628960,Grayson Allen,MIL,2022-23,january,3&D Wing,Wing,Guard,14.9,14.0,65.4320987654321,2.8,76,15,27.4,11.5
-201144,Mike Conley,MIN,2022-23,january,3&D Wing,Wing,Guard,14.8,32.5,57.954545454545446,,73,12,30.6,11.3
+201144,Mike Conley,MIN,2022-23,january,Role Player,Role,Guard,14.8,32.5,57.954545454545446,,73,12,30.6,11.3
 1630173,Precious Achiuwa,TOR,2022-23,january,Finisher,Finisher,Forward,18.9,4.7,23.809523809523807,,80,16,23.2,11.3
-1630198,Isaiah Joe,OKC,2022-23,january,3&D Wing,Wing,Guard,16.5,6.6,80.51948051948052,,75,13,20.9,11.2
+1630198,Isaiah Joe,OKC,2022-23,january,Finisher,Finisher,Guard,16.5,6.6,80.51948051948052,,75,13,20.9,11.2
 202694,Marcus Morris Sr.,LAC,2022-23,january,Role Player,Role,Forward,20.1,11.1,45.45454545454545,,80,11,25.6,11.2
 1631095,Jabari Smith Jr.,HOU,2022-23,january,3&D Wing,Wing,Big,19.8,7.6,41.12149532710281,5.6,83,12,28.4,11.1
 1628401,Derrick White,BOS,2022-23,january,3&D Wing,Wing,Guard,17.7,22.9,54.022988505747136,4.7,76,15,26.6,11.1
@@ -961,7 +961,7 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 1630237,Anthony Lamb,GSW,2022-23,january,Role Player,Role,Forward,16.0,12.1,60.27397260273973,,78,12,22.2,10.9
 1629622,Max Strus,MIA,2022-23,january,Role Player,Role,Guard,16.5,14.8,70.96774193548386,,77,15,28.5,10.9
 1629656,Quentin Grimes,NYK,2022-23,january,3&D Wing,Wing,Guard,13.1,8.6,67.03296703296702,10.4,77,15,34.4,10.8
-1630175,Cole Anthony,ORL,2022-23,january,Role Player,Role,Guard,19.2,22.3,34.883720930232556,6.9,75,14,24.9,10.8
+1630175,Cole Anthony,ORL,2022-23,january,Role Player,Role,Guard,19.2,22.3,34.88372093023256,6.9,75,14,24.9,10.8
 1627751,Jakob Poeltl,TOR,2022-23,january,Finisher,Finisher,Big,18.0,16.2,0.0,,85,14,24.9,10.8
 1629134,Kendrick Nunn,WAS,2022-23,january,Stretch Shooter,Shooter,Guard,21.7,8.2,50.53763440860215,,75,14,18.7,10.8
 1628380,Zach Collins,SAS,2022-23,january,3&D Wing,Wing,Big,20.4,15.8,17.28395061728395,,83,15,20.6,10.7
@@ -973,12 +973,12 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 203500,Steven Adams,MEM,2022-23,january,Finisher,Finisher,Big,15.0,10.7,0.0,,83,10,28.6,10.5
 203937,Kyle Anderson,MIN,2022-23,january,Shot Creator,Scorer,Forward,14.2,24.6,25.0,12.6,81,15,30.5,10.4
 1630538,Bones Hyland,LAC,2022-23,january,Stretch Shooter,Shooter,Guard,26.3,19.4,57.954545454545446,10.9,74,15,17.0,10.3
-1630631,Jose Alvarado,NOP,2022-23,january,3&D Wing,Wing,Guard,19.3,21.5,48.93617021276595,4.2,72,16,25.0,10.3
+1630631,Jose Alvarado,NOP,2022-23,january,Role Player,Role,Guard,19.3,21.5,48.93617021276595,4.2,72,16,25.0,10.3
 1627826,Ivica Zubac,LAC,2022-23,january,Post Scorer,Big,Big,14.7,4.8,1.4705882352941178,,84,16,27.7,10.3
 1629013,Landry Shamet,PHX,2022-23,january,Stretch Shooter,Shooter,Guard,19.5,18.7,52.83018867924528,,76,5,30.8,10.2
 1630557,Corey Kispert,WAS,2022-23,january,Movement Shooter,Shooter,Forward,14.0,6.1,70.58823529411765,,78,13,26.1,10.2
 1630182,Josh Green,DAL,2022-23,january,3&D Wing,Wing,Forward,15.1,11.1,40.845070422535215,,79,7,29.7,10.1
-1629021,Moritz Wagner,ORL,2022-23,january,Role Player,Role,Big,22.0,11.1,48.387096774193544,,83,12,16.2,10.1
+1629021,Moritz Wagner,ORL,2022-23,january,Role Player,Role,Big,22.0,11.1,48.38709677419354,,83,12,16.2,10.1
 1630191,Isaiah Stewart,DET,2022-23,january,Finisher,Finisher,Forward,18.0,7.5,33.333333333333336,,80,9,27.6,10.0
 203935,Marcus Smart,BOS,2022-23,january,Stretch Shooter,Shooter,Guard,18.3,28.0,56.98924731182795,4.2,76,9,29.8,10.0
 1631117,Walker Kessler,UTA,2022-23,january,Finisher,Finisher,Big,14.4,7.3,0.0,,84,13,23.9,10.0
@@ -987,7 +987,7 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 1630166,Deni Avdija,WAS,2022-23,january,Shot Creator,Scorer,Forward,16.0,10.2,32.05128205128205,14.0,81,13,26.7,9.8
 1629611,Terance Mann,LAC,2022-23,january,3&D Wing,Wing,Guard,15.0,12.9,39.24050632911392,3.7,77,16,27.7,9.8
 1629669,Jaylen Nowell,MIN,2022-23,january,Role Player,Role,Guard,22.5,14.2,37.804878048780495,,76,16,18.9,9.8
-1629614,Andrew Nembhard,IND,2022-23,january,Role Player,Role,Guard,18.3,22.2,43.689320388349515,8.9,75,13,28.8,9.5
+1629614,Andrew Nembhard,IND,2022-23,january,Role Player,Role,Guard,18.3,22.2,43.68932038834952,8.9,75,13,28.8,9.5
 1626168,Trey Lyles,SAC,2022-23,january,Role Player,Role,Forward,17.5,7.4,52.63157894736842,,81,15,17.7,9.5
 1630529,Herbert Jones,NOP,2022-23,january,3&D Wing,Wing,Forward,14.8,9.6,29.411764705882355,,79,12,27.2,9.5
 1630613,Duane Washington Jr.,NYK,2022-23,january,Role Player,Role,Guard,31.1,30.8,39.80582524271844,,74,11,15.7,9.5
@@ -1006,13 +1006,13 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 203933,T.J. Warren,PHX,2022-23,january,Role Player,Role,Forward,20.9,6.6,24.35897435897436,,80,12,18.0,8.9
 1629026,Kenrich Williams,OKC,2022-23,january,3&D Wing,Wing,Forward,13.6,13.2,47.14285714285714,,78,14,24.1,8.9
 1629684,Grant Williams,BOS,2022-23,january,3&D Wing,Wing,Forward,14.8,8.2,50.0,,78,15,27.9,8.8
-1629632,Coby White,CHI,2022-23,january,Role Player,Role,Guard,16.4,11.5,60.759493670886066,7.7,77,14,23.2,8.7
+1629632,Coby White,CHI,2022-23,january,Role Player,Role,Guard,16.4,11.5,60.75949367088607,7.7,77,14,23.2,8.7
 203914,Gary Harris,ORL,2022-23,january,3&D Wing,Wing,Guard,12.6,5.8,67.21311475409836,,76,14,23.8,8.7
-1630527,Brandon Boston,LAC,2022-23,january,Role Player,Role,Forward,25.3,16.7,21.794871794871796,,78,6,15.6,8.7
+1630527,Brandon Boston,LAC,2022-23,january,Role Player,Role,Forward,25.3,16.7,21.7948717948718,,78,6,15.6,8.7
 201143,Al Horford,BOS,2022-23,january,3&D Wing,Wing,Forward,11.6,12.7,62.33766233766234,,81,13,31.0,8.6
 1630245,Ayo Dosunmu,CHI,2022-23,january,3&D Wing,Wing,Guard,13.6,11.9,30.0,2.2,77,14,28.8,8.5
 1631106,Tari Eason,HOU,2022-23,january,3&D Wing,Wing,Forward,17.2,10.6,21.62162162162162,5.0,80,14,20.4,8.4
-1626195,Willy Hernangomez,NOP,2022-23,january,Rim Protector,Big,Big,18.0,10.4,1.8518518518518516,,83,8,16.0,8.4
+1626195,Willy Hernangomez,NOP,2022-23,january,Rim Protector,Big,Big,18.0,10.4,1.851851851851852,,83,8,16.0,8.4
 1626149,Montrezl Harrell,PHI,2022-23,january,Role Player,Role,Forward,18.0,6.5,0.0,,79,14,16.2,8.3
 202704,Reggie Jackson,DEN,2022-23,january,Role Player,Role,Guard,21.5,23.4,43.37349397590361,,74,13,19.3,8.2
 1628997,Caleb Martin,MIA,2022-23,january,3&D Wing,Wing,Guard,14.3,5.6,46.15384615384615,,77,10,25.6,8.2
@@ -1022,7 +1022,7 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 1629642,Nassir Little,POR,2022-23,january,Role Player,Role,Guard,13.8,6.3,55.35714285714286,,77,8,18.9,8.1
 1631100,AJ Griffin,ATL,2022-23,january,Role Player,Role,Forward,13.2,6.5,54.71698113207547,,78,15,18.8,8.1
 1626224,Cedi Osman,CLE,2022-23,january,Role Player,Role,Forward,17.9,9.9,61.01694915254237,,79,16,17.1,8.0
-201145,Jeff Green,DEN,2022-23,january,Role Player,Role,Forward,17.0,12.3,37.931034482758626,,80,6,20.2,8.0
+201145,Jeff Green,DEN,2022-23,january,Role Player,Role,Forward,17.0,12.3,37.93103448275863,,80,6,20.2,8.0
 1630533,Ziaire Williams,MEM,2022-23,january,3&D Wing,Wing,Forward,16.7,3.8,50.724637681159415,,81,14,20.0,8.0
 1628404,Josh Hart,NYK,2022-23,january,3&D Wing,Wing,Guard,11.6,17.9,36.06557377049181,,76,14,30.4,7.9
 1630583,Santi Aldama,MEM,2022-23,january,3&D Wing,Wing,Big,15.5,7.1,60.71428571428572,,84,14,18.2,7.9
@@ -1041,18 +1041,18 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 1628449,Chris Boucher,TOR,2022-23,january,Role Player,Role,Forward,15.8,3.8,36.36363636363637,,81,15,16.8,7.5
 203110,Draymond Green,GSW,2022-23,january,3&D Wing,Wing,Forward,10.8,28.9,35.294117647058826,,78,12,33.5,7.5
 1630256,Jae'Sean Tate,HOU,2022-23,january,Role Player,Role,Guard,17.3,19.7,21.21212121212121,,77,10,20.1,7.5
-1626153,Delon Wright,WAS,2022-23,january,Role Player,Role,Guard,13.1,20.8,43.859649122807014,,77,13,22.3,7.5
+1626153,Delon Wright,WAS,2022-23,january,Role Player,Role,Guard,13.1,20.8,43.85964912280701,,77,13,22.3,7.5
 1629111,Jock Landale,PHX,2022-23,january,Post Scorer,Big,Big,18.8,11.4,31.57894736842105,,83,12,15.6,7.3
 1630543,Isaiah Jackson,IND,2022-23,january,Finisher,Finisher,Forward,17.4,6.2,5.454545454545454,,81,10,15.6,7.2
 1628470,Torrey Craig,PHX,2022-23,january,Role Player,Role,Forward,13.4,7.8,42.028985507246375,,79,15,26.9,7.2
 1629626,Bol Bol,ORL,2022-23,january,Role Player,Role,Big,19.8,6.2,15.789473684210526,,86,9,17.5,7.1
-203482,Kelly Olynyk,UTA,2022-23,january,Rim Protector,Big,Big,14.6,17.9,54.545454545454554,,83,5,24.8,7.0
+203482,Kelly Olynyk,UTA,2022-23,january,Rim Protector,Big,Big,14.6,17.9,54.54545454545456,,83,5,24.8,7.0
 1628995,Kevin Knox II,POR,2022-23,january,Role Player,Role,Forward,15.3,2.2,58.69565217391305,,79,9,16.4,7.0
 201988,Patty Mills,BKN,2022-23,january,Role Player,Role,Guard,17.8,12.8,67.74193548387098,,72,6,16.3,7.0
 1630240,Saben Lee,PHX,2022-23,january,Role Player,Role,Guard,16.1,30.0,27.27272727272727,,74,10,17.3,7.0
 1631109,Mark Williams,CHA,2022-23,january,Finisher,Finisher,Big,16.4,1.7,0.0,,84,14,15.3,6.9
 201976,Patrick Beverley,CHI,2022-23,january,Role Player,Role,Guard,11.5,10.1,70.0,,74,13,26.9,6.9
-1628975,Jevon Carter,MIL,2022-23,january,3&D Wing,Wing,Guard,15.4,13.4,70.0,,73,16,18.1,6.9
+1628975,Jevon Carter,MIL,2022-23,january,Role Player,Role,Guard,15.4,13.4,70.0,,73,16,18.1,6.9
 1629660,Ty Jerome,GSW,2022-23,january,Role Player,Role,Guard,14.4,21.7,32.72727272727273,,77,8,18.0,6.8
 1629006,Josh Okogie,PHX,2022-23,january,3&D Wing,Wing,Guard,19.8,11.9,40.38461538461539,,76,13,15.8,6.6
 1630192,Zeke Nnaji,DEN,2022-23,january,Finisher,Finisher,Forward,14.1,3.6,36.36363636363637,,81,16,16.6,6.6
@@ -1064,7 +1064,7 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 1626204,Larry Nance Jr.,NOP,2022-23,january,3&D Wing,Wing,Forward,11.5,13.1,12.76595744680851,,80,13,22.1,6.3
 1628379,Luke Kennard,MEM,2022-23,january,Movement Shooter,Shooter,Guard,17.5,6.0,49.15254237288135,,77,7,18.2,6.3
 1630214,Xavier Tillman,MEM,2022-23,january,Role Player,Role,Forward,12.9,10.6,6.382978723404255,,79,12,17.6,6.3
-1627884,Derrick Jones Jr.,CHI,2022-23,january,3&D Wing,Wing,Forward,12.2,6.4,26.190476190476193,,78,14,18.5,6.2
+1627884,Derrick Jones Jr.,CHI,2022-23,january,3&D Wing,Wing,Forward,12.2,6.4,26.190476190476197,,78,14,18.5,6.2
 1629011,Mitchell Robinson,NYK,2022-23,january,Finisher,Finisher,Big,9.1,4.2,0.0,,84,9,29.6,6.1
 1631223,David Roddy,MEM,2022-23,january,Role Player,Role,Guard,16.1,5.0,39.21568627450981,,76,10,15.7,6.1
 1629637,Jaxson Hayes,NOP,2022-23,january,Finisher,Finisher,Big,15.1,8.2,13.953488372093023,,84,13,16.1,6.1
@@ -1073,12 +1073,12 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 201567,Kevin Love,MIA,2022-23,january,3&D Wing,Wing,Forward,17.2,9.7,63.49206349206349,,80,12,19.3,5.9
 1630587,Isaiah Livers,DET,2022-23,january,3&D Wing,Wing,Forward,9.2,4.7,73.46938775510203,,78,8,24.9,5.9
 1628998,Cody Martin,CHA,2022-23,january,Role Player,Role,Forward,12.2,11.1,38.33333333333333,,78,6,22.1,5.8
-203085,Austin Rivers,MIN,2022-23,january,Role Player,Role,Guard,9.5,10.8,60.416666666666664,,76,14,24.2,5.8
+203085,Austin Rivers,MIN,2022-23,january,Role Player,Role,Guard,9.5,10.8,60.41666666666666,,76,14,24.2,5.8
 1627732,Ben Simmons,BKN,2022-23,january,Playmaking Big,Big,Big,13.9,34.0,0.0,,82,11,27.8,5.7
 203488,Mike Muscala,BOS,2022-23,january,Rim Protector,Big,Big,13.2,5.5,71.11111111111111,,83,13,15.8,5.7
 1630591,Jalen Suggs,ORL,2022-23,january,Role Player,Role,Guard,16.0,17.4,57.777777777777786,6.6,77,13,16.0,5.5
 1629731,Dean Wade,CLE,2022-23,january,3&D Wing,Wing,Forward,12.6,7.9,80.0,,81,6,18.6,5.5
-1630544,Tre Mann,OKC,2022-23,january,3&D Wing,Wing,Guard,17.0,13.4,50.98039215686275,8.5,75,14,15.1,5.5
+1630544,Tre Mann,OKC,2022-23,january,Role Player,Role,Guard,17.0,13.4,50.98039215686276,8.5,75,14,15.1,5.5
 1630534,Ochai Agbaji,UTA,2022-23,january,3&D Wing,Wing,Guard,9.9,5.4,59.45945945945946,,77,13,18.9,5.5
 1630699,MarJon Beauchamp,MIL,2022-23,january,Role Player,Role,Forward,17.0,11.0,58.92857142857143,,79,10,15.6,5.4
 1629312,Haywood Highsmith,MIA,2022-23,january,Role Player,Role,Guard,13.1,3.6,57.777777777777786,,77,10,18.0,5.2
@@ -1111,30 +1111,30 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 203944,Julius Randle,NYK,2022-23,february,Shot Creator,Scorer,Forward,30.6,20.3,46.96969696969697,15.8,80,11,35.5,27.1
 202695,Kawhi Leonard,LAC,2022-23,february,Shot Creator,Scorer,Forward,26.5,17.1,27.083333333333336,16.5,79,9,37.9,27.0
 203078,Bradley Beal,WAS,2022-23,february,Primary Initiator,Primary,Guard,32.2,29.1,28.155339805825243,,76,9,33.9,26.8
-204001,Kristaps Porziņģis,WAS,2022-23,february,Post Scorer,Big,Big,26.8,13.8,39.726027397260275,,87,9,32.7,26.7
+204001,Kristaps Porziņģis,WAS,2022-23,february,Post Scorer,Big,Big,26.8,13.8,39.72602739726028,,87,9,32.7,26.7
 1629027,Trae Young,ATL,2022-23,february,Primary Initiator,Primary,Guard,31.8,46.7,33.333333333333336,12.0,73,10,33.4,26.6
 1627783,Pascal Siakam,TOR,2022-23,february,Shot Creator,Scorer,Forward,27.7,22.1,20.81218274111675,13.3,80,11,36.6,26.3
 1628378,Donovan Mitchell,CLE,2022-23,february,Primary Initiator,Primary,Guard,30.1,18.9,47.42268041237113,11.4,73,10,33.4,25.5
-1628369,Jayson Tatum,BOS,2022-23,february,Primary Initiator,Primary,Forward,30.7,26.1,47.938144329896915,,80,10,36.8,25.5
+1628369,Jayson Tatum,BOS,2022-23,february,Primary Initiator,Primary,Forward,30.7,26.1,47.93814432989692,,80,10,36.8,25.5
 203897,Zach LaVine,CHI,2022-23,february,Secondary Ball Handler,Secondary,Guard,27.6,14.8,35.92814371257485,9.3,77,12,36.2,25.5
 202691,Klay Thompson,GSW,2022-23,february,Movement Shooter,Shooter,Forward,28.0,11.4,61.139896373057,,78,11,33.8,25.5
 1627750,Jamal Murray,DEN,2022-23,february,Primary Initiator,Primary,Guard,29.6,31.1,52.02020202020202,14.6,76,6,32.9,25.2
-2544,LeBron James,LAL,2022-23,february,Shot Creator,Scorer,Forward,31.1,26.2,29.44162436548223,12.8,81,6,33.2,25.2
-202331,Paul George,LAC,2022-23,february,Primary Initiator,Primary,Forward,28.5,20.0,43.258426966292134,18.4,80,10,35.7,24.2
+2544,LeBron James,LAL,2022-23,february,Shot Creator,Scorer,Forward,31.1,26.2,29.441624365482237,12.8,81,6,33.2,25.2
+202331,Paul George,LAC,2022-23,february,Primary Initiator,Primary,Forward,28.5,20.0,43.25842696629213,18.4,80,10,35.7,24.2
 202681,Kyrie Irving,DAL,2022-23,february,Role Player,Role,Guard,27.0,26.9,40.98360655737705,,74,8,36.1,24.1
 1630163,LaMelo Ball,CHA,2022-23,february,Shot Creator,Scorer,Forward,27.8,34.9,52.0408163265306,12.2,79,11,36.6,23.6
 1628969,Mikal Bridges,BKN,2022-23,february,3&D Wing,Wing,Forward,26.3,17.3,33.132530120481924,2.3,78,10,34.0,23.6
 1628969,Mikal Bridges,BKN,2022-23,february,3&D Wing,Wing,Forward,26.3,17.3,33.132530120481924,2.3,78,10,34.0,23.6
 1630560,Cam Thomas,BKN,2022-23,february,Shot Creator,Scorer,Guard,32.2,17.9,32.27848101265822,16.4,75,11,27.8,23.5
 1630162,Anthony Edwards,MIN,2022-23,february,Primary Initiator,Primary,Guard,30.1,19.1,31.70731707317073,23.4,76,11,35.4,23.5
-1626164,Devin Booker,PHX,2022-23,february,Primary Initiator,Primary,Guard,31.8,31.1,31.35135135135135,14.0,77,6,31.7,23.3
+1626164,Devin Booker,PHX,2022-23,february,Primary Initiator,Primary,Guard,31.8,31.1,31.351351351351354,14.0,77,6,31.7,23.3
 203076,Anthony Davis,LAL,2022-23,february,Post Scorer,Big,Big,28.1,10.6,9.392265193370166,11.5,82,10,33.3,23.1
 1629028,Deandre Ayton,PHX,2022-23,february,Finisher,Finisher,Big,23.2,7.0,0.0,,84,10,32.1,22.8
 203999,Nikola Jokić,DEN,2022-23,february,Playmaking Big,Big,Big,25.2,39.3,6.569343065693431,5.3,83,11,33.3,22.6
-1627759,Jaylen Brown,BOS,2022-23,february,Shot Creator,Scorer,Forward,30.2,14.7,40.659340659340664,20.6,78,5,33.6,22.6
+1627759,Jaylen Brown,BOS,2022-23,february,Shot Creator,Scorer,Forward,30.2,14.7,40.65934065934066,20.6,78,5,33.6,22.6
 201935,James Harden,PHI,2022-23,february,Shot Creator,Scorer,Guard,25.8,45.8,50.3448275862069,42.5,77,11,36.6,22.5
 1629636,Darius Garland,CLE,2022-23,february,Secondary Ball Handler,Secondary,Guard,25.2,28.4,37.93103448275862,6.7,73,10,33.1,22.5
-1629639,Tyler Herro,MIA,2022-23,february,Shot Creator,Scorer,Guard,25.7,19.9,44.559585492227974,13.3,77,8,38.3,21.6
+1629639,Tyler Herro,MIA,2022-23,february,Shot Creator,Scorer,Guard,25.7,19.9,44.55958549222797,13.3,77,8,38.3,21.6
 202710,Jimmy Butler III,MIA,2022-23,february,Shot Creator,Scorer,Forward,26.5,30.4,5.673758865248227,17.7,79,10,31.6,21.6
 1630224,Jalen Green,HOU,2022-23,february,Primary Initiator,Primary,Guard,32.0,21.1,45.97701149425288,,76,7,27.5,21.6
 1629640,Keldon Johnson,SAS,2022-23,february,3&D Wing,Wing,Guard,25.3,17.9,23.899371069182383,3.9,77,10,33.6,21.5
@@ -1152,7 +1152,7 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 1628401,Derrick White,BOS,2022-23,february,Secondary Ball Handler,Secondary,Guard,22.7,24.4,46.89655172413793,4.7,76,11,33.7,19.7
 1630169,Tyrese Haliburton,IND,2022-23,february,Role Player,Role,Guard,23.0,40.4,43.97163120567376,,77,11,34.2,19.6
 203468,CJ McCollum,NOP,2022-23,february,Secondary Ball Handler,Secondary,Guard,25.1,27.4,38.65030674846626,8.8,75,9,34.0,19.4
-1629008,Michael Porter Jr.,DEN,2022-23,february,Movement Shooter,Shooter,Big,23.4,3.6,61.111111111111114,6.9,82,12,30.0,19.4
+1629008,Michael Porter Jr.,DEN,2022-23,february,Movement Shooter,Shooter,Big,23.4,3.6,61.11111111111112,6.9,82,12,30.0,19.4
 1626181,Norman Powell,LAC,2022-23,february,3&D Wing,Wing,Guard,25.7,12.6,42.33576642335766,10.9,76,9,28.2,19.3
 1627749,Dejounte Murray,ATL,2022-23,february,Role Player,Role,Guard,22.5,23.0,34.93975903614457,,77,11,35.3,19.3
 1630596,Evan Mobley,CLE,2022-23,february,Finisher,Finisher,Big,23.3,10.4,13.79310344827586,4.7,83,11,33.7,19.2
@@ -1169,7 +1169,7 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 203924,Jerami Grant,POR,2022-23,february,3&D Wing,Wing,Forward,20.8,8.2,39.02439024390244,10.7,80,8,34.8,17.0
 1631103,Malaki Branham,SAS,2022-23,february,Role Player,Role,Guard,20.8,12.9,38.235294117647065,,76,11,31.6,16.8
 1629628,RJ Barrett,NYK,2022-23,february,Secondary Ball Handler,Secondary,Forward,26.1,13.8,34.86842105263158,2.7,78,10,32.2,16.8
-201566,Russell Westbrook,LAC,2022-23,february,Shot Creator,Scorer,Guard,26.7,37.6,30.075187969924812,13.4,75,6,29.3,16.7
+201566,Russell Westbrook,LAC,2022-23,february,Shot Creator,Scorer,Guard,26.7,37.6,30.07518796992481,13.4,75,6,29.3,16.7
 1631094,Paolo Banchero,ORL,2022-23,february,Shot Creator,Scorer,Big,25.8,15.2,19.35483870967742,14.7,82,11,33.7,16.6
 1627741,Buddy Hield,IND,2022-23,february,Movement Shooter,Shooter,Guard,19.6,11.3,71.90082644628099,,76,11,31.7,16.5
 203114,Khris Middleton,MIL,2022-23,february,Secondary Ball Handler,Secondary,Forward,29.2,31.0,34.32835820895522,6.1,79,8,22.1,16.5
@@ -1195,35 +1195,35 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 1629012,Collin Sexton,UTA,2022-23,february,Secondary Ball Handler,Secondary,Guard,21.0,21.1,26.96629213483146,5.2,74,8,24.6,13.9
 203084,Harrison Barnes,SAC,2022-23,february,3&D Wing,Wing,Forward,15.5,6.6,40.42553191489361,8.0,80,12,32.7,13.8
 203497,Rudy Gobert,MIN,2022-23,february,Finisher,Finisher,Big,17.3,4.0,0.0,,85,8,27.1,13.8
-1629652,Luguentz Dort,OKC,2022-23,february,3&D Wing,Wing,Guard,21.3,8.9,44.166666666666664,,76,7,27.6,13.7
+1629652,Luguentz Dort,OKC,2022-23,february,3&D Wing,Wing,Guard,21.3,8.9,44.16666666666666,,76,7,27.6,13.7
 1626174,Christian Wood,DAL,2022-23,february,Role Player,Role,Forward,28.9,17.2,41.34615384615385,,81,9,19.0,13.7
-1630193,Immanuel Quickley,NYK,2022-23,february,3&D Wing,Wing,Guard,18.0,12.5,55.33980582524271,6.1,74,11,28.7,13.6
+1630193,Immanuel Quickley,NYK,2022-23,february,Finisher,Finisher,Guard,18.0,12.5,55.33980582524271,6.1,74,11,28.7,13.6
 1630182,Josh Green,DAL,2022-23,february,3&D Wing,Wing,Forward,16.7,10.5,43.87755102040816,,79,11,31.2,13.6
 1630530,Trey Murphy III,NOP,2022-23,february,Finisher,Finisher,Forward,17.2,6.0,59.79381443298969,6.6,80,10,28.6,13.4
 1631097,Bennedict Mathurin,IND,2022-23,february,Secondary Ball Handler,Secondary,Guard,21.1,8.5,30.188679245283023,9.0,77,11,26.6,13.4
 1628978,Donte DiVincenzo,GSW,2022-23,february,Movement Shooter,Shooter,Guard,16.2,16.1,76.13636363636364,1.9,76,12,28.3,13.3
-1629659,Talen Horton-Tucker,UTA,2022-23,february,Role Player,Role,Guard,23.8,30.6,27.192982456140353,,76,8,27.2,13.3
+1629659,Talen Horton-Tucker,UTA,2022-23,february,Role Player,Role,Guard,23.8,30.6,27.192982456140356,,76,8,27.2,13.3
 1630180,Saddiq Bey,ATL,2022-23,february,3&D Wing,Wing,Forward,17.4,7.6,58.333333333333336,6.5,79,9,27.1,13.2
 203471,Dennis Schröder,LAL,2022-23,february,Shot Creator,Scorer,Guard,16.6,27.2,32.25806451612903,14.8,73,10,31.3,13.1
-1628404,Josh Hart,NYK,2022-23,february,3&D Wing,Wing,Guard,16.0,13.1,40.229885057471265,,76,10,28.8,13.1
+1628404,Josh Hart,NYK,2022-23,february,3&D Wing,Wing,Guard,16.0,13.1,40.22988505747127,,76,10,28.8,13.1
 1629675,Naz Reid,MIN,2022-23,february,3&D Wing,Wing,Forward,26.5,14.3,44.117647058823536,3.8,81,11,20.0,13.1
 203992,Bogdan Bogdanović,ATL,2022-23,february,Role Player,Role,Guard,17.7,13.6,59.13978494623655,,77,11,26.0,12.9
-1630198,Isaiah Joe,OKC,2022-23,february,3&D Wing,Wing,Guard,17.1,9.0,78.57142857142856,,75,11,22.7,12.9
+1630198,Isaiah Joe,OKC,2022-23,february,Finisher,Finisher,Guard,17.1,9.0,78.57142857142856,,75,11,22.7,12.9
 202685,Jonas Valančiūnas,NOP,2022-23,february,Post Scorer,Big,Big,19.1,12.3,4.49438202247191,,83,9,26.2,12.8
 1629611,Terance Mann,LAC,2022-23,february,3&D Wing,Wing,Guard,15.3,15.0,37.662337662337656,3.7,77,10,26.9,12.6
 1629629,Cam Reddish,POR,2022-23,february,Stretch Shooter,Shooter,Forward,18.8,12.8,63.91752577319589,,79,6,27.4,12.5
 1628984,Devonte' Graham,SAS,2022-23,february,Stretch Shooter,Shooter,Guard,19.1,23.3,70.37037037037037,,73,8,26.0,12.5
 1628989,Kevin Huerter,SAC,2022-23,february,Stretch Shooter,Shooter,Forward,19.6,13.8,58.252427184466015,,79,12,27.3,12.4
 1630578,Alperen Sengun,HOU,2022-23,february,Shot Creator,Scorer,Big,20.7,24.0,7.6923076923076925,14.9,83,11,28.7,12.3
-203482,Kelly Olynyk,UTA,2022-23,february,Rim Protector,Big,Big,17.5,14.8,44.705882352941174,,83,11,28.3,12.2
+203482,Kelly Olynyk,UTA,2022-23,february,Rim Protector,Big,Big,17.5,14.8,44.70588235294117,,83,11,28.3,12.2
 1631095,Jabari Smith Jr.,HOU,2022-23,february,3&D Wing,Wing,Big,17.5,8.4,40.0,5.6,83,11,32.9,12.1
 1630183,Jaden McDaniels,MIN,2022-23,february,3&D Wing,Wing,Forward,15.2,10.0,39.53488372093023,2.3,81,11,29.4,12.0
-1628380,Zach Collins,SAS,2022-23,february,Playmaking Big,Big,Big,22.1,21.3,27.18446601941747,,83,11,24.5,12.0
+1628380,Zach Collins,SAS,2022-23,february,Playmaking Big,Big,Big,22.1,21.3,27.184466019417474,,83,11,24.5,12.0
 101108,Chris Paul,PHX,2022-23,february,Role Player,Role,Guard,19.9,38.2,26.666666666666668,,72,10,33.3,11.9
 1626196,Josh Richardson,NOP,2022-23,february,Role Player,Role,Forward,18.4,16.4,48.51485148514852,,78,9,28.8,11.9
 1627736,Malik Beasley,LAL,2022-23,february,Stretch Shooter,Shooter,Guard,21.7,9.8,73.50427350427351,,76,9,24.4,11.9
 1628977,Hamidou Diallo,DET,2022-23,february,Role Player,Role,Guard,23.3,7.2,1.149425287356322,,77,10,19.6,11.8
-201569,Eric Gordon,LAC,2022-23,february,3&D Wing,Wing,Guard,17.0,19.8,43.58974358974359,,75,9,25.7,11.8
+201569,Eric Gordon,LAC,2022-23,february,Role Player,Role,Guard,17.0,19.8,43.58974358974359,,75,9,25.7,11.8
 1630174,Aaron Nesmith,IND,2022-23,february,Movement Shooter,Shooter,Guard,16.3,7.2,55.68181818181818,,77,11,28.4,11.7
 203484,Kentavious Caldwell-Pope,DEN,2022-23,february,3&D Wing,Wing,Guard,14.0,11.7,44.87179487179488,3.1,77,11,30.5,11.7
 1629622,Max Strus,MIA,2022-23,february,Role Player,Role,Guard,17.0,12.6,75.51020408163265,,77,10,29.3,11.6
@@ -1231,24 +1231,24 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 1631110,Jeremy Sochan,SAS,2022-23,february,3&D Wing,Wing,Forward,23.2,17.5,21.1864406779661,,80,6,24.5,11.5
 1628381,John Collins,ATL,2022-23,february,3&D Wing,Wing,Forward,16.0,3.6,33.70786516853933,,81,9,27.7,11.4
 203991,Clint Capela,ATL,2022-23,february,Finisher,Finisher,Big,16.9,6.1,0.0,,82,11,25.7,11.4
-1628971,Bruce Brown,DEN,2022-23,february,Finisher,Finisher,Guard,17.3,15.4,40.217391304347835,4.1,76,12,27.8,11.3
+1628971,Bruce Brown,DEN,2022-23,february,Finisher,Finisher,Guard,17.3,15.4,40.21739130434784,4.1,76,12,27.8,11.3
 1629632,Coby White,CHI,2022-23,february,Role Player,Role,Guard,16.5,15.6,52.74725274725275,7.7,77,12,26.7,11.3
 1630164,James Wiseman,DET,2022-23,february,Role Player,Role,Big,20.8,0.0,9.09090909090909,,84,6,19.3,11.2
-201144,Mike Conley,MIN,2022-23,february,3&D Wing,Wing,Guard,15.2,28.7,56.09756097560976,,73,9,30.8,11.1
+201144,Mike Conley,MIN,2022-23,february,Role Player,Role,Guard,15.2,28.7,56.09756097560976,,73,9,30.8,11.1
 1629216,Gabe Vincent,MIA,2022-23,february,Movement Shooter,Shooter,Guard,16.4,10.1,71.42857142857142,,74,10,32.2,11.1
 202699,Tobias Harris,PHI,2022-23,february,3&D Wing,Wing,Forward,14.4,9.3,42.5531914893617,4.2,79,11,33.3,11.1
 1631099,Keegan Murray,SAC,2022-23,february,Movement Shooter,Shooter,Forward,14.4,7.9,64.8936170212766,4.2,80,12,30.3,11.0
 1630175,Cole Anthony,ORL,2022-23,february,Secondary Ball Handler,Secondary,Guard,21.4,29.8,26.436781609195403,6.9,75,9,21.3,10.9
-1628449,Chris Boucher,TOR,2022-23,february,Role Player,Role,Forward,17.1,2.5,38.666666666666664,,81,11,21.6,10.8
+1628449,Chris Boucher,TOR,2022-23,february,Role Player,Role,Forward,17.1,2.5,38.66666666666666,,81,11,21.6,10.8
 1631106,Tari Eason,HOU,2022-23,february,3&D Wing,Wing,Forward,20.8,7.9,20.454545454545453,5.0,80,11,21.7,10.7
 1629669,Jaylen Nowell,MIN,2022-23,february,Role Player,Role,Guard,22.4,13.8,38.372093023255815,,76,9,17.8,10.7
 1631117,Walker Kessler,UTA,2022-23,february,Finisher,Finisher,Big,12.0,4.9,1.4925373134328357,,84,11,29.1,10.6
 1630559,Austin Reaves,LAL,2022-23,february,Shot Creator,Scorer,Guard,14.7,19.5,51.78571428571429,13.5,77,8,22.3,10.5
 203488,Mike Muscala,BOS,2022-23,february,Role Player,Role,Big,17.7,6.4,76.31578947368422,,83,8,18.7,10.5
 1630583,Santi Aldama,MEM,2022-23,february,Stretch Shooter,Shooter,Big,19.3,7.7,55.95238095238096,,84,10,22.3,10.5
-1630166,Deni Avdija,WAS,2022-23,february,Shot Creator,Scorer,Forward,18.2,12.1,40.229885057471265,14.0,81,11,27.3,10.5
+1630166,Deni Avdija,WAS,2022-23,february,Shot Creator,Scorer,Forward,18.2,12.1,40.22988505747127,14.0,81,11,27.3,10.5
 1627826,Ivica Zubac,LAC,2022-23,february,Post Scorer,Big,Big,13.1,5.2,0.0,,84,8,30.9,10.4
-1628420,Monte Morris,WAS,2022-23,february,Role Player,Role,Guard,15.7,27.1,39.473684210526315,,74,8,26.8,10.4
+1628420,Monte Morris,WAS,2022-23,february,Role Player,Role,Guard,15.7,27.1,39.47368421052632,,74,8,26.8,10.4
 1628372,Dennis Smith Jr.,CHA,2022-23,february,Role Player,Role,Guard,17.8,20.6,26.31578947368421,,74,11,25.3,10.4
 1628966,Keita Bates-Diop,SAS,2022-23,february,Role Player,Role,Forward,14.7,11.4,22.619047619047617,,80,11,29.4,10.4
 1631109,Mark Williams,CHA,2022-23,february,Finisher,Finisher,Big,16.0,3.1,0.0,,84,11,21.7,10.3
@@ -1280,10 +1280,10 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 1630528,Josh Christopher,HOU,2022-23,february,Role Player,Role,Guard,21.0,16.1,24.285714285714285,,76,11,17.4,9.2
 1630172,Patrick Williams,CHI,2022-23,february,3&D Wing,Wing,Forward,16.2,7.9,33.75,3.6,79,12,26.3,9.2
 1628415,Dillon Brooks,MEM,2022-23,february,3&D Wing,Wing,Forward,15.7,8.3,46.73913043478261,9.3,78,9,28.9,9.0
-1629060,Rui Hachimura,LAL,2022-23,february,3&D Wing,Wing,Forward,16.6,3.6,23.076923076923077,3.7,80,10,23.1,9.0
+1629060,Rui Hachimura,LAL,2022-23,february,3&D Wing,Wing,Forward,16.6,3.6,23.07692307692308,3.7,80,10,23.1,9.0
 1630573,Sam Hauser,BOS,2022-23,february,Movement Shooter,Shooter,Forward,14.7,5.6,79.36507936507937,,79,11,20.0,9.0
 1629634,Brandon Clarke,MEM,2022-23,february,Role Player,Role,Forward,15.3,13.8,0.0,,80,10,20.1,8.9
-1628975,Jevon Carter,MIL,2022-23,february,3&D Wing,Wing,Guard,15.8,10.0,65.27777777777779,,73,10,20.6,8.9
+1628975,Jevon Carter,MIL,2022-23,february,Role Player,Role,Guard,15.8,10.0,65.27777777777779,,73,10,20.6,8.9
 1630227,Daishen Nix,HOU,2022-23,february,Stretch Shooter,Shooter,Guard,18.1,17.7,50.53763440860215,,76,7,25.1,8.7
 1629022,Lonnie Walker IV,LAL,2022-23,february,Role Player,Role,Guard,21.9,11.0,47.14285714285714,,76,10,15.3,8.7
 1630544,Tre Mann,OKC,2022-23,february,Stretch Shooter,Shooter,Guard,22.7,18.8,50.617283950617285,8.5,75,10,16.5,8.7
@@ -1314,11 +1314,11 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 1629642,Nassir Little,POR,2022-23,february,Role Player,Role,Guard,15.4,7.6,64.51612903225806,,77,11,19.7,7.5
 203914,Gary Harris,ORL,2022-23,february,3&D Wing,Wing,Guard,10.4,6.0,85.0,,76,10,26.8,7.4
 203925,Joe Harris,BKN,2022-23,february,Role Player,Role,Forward,15.5,12.5,83.63636363636363,,78,11,17.7,7.4
-1630529,Herbert Jones,NOP,2022-23,february,3&D Wing,Wing,Forward,12.3,9.4,28.985507246376812,,79,10,31.1,7.3
+1630529,Herbert Jones,NOP,2022-23,february,3&D Wing,Wing,Forward,12.3,9.4,28.98550724637681,,79,10,31.1,7.3
 1629001,De'Anthony Melton,PHI,2022-23,february,Role Player,Role,Guard,12.8,11.9,61.40350877192983,,74,11,24.4,7.3
 1626153,Delon Wright,WAS,2022-23,february,Role Player,Role,Guard,11.2,16.7,38.46153846153846,,77,11,26.0,7.3
 1630208,Nick Richards,CHA,2022-23,february,Role Player,Role,Big,14.5,1.0,0.0,,84,8,19.1,7.3
-1630631,Jose Alvarado,NOP,2022-23,february,3&D Wing,Wing,Guard,17.2,18.7,45.45454545454546,4.2,72,10,18.8,7.1
+1630631,Jose Alvarado,NOP,2022-23,february,Role Player,Role,Guard,17.2,18.7,45.45454545454546,4.2,72,10,18.8,7.1
 1626220,Royce O'Neale,BKN,2022-23,february,3&D Wing,Wing,Forward,13.0,16.3,79.36507936507937,,78,11,25.6,7.1
 1631128,Christian Braun,DEN,2022-23,february,Finisher,Finisher,Forward,12.9,10.6,29.78723404255319,,78,12,19.7,7.1
 1628464,Daniel Theis,IND,2022-23,february,Role Player,Role,Forward,20.1,12.5,25.396825396825403,,80,7,15.5,7.0
@@ -1343,7 +1343,7 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 1629626,Bol Bol,ORL,2022-23,february,Rim Protector,Big,Big,15.1,5.0,24.444444444444446,,86,11,16.2,5.9
 1629680,Matisse Thybulle,POR,2022-23,february,Role Player,Role,Guard,9.9,5.7,65.11627906976743,,77,9,21.1,5.9
 1630537,Chris Duarte,IND,2022-23,february,Role Player,Role,Guard,17.6,6.7,52.54237288135592,,77,8,16.3,5.9
-1626145,Tyus Jones,MEM,2022-23,february,3&D Wing,Wing,Guard,15.8,26.1,43.859649122807014,,74,10,18.7,5.7
+1626145,Tyus Jones,MEM,2022-23,february,Role Player,Role,Guard,15.8,26.1,43.85964912280701,,74,10,18.7,5.7
 1628379,Luke Kennard,MEM,2022-23,february,Movement Shooter,Shooter,Guard,11.0,6.5,72.91666666666667,,77,6,18.4,5.7
 201937,Ricky Rubio,CLE,2022-23,february,Role Player,Role,Guard,17.7,29.0,52.63157894736842,,74,7,18.4,5.6
 1627777,Georges Niang,PHI,2022-23,february,Role Player,Role,Forward,15.1,7.6,72.72727272727273,,79,11,17.7,5.5
@@ -1372,7 +1372,7 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 1628983,Shai Gilgeous-Alexander,OKC,2022-23,march,Primary Initiator,Primary,Forward,33.3,21.1,8.530805687203792,26.3,78,11,35.3,33.5
 203954,Joel Embiid,PHI,2022-23,march,Shot Creator,Scorer,Big,37.1,24.3,15.135135135135132,12.3,84,15,33.4,33.2
 203081,Damian Lillard,POR,2022-23,march,Primary Initiator,Primary,Guard,35.8,35.9,54.71698113207547,,74,10,36.8,32.5
-1626164,Devin Booker,PHX,2022-23,march,Primary Initiator,Primary,Guard,31.6,22.8,25.118483412322274,14.0,77,15,35.8,32.1
+1626164,Devin Booker,PHX,2022-23,march,Primary Initiator,Primary,Guard,31.6,22.8,25.118483412322277,14.0,77,15,35.8,32.1
 1628369,Jayson Tatum,BOS,2022-23,march,Primary Initiator,Primary,Forward,31.6,19.0,45.63106796116504,,80,14,36.3,31.2
 1628378,Donovan Mitchell,CLE,2022-23,march,Primary Initiator,Primary,Guard,32.6,14.9,38.88888888888889,11.4,73,13,36.7,30.6
 203507,Giannis Antetokounmpo,MIL,2022-23,march,Primary Initiator,Primary,Big,35.9,34.6,12.234042553191488,10.9,84,12,30.8,30.4
@@ -1396,7 +1396,7 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 204001,Kristaps Porziņģis,WAS,2022-23,march,Post Scorer,Big,Big,27.8,14.8,31.60919540229885,,87,14,32.6,24.5
 1628368,De'Aaron Fox,SAC,2022-23,march,Primary Initiator,Primary,Guard,28.9,28.9,33.52601156069364,10.1,75,14,31.5,24.1
 201942,DeMar DeRozan,CHI,2022-23,march,Shot Creator,Scorer,Forward,25.4,22.3,17.261904761904763,19.9,78,14,37.7,24.1
-203078,Bradley Beal,WAS,2022-23,march,Primary Initiator,Primary,Guard,31.0,25.8,18.947368421052634,,76,11,34.8,23.5
+203078,Bradley Beal,WAS,2022-23,march,Primary Initiator,Primary,Guard,31.0,25.8,18.947368421052637,,76,11,34.8,23.5
 1629027,Trae Young,ATL,2022-23,march,Primary Initiator,Primary,Guard,29.9,39.7,32.53012048192771,12.0,73,15,31.8,23.3
 1630224,Jalen Green,HOU,2022-23,march,Role Player,Role,Guard,26.4,14.7,35.95505617977528,,76,17,35.6,23.2
 1629640,Keldon Johnson,SAS,2022-23,march,3&D Wing,Wing,Guard,27.1,15.7,33.33333333333333,3.9,77,7,33.2,22.9
@@ -1416,8 +1416,8 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 1629639,Tyler Herro,MIA,2022-23,march,Shot Creator,Scorer,Guard,24.3,18.8,50.318471337579616,13.3,77,15,34.9,20.3
 1627750,Jamal Murray,DEN,2022-23,march,Shot Creator,Scorer,Guard,25.1,29.9,47.27272727272727,14.6,76,13,35.3,20.2
 201935,James Harden,PHI,2022-23,march,Shot Creator,Scorer,Guard,24.2,42.9,48.32214765100672,42.5,77,11,38.1,20.1
-1626156,D'Angelo Russell,LAL,2022-23,march,Secondary Ball Handler,Secondary,Guard,23.4,30.2,49.664429530201346,8.7,76,9,33.9,20.0
-1627783,Pascal Siakam,TOR,2022-23,march,Shot Creator,Scorer,Forward,24.0,21.7,23.076923076923077,13.3,80,14,37.8,19.9
+1626156,D'Angelo Russell,LAL,2022-23,march,Secondary Ball Handler,Secondary,Guard,23.4,30.2,49.66442953020135,8.7,76,9,33.9,20.0
+1627783,Pascal Siakam,TOR,2022-23,march,Shot Creator,Scorer,Forward,24.0,21.7,23.07692307692308,13.3,80,14,37.8,19.9
 1631114,Jalen Williams,OKC,2022-23,march,Shot Creator,Scorer,Guard,20.5,20.0,20.610687022900763,14.8,77,15,34.1,19.8
 1626179,Terry Rozier,CHA,2022-23,march,Primary Initiator,Primary,Guard,28.3,30.5,41.66666666666667,,73,11,33.6,19.7
 1630193,Immanuel Quickley,NYK,2022-23,march,Secondary Ball Handler,Secondary,Guard,24.3,20.9,48.29931972789115,6.1,74,15,31.8,19.7
@@ -1436,23 +1436,23 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 1629014,Anfernee Simons,POR,2022-23,march,Shot Creator,Scorer,Guard,26.4,16.5,48.75,18.2,75,6,30.1,18.3
 1628989,Kevin Huerter,SAC,2022-23,march,Stretch Shooter,Shooter,Forward,22.1,14.8,59.01639344262296,,79,13,26.4,18.3
 1631093,Jaden Ivey,DET,2022-23,march,Primary Initiator,Primary,Guard,28.5,33.6,40.90909090909091,5.6,76,12,33.3,18.3
-1629659,Talen Horton-Tucker,UTA,2022-23,march,Primary Initiator,Primary,Guard,30.1,33.1,28.947368421052634,,76,14,28.1,18.1
+1629659,Talen Horton-Tucker,UTA,2022-23,march,Primary Initiator,Primary,Guard,30.1,33.1,28.947368421052637,,76,14,28.1,18.1
 1630596,Evan Mobley,CLE,2022-23,march,Finisher,Finisher,Big,19.6,14.1,9.448818897637794,4.7,83,14,36.6,18.1
 1628380,Zach Collins,SAS,2022-23,march,3&D Wing,Wing,Big,23.9,18.0,35.60606060606061,,83,10,29.2,17.8
 1629008,Michael Porter Jr.,DEN,2022-23,march,Movement Shooter,Shooter,Big,22.2,5.9,53.125,6.9,82,13,28.3,17.7
 1629023,P.J. Washington,CHA,2022-23,march,3&D Wing,Wing,Forward,24.7,12.1,41.44736842105263,4.1,79,13,31.1,17.5
 1630559,Austin Reaves,LAL,2022-23,march,Shot Creator,Scorer,Guard,19.4,26.8,31.57894736842105,13.5,77,15,30.4,17.4
-202696,Nikola Vučević,CHI,2022-23,march,Post Scorer,Big,Big,21.7,13.5,22.627737226277375,,82,15,33.6,17.3
+202696,Nikola Vučević,CHI,2022-23,march,Post Scorer,Big,Big,21.7,13.5,22.62773722627737,,82,15,33.6,17.3
 201950,Jrue Holiday,MIL,2022-23,march,Secondary Ball Handler,Secondary,Guard,21.6,32.3,42.1875,10.1,77,14,31.1,17.2
 1630567,Scottie Barnes,TOR,2022-23,march,Finisher,Finisher,Forward,21.7,21.5,14.685314685314683,7.9,80,12,33.8,17.2
 1628976,Wendell Carter Jr.,ORL,2022-23,march,3&D Wing,Wing,Big,19.4,8.2,43.69747899159664,,82,12,30.8,17.2
-203915,Spencer Dinwiddie,BKN,2022-23,march,Role Player,Role,Guard,22.0,39.9,38.405797101449274,,77,15,35.8,16.7
-1631110,Jeremy Sochan,SAS,2022-23,march,3&D Wing,Wing,Forward,27.4,13.4,25.675675675675674,,80,6,26.0,16.7
+203915,Spencer Dinwiddie,BKN,2022-23,march,Role Player,Role,Guard,22.0,39.9,38.40579710144928,,77,15,35.8,16.7
+1631110,Jeremy Sochan,SAS,2022-23,march,3&D Wing,Wing,Forward,27.4,13.4,25.675675675675677,,80,6,26.0,16.7
 1629661,Cameron Johnson,BKN,2022-23,march,Stretch Shooter,Shooter,Forward,20.3,11.3,53.278688524590166,,80,15,31.3,16.6
 1628365,Markelle Fultz,ORL,2022-23,march,Role Player,Role,Guard,21.2,27.5,13.076923076923078,,76,15,32.7,16.6
-1626167,Myles Turner,IND,2022-23,march,3&D Wing,Wing,Big,25.3,11.4,27.192982456140353,,83,9,26.5,16.4
+1626167,Myles Turner,IND,2022-23,march,3&D Wing,Wing,Big,25.3,11.4,27.192982456140356,,83,9,26.5,16.4
 1630175,Cole Anthony,ORL,2022-23,march,Secondary Ball Handler,Secondary,Guard,20.6,16.5,32.231404958677686,6.9,75,15,28.6,16.1
-201144,Mike Conley,MIN,2022-23,march,3&D Wing,Wing,Guard,17.8,21.0,56.60377358490566,,73,14,31.4,15.7
+201144,Mike Conley,MIN,2022-23,march,Role Player,Role,Guard,17.8,21.0,56.60377358490566,,73,14,31.4,15.7
 1630231,KJ Martin,HOU,2022-23,march,Role Player,Role,Forward,16.0,5.4,28.71287128712871,,79,17,32.6,15.6
 1630702,Jaden Hardy,DAL,2022-23,march,Stretch Shooter,Shooter,Guard,26.7,18.6,50.42016806722689,,75,11,23.5,15.6
 1630170,Devin Vassell,SAS,2022-23,march,Movement Shooter,Shooter,Guard,23.1,17.6,47.61904761904762,2.7,77,9,30.2,15.6
@@ -1479,9 +1479,9 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 1628984,Devonte' Graham,SAS,2022-23,march,Stretch Shooter,Shooter,Guard,20.0,22.9,77.89473684210527,,73,11,26.3,13.9
 1629670,Jordan Nwora,IND,2022-23,march,Role Player,Role,Forward,20.4,12.0,42.056074766355145,,81,15,25.8,13.9
 202699,Tobias Harris,PHI,2022-23,march,3&D Wing,Wing,Forward,17.1,11.8,35.78947368421053,4.2,79,15,31.0,13.9
-1626174,Christian Wood,DAL,2022-23,march,Role Player,Role,Forward,24.7,15.9,27.47252747252747,,81,13,21.7,13.8
+1626174,Christian Wood,DAL,2022-23,march,Role Player,Role,Forward,24.7,15.9,27.472527472527474,,81,13,21.7,13.8
 1631101,Shaedon Sharpe,POR,2022-23,march,Shot Creator,Scorer,Guard,21.2,13.3,48.543689320388346,12.3,77,16,26.6,13.8
-201569,Eric Gordon,LAC,2022-23,march,3&D Wing,Wing,Guard,17.2,10.3,61.95652173913045,,75,14,27.4,13.8
+201569,Eric Gordon,LAC,2022-23,march,Role Player,Role,Guard,17.2,10.3,61.95652173913045,,75,14,27.4,13.8
 1631117,Walker Kessler,UTA,2022-23,march,Finisher,Finisher,Big,14.6,7.2,1.2195121951219514,,84,13,28.7,13.8
 1627747,Caris LeVert,CLE,2022-23,march,3&D Wing,Wing,Forward,17.2,16.1,52.083333333333336,6.2,78,14,30.7,13.6
 1629614,Andrew Nembhard,IND,2022-23,march,Role Player,Role,Guard,19.4,24.4,33.33333333333333,8.9,75,15,28.6,13.6
@@ -1491,62 +1491,62 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 1628415,Dillon Brooks,MEM,2022-23,march,Stretch Shooter,Shooter,Forward,19.6,12.9,54.23728813559322,9.3,78,15,29.7,13.3
 1630164,James Wiseman,DET,2022-23,march,Role Player,Role,Big,21.9,5.0,8.256880733944955,,84,15,26.5,13.1
 1629652,Luguentz Dort,OKC,2022-23,march,3&D Wing,Wing,Guard,17.5,7.2,52.58620689655172,,76,17,32.9,12.9
-1626145,Tyus Jones,MEM,2022-23,march,3&D Wing,Wing,Guard,18.1,31.9,44.44444444444444,,74,16,29.2,12.9
+1626145,Tyus Jones,MEM,2022-23,march,Role Player,Role,Guard,18.1,31.9,44.44444444444444,,74,16,29.2,12.9
 203482,Kelly Olynyk,UTA,2022-23,march,Playmaking Big,Big,Big,17.7,21.4,39.024390243902445,,83,13,28.7,12.8
 1629651,Nic Claxton,BKN,2022-23,march,Shot Creator,Scorer,Big,15.3,12.4,0.0,14.1,83,15,30.7,12.8
 1628370,Malik Monk,SAC,2022-23,march,Stretch Shooter,Shooter,Guard,23.7,30.0,59.13978494623655,8.4,75,16,21.2,12.6
 101108,Chris Paul,PHX,2022-23,march,Role Player,Role,Guard,18.3,41.3,40.17857142857143,,72,15,31.2,12.6
 202709,Cory Joseph,DET,2022-23,march,Role Player,Role,Guard,16.7,21.8,52.32558139534884,,75,14,28.1,12.5
-1630538,Bones Hyland,LAC,2022-23,march,Stretch Shooter,Shooter,Guard,27.3,33.7,55.263157894736835,10.9,74,7,20.4,12.4
+1630538,Bones Hyland,LAC,2022-23,march,Stretch Shooter,Shooter,Guard,27.3,33.7,55.26315789473684,10.9,74,7,20.4,12.4
 1629656,Quentin Grimes,NYK,2022-23,march,3&D Wing,Wing,Guard,15.0,10.6,75.29411764705883,10.4,77,15,28.6,12.4
 1630534,Ochai Agbaji,UTA,2022-23,march,3&D Wing,Wing,Guard,17.2,8.5,63.46153846153846,,77,14,30.1,12.4
 1627826,Ivica Zubac,LAC,2022-23,march,Post Scorer,Big,Big,17.3,5.8,0.0,,84,12,24.8,12.3
 204456,T.J. McConnell,IND,2022-23,march,Secondary Ball Handler,Secondary,Guard,20.4,34.7,12.76595744680851,5.9,73,13,24.4,12.2
-1630168,Onyeka Okongwu,ATL,2022-23,march,3&D Wing,Wing,Forward,18.0,5.8,3.3333333333333335,1.6,81,15,20.4,12.2
+1630168,Onyeka Okongwu,ATL,2022-23,march,3&D Wing,Wing,Forward,18.0,5.8,3.333333333333333,1.6,81,15,20.4,12.2
 1626171,Bobby Portis,MIL,2022-23,march,3&D Wing,Wing,Big,19.8,4.4,35.71428571428571,3.2,83,16,24.3,12.2
 203937,Kyle Anderson,MIN,2022-23,march,Shot Creator,Scorer,Forward,14.9,26.6,19.387755102040813,12.6,81,14,35.2,12.1
 1631099,Keegan Murray,SAC,2022-23,march,Movement Shooter,Shooter,Forward,16.1,5.8,72.44897959183673,4.2,80,16,28.8,12.0
 203991,Clint Capela,ATL,2022-23,march,Finisher,Finisher,Big,13.9,5.4,0.0,,82,15,26.2,11.9
 1628381,John Collins,ATL,2022-23,march,3&D Wing,Wing,Forward,16.6,6.2,38.94736842105264,,81,15,27.2,11.9
-203935,Marcus Smart,BOS,2022-23,march,Stretch Shooter,Shooter,Guard,18.2,19.0,61.16504854368931,4.2,76,15,31.4,11.7
+203935,Marcus Smart,BOS,2022-23,march,Stretch Shooter,Shooter,Guard,18.2,19.0,61.16504854368932,4.2,76,15,31.4,11.7
 1630180,Saddiq Bey,ATL,2022-23,march,3&D Wing,Wing,Forward,17.9,7.0,52.68817204301075,6.5,79,15,24.2,11.7
-1627739,Kris Dunn,UTA,2022-23,march,3&D Wing,Wing,Guard,20.1,32.3,17.204301075268816,3.9,75,14,23.9,11.6
+1627739,Kris Dunn,UTA,2022-23,march,Finisher,Finisher,Guard,20.1,32.3,17.204301075268816,3.9,75,14,23.9,11.6
 1628386,Jarrett Allen,CLE,2022-23,march,Finisher,Finisher,Forward,13.7,7.7,0.0,,81,8,32.3,11.6
 203992,Bogdan Bogdanović,ATL,2022-23,march,Role Player,Role,Guard,17.5,11.9,61.79775280898876,,77,14,24.8,11.6
 1628379,Luke Kennard,MEM,2022-23,march,Movement Shooter,Shooter,Guard,14.9,12.1,77.77777777777777,,77,17,23.9,11.5
 1628966,Keita Bates-Diop,SAS,2022-23,march,Role Player,Role,Forward,16.8,12.1,43.66197183098592,,80,14,22.8,11.5
 1630165,Killian Hayes,DET,2022-23,march,Role Player,Role,Guard,22.4,35.6,25.40983606557377,,77,13,30.2,11.5
-1631103,Malaki Branham,SAS,2022-23,march,Role Player,Role,Guard,19.8,9.5,36.607142857142854,,76,13,26.1,11.5
+1631103,Malaki Branham,SAS,2022-23,march,Role Player,Role,Guard,19.8,9.5,36.60714285714285,,76,13,26.1,11.5
 1628971,Bruce Brown,DEN,2022-23,march,Finisher,Finisher,Guard,20.0,14.8,24.73118279569892,4.1,76,14,26.8,11.4
 1631323,Simone Fontecchio,UTA,2022-23,march,Movement Shooter,Shooter,Forward,19.9,7.6,55.44554455445544,,79,13,23.5,11.4
-1629632,Coby White,CHI,2022-23,march,Role Player,Role,Guard,17.3,23.9,56.179775280898866,7.7,77,15,25.8,11.2
+1629632,Coby White,CHI,2022-23,march,Role Player,Role,Guard,17.3,23.9,56.17977528089887,7.7,77,15,25.8,11.2
 1630200,Tre Jones,SAS,2022-23,march,Finisher,Finisher,Guard,15.3,30.5,15.909090909090908,4.8,73,11,28.3,11.2
 203585,Rodney McGruder,DET,2022-23,march,Role Player,Role,Guard,14.7,6.4,58.42696629213483,,76,10,27.6,11.1
 1631105,Jalen Duren,DET,2022-23,march,Finisher,Finisher,Big,19.7,12.8,1.388888888888889,8.9,83,10,21.5,11.0
 201143,Al Horford,BOS,2022-23,march,3&D Wing,Wing,Forward,12.3,16.8,71.7948717948718,,81,13,29.6,10.9
 1630256,Jae'Sean Tate,HOU,2022-23,march,Role Player,Role,Guard,18.9,19.1,21.51898734177215,,77,9,22.7,10.9
-1630198,Isaiah Joe,OKC,2022-23,march,3&D Wing,Wing,Guard,17.0,7.4,74.73684210526315,,75,17,26.3,10.9
+1630198,Isaiah Joe,OKC,2022-23,march,Finisher,Finisher,Guard,17.0,7.4,74.73684210526315,,75,17,26.3,10.9
 1629001,De'Anthony Melton,PHI,2022-23,march,Role Player,Role,Guard,16.2,12.8,62.19512195121951,,74,17,28.4,10.8
 1628960,Grayson Allen,MIL,2022-23,march,3&D Wing,Wing,Guard,14.7,8.5,72.83950617283952,2.8,76,14,27.1,10.8
 1630174,Aaron Nesmith,IND,2022-23,march,Movement Shooter,Shooter,Guard,17.6,10.0,56.32183908045978,,77,13,26.3,10.8
-1630214,Xavier Tillman,MEM,2022-23,march,Role Player,Role,Forward,14.2,11.8,2.6315789473684212,,79,17,27.6,10.8
+1630214,Xavier Tillman,MEM,2022-23,march,Role Player,Role,Forward,14.2,11.8,2.631578947368421,,79,17,27.6,10.8
 203994,Jusuf Nurkić,POR,2022-23,march,Finisher,Finisher,Big,20.9,18.1,30.337078651685395,,84,7,23.6,10.7
 1630570,Trendon Watford,POR,2022-23,march,Role Player,Role,Forward,17.3,16.3,20.454545454545453,7.8,80,13,27.0,10.7
 203926,Doug McDermott,SAS,2022-23,march,Stretch Shooter,Shooter,Forward,19.4,12.1,61.627906976744185,,78,8,20.7,10.6
 1630591,Jalen Suggs,ORL,2022-23,march,Role Player,Role,Guard,18.0,10.0,38.46153846153847,6.6,77,11,26.2,10.5
 1631106,Tari Eason,HOU,2022-23,march,3&D Wing,Wing,Forward,17.3,5.7,27.27272727272727,5.0,80,17,26.6,10.4
-1629629,Cam Reddish,POR,2022-23,march,Role Player,Role,Forward,17.1,9.7,42.857142857142854,,79,14,27.7,10.3
+1629629,Cam Reddish,POR,2022-23,march,Role Player,Role,Forward,17.1,9.7,42.85714285714285,,79,14,27.7,10.3
 1630572,Sandro Mamukelashvili,SAS,2022-23,march,3&D Wing,Wing,Big,18.9,15.6,40.90909090909091,,82,14,22.8,10.3
 1627752,Taurean Prince,MIN,2022-23,march,3&D Wing,Wing,Forward,18.9,10.9,50.0,,78,12,23.3,10.3
 1627736,Malik Beasley,LAL,2022-23,march,Stretch Shooter,Shooter,Guard,20.6,6.3,68.31683168316832,,76,15,23.9,10.2
 1630188,Jalen Smith,IND,2022-23,march,3&D Wing,Wing,Forward,19.3,8.9,32.467532467532465,,81,13,20.1,10.0
 1629006,Josh Okogie,PHX,2022-23,march,3&D Wing,Wing,Guard,16.9,8.8,54.320987654320994,,76,15,27.3,9.9
-1630587,Isaiah Livers,DET,2022-23,march,3&D Wing,Wing,Forward,13.4,6.4,56.666666666666664,,78,10,30.4,9.9
+1630587,Isaiah Livers,DET,2022-23,march,3&D Wing,Wing,Forward,13.4,6.4,56.66666666666666,,78,10,30.4,9.9
 1630166,Deni Avdija,WAS,2022-23,march,Shot Creator,Scorer,Forward,17.7,18.2,39.024390243902445,14.0,81,16,26.8,9.8
 1628404,Josh Hart,NYK,2022-23,march,3&D Wing,Wing,Guard,10.9,14.9,30.909090909090907,,76,15,31.4,9.8
 1630172,Patrick Williams,CHI,2022-23,march,3&D Wing,Wing,Forward,15.8,3.3,37.662337662337656,3.6,79,15,26.4,9.8
 1628420,Monte Morris,WAS,2022-23,march,Role Player,Role,Guard,18.4,26.6,36.04651162790698,,74,11,23.8,9.7
-1628975,Jevon Carter,MIL,2022-23,march,3&D Wing,Wing,Guard,17.7,12.0,62.65060240963856,,73,16,20.8,9.7
+1628975,Jevon Carter,MIL,2022-23,march,Role Player,Role,Guard,17.7,12.0,62.65060240963856,,73,16,20.8,9.7
 1631109,Mark Williams,CHA,2022-23,march,Finisher,Finisher,Big,15.6,4.2,0.0,,84,8,26.0,9.6
 1628372,Dennis Smith Jr.,CHA,2022-23,march,Role Player,Role,Guard,19.2,35.2,26.041666666666668,,74,13,27.1,9.6
 203082,Terrence Ross,PHX,2022-23,march,Stretch Shooter,Shooter,Forward,20.2,12.4,64.1025641025641,,79,13,17.2,9.6
@@ -1555,13 +1555,13 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 1630537,Chris Duarte,IND,2022-23,march,Role Player,Role,Guard,16.5,7.2,48.8095238095238,,77,7,23.7,9.3
 1629655,Daniel Gafford,WAS,2022-23,march,Finisher,Finisher,Big,13.6,7.6,0.0,,82,15,25.4,9.3
 1630529,Herbert Jones,NOP,2022-23,march,3&D Wing,Wing,Forward,13.1,12.9,33.80281690140845,,79,15,30.3,9.3
-1630647,Eugene Omoruyi,DET,2022-23,march,Role Player,Role,Forward,18.3,5.7,38.666666666666664,,78,14,21.8,9.2
+1630647,Eugene Omoruyi,DET,2022-23,march,Role Player,Role,Forward,18.3,5.7,38.66666666666666,,78,14,21.8,9.2
 1630230,Naji Marshall,NOP,2022-23,march,3&D Wing,Wing,Forward,18.9,16.2,34.72222222222222,5.6,79,15,21.9,9.2
 1628997,Caleb Martin,MIA,2022-23,march,3&D Wing,Wing,Guard,13.5,8.2,45.31249999999999,,77,14,27.6,9.1
-1630182,Josh Green,DAL,2022-23,march,3&D Wing,Wing,Forward,14.8,10.0,38.666666666666664,,79,14,27.8,9.0
+1630182,Josh Green,DAL,2022-23,march,3&D Wing,Wing,Forward,14.8,10.0,38.66666666666666,,79,14,27.8,9.0
 1629622,Max Strus,MIA,2022-23,march,Role Player,Role,Guard,14.1,12.0,73.91304347826086,,77,15,24.0,9.0
 1630583,Santi Aldama,MEM,2022-23,march,3&D Wing,Wing,Big,15.8,7.4,42.42424242424242,,84,17,22.8,8.9
-1626168,Trey Lyles,SAC,2022-23,march,Role Player,Role,Forward,17.9,8.1,62.295081967213115,,81,14,19.5,8.9
+1626168,Trey Lyles,SAC,2022-23,march,Role Player,Role,Forward,17.9,8.1,62.29508196721312,,81,14,19.5,8.9
 203493,Reggie Bullock Jr.,DAL,2022-23,march,Role Player,Role,Forward,10.6,4.8,83.09859154929579,,78,13,32.0,8.8
 203506,Victor Oladipo,MIA,2022-23,march,Stretch Shooter,Shooter,Guard,20.6,16.7,56.79012345679012,,75,11,23.4,8.8
 203496,Robert Covington,LAC,2022-23,march,Role Player,Role,Forward,16.7,7.5,50.87719298245613,,79,9,16.9,8.7
@@ -1577,13 +1577,13 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 1630543,Isaiah Jackson,IND,2022-23,march,Finisher,Finisher,Forward,15.9,3.8,1.5873015873015877,,81,14,18.3,8.2
 1628962,Udoka Azubuike,UTA,2022-23,march,Role Player,Role,Big,15.7,5.2,0.0,,83,5,17.6,8.2
 1630208,Nick Richards,CHA,2022-23,march,Role Player,Role,Big,12.7,5.8,2.173913043478261,,84,14,22.7,8.1
-1629611,Terance Mann,LAC,2022-23,march,3&D Wing,Wing,Guard,14.9,16.4,44.827586206896555,3.7,77,14,22.0,8.1
+1629611,Terance Mann,LAC,2022-23,march,3&D Wing,Wing,Guard,14.9,16.4,44.82758620689656,3.7,77,14,22.0,8.1
 1629004,Svi Mykhailiuk,CHA,2022-23,march,3&D Wing,Wing,Forward,15.5,14.7,53.333333333333336,,79,13,20.3,8.1
 1629646,Charles Bassey,SAS,2022-23,march,Role Player,Role,Forward,17.3,19.0,3.6363636363636367,,81,6,16.4,8.0
 203914,Gary Harris,ORL,2022-23,march,3&D Wing,Wing,Guard,12.5,6.7,80.88235294117648,,76,13,25.0,7.9
-1629060,Rui Hachimura,LAL,2022-23,march,3&D Wing,Wing,Forward,15.2,4.3,29.687499999999993,3.7,80,14,20.0,7.9
-203484,Kentavious Caldwell-Pope,DEN,2022-23,march,3&D Wing,Wing,Guard,11.7,10.3,48.684210526315795,3.1,77,13,32.3,7.8
-1626166,Cameron Payne,PHX,2022-23,march,Role Player,Role,Guard,22.2,31.6,39.726027397260275,,73,15,16.1,7.8
+1629060,Rui Hachimura,LAL,2022-23,march,3&D Wing,Wing,Forward,15.2,4.3,29.687499999999996,3.7,80,14,20.0,7.9
+203484,Kentavious Caldwell-Pope,DEN,2022-23,march,3&D Wing,Wing,Guard,11.7,10.3,48.6842105263158,3.1,77,13,32.3,7.8
+1626166,Cameron Payne,PHX,2022-23,march,Role Player,Role,Guard,22.2,31.6,39.72602739726028,,73,15,16.1,7.8
 1629684,Grant Williams,BOS,2022-23,march,3&D Wing,Wing,Forward,14.0,6.8,69.4915254237288,,78,14,21.9,7.8
 1626196,Josh Richardson,NOP,2022-23,march,Role Player,Role,Forward,14.8,9.3,56.71641791044776,,78,13,22.3,7.8
 1628978,Donte DiVincenzo,GSW,2022-23,march,Movement Shooter,Shooter,Guard,13.9,15.9,73.97260273972603,1.9,76,16,27.6,7.8
@@ -1593,9 +1593,9 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 203486,Mason Plumlee,LAC,2022-23,march,Rim Protector,Big,Big,14.3,11.1,0.0,,84,14,20.1,7.6
 1629234,Drew Eubanks,POR,2022-23,march,Finisher,Finisher,Big,14.6,12.3,3.8461538461538463,,82,16,20.7,7.6
 1630549,Day'Ron Sharpe,BKN,2022-23,march,Finisher,Finisher,Forward,19.2,8.6,10.526315789473683,3.7,81,9,15.3,7.6
-203552,Seth Curry,BKN,2022-23,march,Role Player,Role,Guard,19.1,8.5,48.387096774193544,,73,14,15.7,7.5
+203552,Seth Curry,BKN,2022-23,march,Role Player,Role,Guard,19.1,8.5,48.38709677419354,,73,14,15.7,7.5
 1629020,Jarred Vanderbilt,LAL,2022-23,march,3&D Wing,Wing,Forward,12.6,9.1,27.11864406779661,,80,15,26.0,7.5
-1628995,Kevin Knox II,POR,2022-23,march,Role Player,Role,Forward,19.4,10.0,42.857142857142854,,79,11,17.1,7.5
+1628995,Kevin Knox II,POR,2022-23,march,Role Player,Role,Forward,19.4,10.0,42.85714285714285,,79,11,17.1,7.5
 1630171,Isaac Okoro,CLE,2022-23,march,3&D Wing,Wing,Guard,10.8,5.9,49.01960784313726,,77,12,24.5,7.3
 1629680,Matisse Thybulle,POR,2022-23,march,Role Player,Role,Guard,11.8,7.4,60.31746031746032,,77,16,27.2,7.3
 201567,Kevin Love,MIA,2022-23,march,3&D Wing,Wing,Forward,17.6,11.9,71.42857142857143,,80,14,20.4,7.2
@@ -1603,7 +1603,7 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 1627777,Georges Niang,PHI,2022-23,march,Role Player,Role,Forward,14.1,5.1,80.0,,79,16,19.2,7.1
 1626192,Pat Connaughton,MIL,2022-23,march,Role Player,Role,Guard,12.5,6.8,76.66666666666666,,77,16,22.3,6.9
 203939,Dwight Powell,DAL,2022-23,march,Finisher,Finisher,Big,14.0,8.4,2.5641025641025643,,82,14,17.8,6.9
-1630598,Aaron Wiggins,OKC,2022-23,march,3&D Wing,Wing,Guard,15.6,3.8,27.777777777777775,6.3,77,17,17.3,6.9
+1630598,Aaron Wiggins,OKC,2022-23,march,3&D Wing,Wing,Guard,15.6,3.8,27.77777777777777,6.3,77,17,17.3,6.9
 1629642,Nassir Little,POR,2022-23,march,Role Player,Role,Guard,17.8,7.0,46.478873239436616,,77,14,20.5,6.8
 1630322,Lindy Waters III,OKC,2022-23,march,Role Player,Role,Forward,15.0,6.5,89.0909090909091,,78,13,16.4,6.8
 1627936,Alex Caruso,CHI,2022-23,march,3&D Wing,Wing,Guard,12.6,10.4,55.319148936170215,,77,11,21.5,6.7
@@ -1623,7 +1623,7 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 202687,Bismack Biyombo,PHX,2022-23,march,Role Player,Role,Forward,15.0,9.2,0.0,,80,11,16.2,6.2
 202704,Reggie Jackson,DEN,2022-23,march,Stretch Shooter,Shooter,Guard,19.0,18.9,54.929577464788736,,74,7,19.9,6.1
 1629003,Shake Milton,PHI,2022-23,march,Role Player,Role,Guard,14.2,19.7,38.0,,77,16,18.7,6.1
-1631119,Jaylin Williams,OKC,2022-23,march,3&D Wing,Wing,Forward,12.5,9.5,55.769230769230774,,81,17,22.1,6.0
+1631119,Jaylin Williams,OKC,2022-23,march,3&D Wing,Wing,Forward,12.5,9.5,55.76923076923077,,81,17,22.1,6.0
 1629013,Landry Shamet,PHX,2022-23,march,3&D Wing,Wing,Guard,14.3,13.3,66.66666666666666,,76,5,18.5,6.0
 201976,Patrick Beverley,CHI,2022-23,march,Role Player,Role,Guard,10.8,16.1,67.27272727272727,,74,15,28.1,5.9
 1630205,Lamar Stevens,CLE,2022-23,march,Role Player,Role,Forward,12.9,2.5,30.76923076923077,,78,13,20.3,5.8
@@ -1655,12 +1655,12 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 203076,Anthony Davis,LAL,2022-23,april,Post Scorer,Big,Big,24.3,13.6,2.5974025974025974,11.5,82,5,34.6,21.6
 203468,CJ McCollum,NOP,2022-23,april,Secondary Ball Handler,Secondary,Guard,23.9,14.8,34.78260869565218,8.8,75,5,39.0,21.6
 1628969,Mikal Bridges,BKN,2022-23,april,3&D Wing,Wing,Forward,34.5,13.5,36.36363636363637,2.3,78,5,30.7,20.4
-1630559,Austin Reaves,LAL,2022-23,april,Shot Creator,Scorer,Guard,16.6,19.6,46.938775510204074,13.5,77,5,34.0,20.0
+1630559,Austin Reaves,LAL,2022-23,april,Shot Creator,Scorer,Guard,16.6,19.6,46.93877551020408,13.5,77,5,34.0,20.0
 1630577,Julian Champagnie,SAS,2022-23,april,Movement Shooter,Shooter,Forward,22.0,5.4,59.1549295774648,,79,5,29.2,20.0
 1628995,Kevin Knox II,POR,2022-23,april,Role Player,Role,Forward,23.7,5.9,46.478873239436616,,79,5,29.3,18.4
 1630557,Corey Kispert,WAS,2022-23,april,Movement Shooter,Shooter,Forward,21.6,4.2,59.09090909090909,,78,5,28.5,18.0
 1628966,Keita Bates-Diop,SAS,2022-23,april,Role Player,Role,Forward,21.5,16.0,32.758620689655174,,80,5,26.7,18.0
-1627739,Kris Dunn,UTA,2022-23,april,3&D Wing,Wing,Guard,18.4,28.9,12.5,3.9,75,5,33.3,18.0
+1627739,Kris Dunn,UTA,2022-23,april,Finisher,Finisher,Guard,18.4,28.9,12.5,3.9,75,5,33.3,18.0
 1630534,Ochai Agbaji,UTA,2022-23,april,3&D Wing,Wing,Guard,25.4,13.4,44.04761904761904,,77,5,31.9,18.0
 1630200,Tre Jones,SAS,2022-23,april,Finisher,Finisher,Guard,19.6,41.3,19.29824561403509,4.8,73,5,29.6,17.8
 1631098,Johnny Davis,WAS,2022-23,april,Role Player,Role,Guard,22.7,15.2,44.18604651162791,,76,5,36.0,17.0
@@ -1673,18 +1673,18 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 1631099,Keegan Murray,SAC,2022-23,april,Movement Shooter,Shooter,Forward,15.0,7.8,58.18181818181819,4.2,80,5,31.9,14.6
 1629632,Coby White,CHI,2022-23,april,Secondary Ball Handler,Secondary,Guard,21.1,19.6,38.88888888888889,7.7,77,5,26.9,13.8
 1629134,Kendrick Nunn,WAS,2022-23,april,Role Player,Role,Guard,27.5,24.6,45.45454545454545,,75,5,20.0,13.8
-1630173,Precious Achiuwa,TOR,2022-23,april,Finisher,Finisher,Forward,23.7,3.3,31.91489361702127,,80,5,19.8,13.2
+1630173,Precious Achiuwa,TOR,2022-23,april,Finisher,Finisher,Forward,23.7,3.3,31.914893617021274,,80,5,19.8,13.2
 1630180,Saddiq Bey,ATL,2022-23,april,3&D Wing,Wing,Forward,16.4,10.0,50.0,6.5,79,5,28.0,13.0
 1629060,Rui Hachimura,LAL,2022-23,april,3&D Wing,Wing,Forward,20.9,7.1,25.0,3.7,80,5,22.7,12.8
 1630591,Jalen Suggs,ORL,2022-23,april,Stretch Shooter,Shooter,Guard,21.8,14.1,57.777777777777786,6.6,77,5,21.5,12.6
-1630692,Jordan Goodwin,WAS,2022-23,april,3&D Wing,Wing,Guard,22.1,31.6,35.0,,75,5,26.3,12.6
+1630692,Jordan Goodwin,WAS,2022-23,april,Role Player,Role,Guard,22.1,31.6,35.0,,75,5,26.3,12.6
 1630572,Sandro Mamukelashvili,SAS,2022-23,april,3&D Wing,Wing,Big,20.5,12.1,34.6938775510204,,82,5,24.6,12.4
 1631105,Jalen Duren,DET,2022-23,april,Finisher,Finisher,Big,15.9,3.2,0.0,8.9,83,5,30.1,11.8
 202685,Jonas Valančiūnas,NOP,2022-23,april,Post Scorer,Big,Big,22.1,8.3,7.843137254901962,,83,5,24.3,11.8
 1630552,Jalen Johnson,ATL,2022-23,april,Secondary Ball Handler,Secondary,Forward,22.1,22.5,27.27272727272727,7.9,80,5,20.5,11.6
 1630172,Patrick Williams,CHI,2022-23,april,3&D Wing,Wing,Forward,18.2,6.1,42.00000000000001,3.6,79,5,28.0,11.6
 1627736,Malik Beasley,LAL,2022-23,april,Role Player,Role,Guard,17.9,7.2,73.33333333333333,,76,5,22.0,11.4
-203109,Jae Crowder,MIL,2022-23,april,Role Player,Role,Forward,17.9,11.3,46.666666666666664,,78,5,21.2,11.2
+203109,Jae Crowder,MIL,2022-23,april,Role Player,Role,Forward,17.9,11.3,46.66666666666666,,78,5,21.2,11.2
 1630164,James Wiseman,DET,2022-23,april,Role Player,Role,Big,22.4,6.5,2.3255813953488373,,84,5,22.7,11.2
 1629677,Luka Samanic,UTA,2022-23,april,Stretch Shooter,Shooter,Big,18.9,11.7,55.55555555555556,,82,5,24.7,11.2
 1628470,Torrey Craig,PHX,2022-23,april,Role Player,Role,Forward,16.3,11.1,37.142857142857146,,79,5,18.7,11.0
@@ -1693,7 +1693,7 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 202704,Reggie Jackson,DEN,2022-23,april,Role Player,Role,Guard,21.6,22.9,50.0,,74,5,19.7,10.6
 1629622,Max Strus,MIA,2022-23,april,Role Player,Role,Guard,17.5,12.2,78.57142857142856,,77,5,24.1,10.4
 1630168,Onyeka Okongwu,ATL,2022-23,april,3&D Wing,Wing,Forward,17.6,7.1,12.820512820512825,1.6,81,5,22.3,10.2
-1629667,Jalen McDaniels,PHI,2022-23,april,Role Player,Role,Forward,16.5,7.9,29.26829268292683,,81,5,23.2,10.0
+1629667,Jalen McDaniels,PHI,2022-23,april,Role Player,Role,Forward,16.5,7.9,29.268292682926838,,81,5,23.2,10.0
 1631128,Christian Braun,DEN,2022-23,april,Finisher,Finisher,Forward,19.3,7.1,29.54545454545454,,78,5,24.2,9.8
 202709,Cory Joseph,DET,2022-23,april,Role Player,Role,Guard,13.5,27.0,73.80952380952381,,75,5,29.6,9.8
 1631245,Quenton Jackson,WAS,2022-23,april,3&D Wing,Wing,Guard,16.0,15.7,25.0,,77,5,24.6,9.8
@@ -1707,16 +1707,16 @@ PLAYER_ID,PLAYER,TEAM,Season,Month,Archetype,Category,Size,USG_Pct,AST_Pct,Three
 1631230,Dominick Barlow,SAS,2022-23,april,3&D Wing,Wing,Forward,11.1,10.9,0.0,,81,5,25.5,8.8
 1629216,Gabe Vincent,MIA,2022-23,april,Movement Shooter,Shooter,Guard,17.1,17.4,60.97560975609757,,74,5,22.5,8.8
 1630702,Jaden Hardy,DAL,2022-23,april,Secondary Ball Handler,Secondary,Guard,23.7,15.1,43.58974358974359,,75,5,15.7,8.6
-1630181,R.J. Hampton,DET,2022-23,april,Role Player,Role,Guard,16.6,5.9,45.714285714285715,,76,5,21.3,8.6
+1630181,R.J. Hampton,DET,2022-23,april,Role Player,Role,Guard,16.6,5.9,45.71428571428572,,76,5,21.3,8.6
 1631212,Peyton Watson,DEN,2022-23,april,Finisher,Finisher,Forward,16.7,10.3,20.0,6.7,79,5,21.5,8.0
-1629006,Josh Okogie,PHX,2022-23,april,3&D Wing,Wing,Guard,15.0,11.1,48.387096774193544,,76,5,25.7,7.8
+1629006,Josh Okogie,PHX,2022-23,april,3&D Wing,Wing,Guard,15.0,11.1,48.38709677419354,,76,5,25.7,7.8
 1630194,Paul Reed,PHI,2022-23,april,Finisher,Finisher,Forward,16.8,4.6,6.666666666666667,,81,5,17.0,7.8
 1631219,John Butler Jr.,POR,2022-23,april,Rim Protector,Big,Big,12.1,7.3,62.85714285714287,,84,5,24.6,7.4
 1628962,Udoka Azubuike,UTA,2022-23,april,Role Player,Role,Big,8.0,2.3,0.0,,83,5,23.4,6.8
 1641645,Xavier Cooks,WAS,2022-23,april,Role Player,Role,Forward,13.1,6.0,3.8461538461538463,,80,5,21.5,6.8
 1630245,Ayo Dosunmu,CHI,2022-23,april,3&D Wing,Wing,Guard,14.8,11.2,30.303030303030305,2.2,77,5,22.9,6.6
 1628997,Caleb Martin,MIA,2022-23,april,3&D Wing,Wing,Guard,11.9,11.9,27.58620689655172,,77,5,25.7,6.6
-203082,Terrence Ross,PHX,2022-23,april,Role Player,Role,Forward,15.7,18.4,45.714285714285715,,79,5,19.7,6.2
+203082,Terrence Ross,PHX,2022-23,april,Role Player,Role,Forward,15.7,18.4,45.71428571428572,,79,5,19.7,6.2
 1631104,Blake Wesley,SAS,2022-23,april,Role Player,Role,Guard,16.3,19.1,18.421052631578945,,76,5,24.9,6.0
 1628972,Troy Brown Jr.,LAL,2022-23,april,Role Player,Role,Forward,9.4,9.5,52.17391304347826,,79,5,22.3,6.0
 1629020,Jarred Vanderbilt,LAL,2022-23,april,3&D Wing,Wing,Forward,11.1,5.1,30.0,,80,5,18.9,5.6
