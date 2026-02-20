@@ -1,6 +1,5 @@
 from dependency_injector import containers, providers
-from typing import Type, Any
-from pathlib import Path
+from typing import Type
 
 # concrete classes
 from ml_framework.core.config_management.config_manager import ConfigManager
