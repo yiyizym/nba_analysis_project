@@ -76,6 +76,7 @@ class ProcessScrapedNBAData(BaseNBADataProcessor):
                            error_message=str(e),
                            error_type=type(e).__name__)
             raise DataProcessingError("Unexpected error in process_data",
+                                      self.app_logger,
                                       error_message=str(e))
         
     @log_performance
@@ -108,6 +109,7 @@ class ProcessScrapedNBAData(BaseNBADataProcessor):
             return final_df
         except Exception as e:
             raise DataProcessingError("Error in combine_team_data",
+                                      self.app_logger,
                                       error_message=str(e),
                                       dataframe_shape=df.shape)
 
@@ -168,6 +170,7 @@ class ProcessScrapedNBAData(BaseNBADataProcessor):
 
         except Exception as e:
             raise DataProcessingError("Error in validate_home_visitor_teams",
+                                      self.app_logger,
                                       error_message=str(e),
                                       dataframe_shape=df.shape)
 
@@ -233,6 +236,7 @@ class ProcessScrapedNBAData(BaseNBADataProcessor):
 
         except Exception as e:
             raise DataProcessingError("Error in save_invalid_records",
+                                      self.app_logger,
                                       error_message=str(e),
                                       invalid_team_records=len(invalid_team_df),
                                       invalid_game_records=len(invalid_game_df) if invalid_game_df is not None else 0)
@@ -274,6 +278,7 @@ class ProcessScrapedNBAData(BaseNBADataProcessor):
         
         except Exception as e:
             raise DataProcessingError("Error in merge_dataframes",
+                                      self.app_logger,
                                       error_message=str(e),
                                       dataframe_count=len(scraped_dataframes))
 
@@ -312,6 +317,7 @@ class ProcessScrapedNBAData(BaseNBADataProcessor):
             return df
         except Exception as e:
             raise DataProcessingError("Error in handle_anomalous_data",
+                                      self.app_logger,
                                       error_message=str(e),
                                       dataframe_shape=df.shape)
 
@@ -342,6 +348,7 @@ class ProcessScrapedNBAData(BaseNBADataProcessor):
             return df, column_mapping
         except Exception as e:
             raise DataProcessingError("Error in transform_data",
+                                      self.app_logger,
                                       error_message=str(e),
                                       dataframe_shape=df.shape)
 
@@ -381,6 +388,7 @@ class ProcessScrapedNBAData(BaseNBADataProcessor):
             return df, column_mapping
         except Exception as e:
             raise DataProcessingError("Error in rename_columns",
+                                      self.app_logger,
                                       error_message=str(e),
                                       dataframe_shape=df.shape)
 
@@ -426,6 +434,7 @@ class ProcessScrapedNBAData(BaseNBADataProcessor):
             return df
         except Exception as e:
             raise DataProcessingError("Error in extract_new_columns",
+                                      self.app_logger,
                                       error_message=str(e),
                                       dataframe_shape=df.shape)
 
@@ -467,6 +476,7 @@ class ProcessScrapedNBAData(BaseNBADataProcessor):
             return reordered_df
         except Exception as e:
             raise DataProcessingError("Error in reorder_columns",
+                                      self.app_logger,
                                       error_message=str(e),
                                       dataframe_shape=df.shape)
 
