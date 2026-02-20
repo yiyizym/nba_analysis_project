@@ -4,6 +4,7 @@ from pathlib import Path
 
 # concrete classes
 from ml_framework.core.config_management.config_manager import ConfigManager
+from ml_framework.framework.data_access.base_data_access import BaseDataAccess
 from ml_framework.framework.data_access.csv_data_access import CSVDataAccess
 from ml_framework.core.app_logging.app_logger import AppLogger
 from ml_framework.core.error_handling.error_handler_factory import ErrorHandlerFactory
@@ -64,16 +65,19 @@ class CommonDIContainer(containers.DeclarativeContainer):
     )
 
     @classmethod
-    def configure_data_access(cls, data_access_class: Type[Any]) -> None:
+    def configure_data_access(cls, data_access_class: Type[BaseDataAccess]) -> None:
         """
         Configure the container to use a different data access implementation.
         
         Args:
             data_access_class: The data access class to use
         """
-        cls.data_access_factory.override(
-            providers.Factory(
-                DataAccessFactory,
-                data_access_class=data_access_class
+        cls.data_access.override(
+            providers.Singleton(
+                data_access_class,
+                config=cls.config,
+                app_logger=cls.app_logger,
+                app_file_handler=cls.app_file_handler,
+                error_handler=cls.error_handler_factory
             )
         )
