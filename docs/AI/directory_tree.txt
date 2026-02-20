@@ -489,11 +489,7 @@
 │       │   ├── feature_selector.py
 │       │   └── main.py
 │       ├── inference/
-│       │   ├── di_container.py
-│       │   ├── game_predictor.py
-│       │   ├── main.py
-│       │   ├── main_complex_OLD.py
-│       │   └── schedule_loader.py
+│       │   └── main.py
 │       ├── webscraping/
 │       │   ├── old/
 │       │   │   ├── test_websraping.py
