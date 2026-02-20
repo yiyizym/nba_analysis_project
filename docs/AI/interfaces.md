@@ -57,9 +57,9 @@ Located in `src/ml_framework/framework/` - ML framework components and base clas
   - Follows scikit-learn fit/transform pattern
 
 ### Uncertainty Quantification
-- **UncertaintyCalibrator** - `src/ml_framework/uncertainty/uncertainty_calibrator.py`
-  - Model uncertainty quantification and calibration (concrete implementation)
-  - Supports various calibration methods for prediction confidence
+- **Note** - `src/ml_framework/uncertainty/__init__.py`
+  - Module reserved for future advanced uncertainty quantification methods
+  - Calibration and Conformal Prediction are currently in `src/ml_framework/postprocessing/`
 
 ### Model Registry
 Located in `src/ml_framework/model_registry/` - Model persistence and versioning infrastructure.
@@ -373,7 +373,7 @@ Class to store logging context data.
    - **Preprocessing**: Generic data preprocessing transformations
    - **Postprocessing**: Model output transformations (calibration, threshold optimization)
    - **Visualization**: Generic charts and exploratory analysis
-   - **Uncertainty**: Model uncertainty quantification and calibration
+   - **Uncertainty**: Placeholder for advanced uncertainty quantification
    - **Model Registry**: Model persistence and versioning (MLflow, custom, cloud)
    - **Inference**: Production model serving and prediction
 
