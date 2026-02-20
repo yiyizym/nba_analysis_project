@@ -7,32 +7,22 @@ This module now focuses on true uncertainty quantification methods.
 For probability calibration, use:
     from ml_framework.postprocessing import ProbabilityCalibrator
 
-This module is reserved for:
-    - Conformal prediction
-    - Uncertainty estimation
-    - Prediction intervals
+For conformal prediction, use:
+    from ml_framework.postprocessing import ConformalPredictor
+
+This module is reserved for future uncertainty quantification methods such as:
+    - Advanced Uncertainty estimation
     - Bayesian uncertainty quantification
 
-Note: uncertainty_calibrator.py is deprecated and will be removed in a future version.
+Note: uncertainty_calibrator.py has been removed.
 """
-
-# Deprecated - use ml_framework.postprocessing.ProbabilityCalibrator instead
-from ml_framework.uncertainty.uncertainty_calibrator import (
-    UncertaintyCalibrator,
-    BoostingModelWrapper
-)
 
 import warnings
 
 warnings.warn(
-    "UncertaintyCalibrator is deprecated. "
-    "Use ml_framework.postprocessing.ProbabilityCalibrator instead. "
-    "This module will be refactored to focus on uncertainty quantification.",
+    "The ml_framework.uncertainty module is currently empty. "
+    "Use ml_framework.postprocessing.ProbabilityCalibrator for calibration "
+    "and ml_framework.postprocessing.ConformalPredictor for conformal prediction.",
     DeprecationWarning,
     stacklevel=2
 )
-
-__all__ = [
-    'UncertaintyCalibrator',  # Deprecated
-    'BoostingModelWrapper'     # Deprecated
-]
