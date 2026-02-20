@@ -501,7 +501,9 @@ def format_team_news(news_data: Optional[Dict], team_a: str, team_b: str) -> str
                     'team_news': '[动态]',
                     'game_recap': '[战报]'
                 }.get(item.get('news_type', ''), '[新闻]')
-                lines.append(f"- {type_cn} {item.get('headline', '')}")
+                lines.append(f"#### {type_cn} {item.get('headline', '')}")
+                lines.append(f"{item.get('summary', '')}")
+                lines.append("")
             lines.append("")
 
     return "\n".join(lines) if lines else ""
