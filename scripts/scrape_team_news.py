@@ -30,24 +30,24 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 NEWS_CACHE_DIR = Path("data/news")
 CURRENT_SEASON = "2025-26"
 
-# Team abbreviation to ESPN slug mapping
-ABBREV_TO_ESPN_SLUG = {
-    'ATL': 'atl/atlanta-hawks', 'BOS': 'bos/boston-celtics',
-    'BKN': 'bkn/brooklyn-nets', 'BRK': 'bkn/brooklyn-nets',
-    'CHA': 'cha/charlotte-hornets', 'CHI': 'chi/chicago-bulls',
-    'CLE': 'cle/cleveland-cavaliers', 'DAL': 'dal/dallas-mavericks',
-    'DEN': 'den/denver-nuggets', 'DET': 'det/detroit-pistons',
-    'GSW': 'gs/golden-state-warriors', 'HOU': 'hou/houston-rockets',
-    'IND': 'ind/indiana-pacers', 'LAC': 'lac/la-clippers',
-    'LAL': 'lal/los-angeles-lakers', 'MEM': 'mem/memphis-grizzlies',
-    'MIA': 'mia/miami-heat', 'MIL': 'mil/milwaukee-bucks',
-    'MIN': 'min/minnesota-timberwolves', 'NOP': 'no/new-orleans-pelicans',
-    'NYK': 'ny/new-york-knicks', 'OKC': 'okc/oklahoma-city-thunder',
-    'ORL': 'orl/orlando-magic', 'PHI': 'phi/philadelphia-76ers',
-    'PHX': 'phx/phoenix-suns', 'POR': 'por/portland-trail-blazers',
-    'SAC': 'sac/sacramento-kings', 'SAS': 'sa/san-antonio-spurs',
-    'TOR': 'tor/toronto-raptors', 'UTA': 'utah/utah-jazz',
-    'WAS': 'wsh/washington-wizards'
+# Team abbreviation to Chinese name mapping for Hupu
+ABBREV_TO_CHINESE = {
+    'ATL': '老鹰', 'BOS': '凯尔特人',
+    'BKN': '篮网', 'BRK': '篮网',
+    'CHA': '黄蜂', 'CHI': '公牛',
+    'CLE': '骑士', 'DAL': '独行侠',
+    'DEN': '掘金', 'DET': '活塞',
+    'GSW': '勇士', 'HOU': '火箭',
+    'IND': '步行者', 'LAC': '快船',
+    'LAL': '湖人', 'MEM': '灰熊',
+    'MIA': '热火', 'MIL': '雄鹿',
+    'MIN': '森林狼', 'NOP': '鹈鹕',
+    'NYK': '尼克斯', 'OKC': '雷霆',
+    'ORL': '魔术', 'PHI': '76人',
+    'PHX': '太阳', 'POR': '开拓者',
+    'SAC': '国王', 'SAS': '马刺',
+    'TOR': '猛龙', 'UTA': '爵士',
+    'WAS': '奇才'
 }
 
 ABBREV_TO_TEAM_ID = {
@@ -188,103 +188,125 @@ def scrape_standings() -> Dict[str, TeamStandings]:
         print(f"error: {e}")
         return {}
 
-
-def scrape_espn_news(team_abbrev: str, max_items: int = 5) -> List[TeamNewsItem]:
+def scrape_hupu_news(team_abbrev: str, max_items: int = 5) -> List[TeamNewsItem]:
     """
-    Scrape news from ESPN team page.
+    从虎扑抓取球队新闻（含正文）
 
     Args:
-        team_abbrev: Team abbreviation (e.g., 'HOU')
-        max_items: Maximum number of news items to return
+        team_abbrev: 球队缩写 (如 'HOU')
+        max_items: 返回的最大新闻数量
 
     Returns:
         List of TeamNewsItem objects.
     """
-    espn_slug = ABBREV_TO_ESPN_SLUG.get(team_abbrev)
-    if not espn_slug:
-        print(f"  Warning: Unknown ESPN slug for {team_abbrev}")
+    chinese_name = ABBREV_TO_CHINESE.get(team_abbrev)
+    if not chinese_name:
+        print(f"  Warning: Unknown Chinese name for {team_abbrev}")
         return []
 
-    url = f"https://www.espn.com/nba/team/_/name/{espn_slug}"
+    # Search keywords: Chinese name
+    search_keywords = [chinese_name]
 
-    try:
-        print(f"  Fetching ESPN news for {team_abbrev}...", end=" ")
-        time.sleep(random.uniform(1, 2))
+    print(f"  Fetching Hupu news for {team_abbrev} ({chinese_name})...")
 
-        response = requests.get(url, headers=get_request_headers(), timeout=30)
-        response.raise_for_status()
+    news_items = []
 
-        soup = BeautifulSoup(response.text, 'html.parser')
+    # Loop through pages to find enough news
+    # Typically check first 10 pages
+    for page in range(1, 11):
+        if len(news_items) >= max_items:
+            break
 
-        news_items = []
+        url = f"https://voice.hupu.com/nba/{page}"
+        try:
+            # Polite delay
+            time.sleep(random.uniform(1, 2))
 
-        # Find news articles - ESPN uses various class patterns
-        # Try multiple selectors
-        article_selectors = [
-            'article.contentItem',
-            '.contentItem__content',
-            '[class*="ContentList"] article',
-            '.headlineStack__list li'
-        ]
-
-        for selector in article_selectors:
-            articles = soup.select(selector)
-            if articles:
-                break
-
-        if not articles:
-            # Fallback: look for any links with headlines
-            articles = soup.select('a[class*="headline"], h2 a, .headlineStack a')
-
-        for article in articles[:max_items]:
-            try:
-                # Extract headline
-                headline_elem = article.select_one('h2, .contentItem__title, .headlineStack__headline')
-                if not headline_elem:
-                    headline_elem = article
-                headline = headline_elem.get_text(strip=True)
-
-                if not headline or len(headline) < 10:
-                    continue
-
-                # Extract link
-                link_elem = article if article.name == 'a' else article.select_one('a')
-                url = link_elem.get('href', '') if link_elem else ''
-                if url and not url.startswith('http'):
-                    url = f"https://www.espn.com{url}"
-
-                # Determine news type from headline keywords
-                news_type = NewsType.TEAM_NEWS.value
-                headline_lower = headline.lower()
-                if any(kw in headline_lower for kw in ['injury', 'injured', 'out', 'miss', 'return']):
-                    news_type = NewsType.INJURY.value
-                elif any(kw in headline_lower for kw in ['trade', 'traded', 'deal', 'acquire']):
-                    news_type = NewsType.TRADE.value
-                elif any(kw in headline_lower for kw in ['says', 'said', 'talks', 'speaks']):
-                    news_type = NewsType.PLAYER_QUOTE.value
-
-                news_items.append(TeamNewsItem(
-                    news_type=news_type,
-                    headline=headline,
-                    summary="",
-                    source="ESPN",
-                    date=datetime.now().strftime('%Y-%m-%d'),
-                    url=url
-                ))
-
-            except Exception:
+            response = requests.get(url, headers=get_request_headers(), timeout=30)
+            if response.status_code != 200:
+                print(f"  Failed to fetch page {page}: {response.status_code}")
                 continue
 
-        print(f"{len(news_items)} items")
-        return news_items
+            soup = BeautifulSoup(response.text, 'html.parser')
 
-    except requests.exceptions.RequestException as e:
-        print(f"failed: {e}")
-        return []
-    except Exception as e:
-        print(f"error: {e}")
-        return []
+            # Hupu structure: a[class*="voice-list-content"] -> ... -> p (title)
+            article_links = soup.select('a[class*="voice-list-content"]')
 
+            if not article_links:
+                # Try finding without class if hashing changed, looking for common structure
+                # Fallback might be needed but for now rely on verified selector
+                pass
+
+            for link in article_links:
+                if len(news_items) >= max_items:
+                    break
+
+                title_elem = link.select_one('p')
+                if not title_elem:
+                    continue
+
+                title = title_elem.get_text(strip=True)
+
+                # Filter by team name
+                if not any(kw in title for kw in search_keywords):
+                    continue
+
+                # Found relevant article
+                article_url = link.get('href')
+                if article_url and not article_url.startswith('http'):
+                    article_url = f"https://voice.hupu.com{article_url}"
+
+                # Check for duplicates based on URL
+                if any(item.url == article_url for item in news_items):
+                    continue
+
+                # Fetch article content
+                try:
+                    time.sleep(random.uniform(0.5, 1.5))
+                    detail_resp = requests.get(article_url, headers=get_request_headers(), timeout=30)
+                    detail_soup = BeautifulSoup(detail_resp.text, 'html.parser')
+
+                    # Content is usually in div.bbs-content-font
+                    content_div = detail_soup.select_one('.bbs-content-font')
+                    if content_div:
+                        content = content_div.get_text(separator='\n\n', strip=True)
+                    else:
+                        content = ""
+
+                    # Determine news type
+                    news_type = NewsType.TEAM_NEWS.value
+                    title_lower = title.lower()
+                    if any(kw in title_lower for kw in ['伤病', '缺席', '受伤', '手术', '报销']):
+                        news_type = NewsType.INJURY.value
+                    elif any(kw in title_lower for kw in ['交易', '签约', '裁掉', '续约']):
+                        news_type = NewsType.TRADE.value
+                    elif any(kw in title_lower for kw in ['采访', '谈到', '表示', '说']):
+                        news_type = NewsType.PLAYER_QUOTE.value
+
+                    # Try to parse date from list item if possible, otherwise use today
+                    # <div class="index_voice-list-detail__..."> ... <span>source <time>time</time> ...</span>
+                    date_str = datetime.now().strftime('%Y-%m-%d')
+
+                    news_items.append(TeamNewsItem(
+                        news_type=news_type,
+                        headline=title,
+                        summary=content, # Use content as summary
+                        source="Hupu",
+                        date=date_str,
+                        url=article_url
+                    ))
+                    print(f"    Found: {title}")
+
+                except Exception as e:
+                    print(f"    Error fetching detail for {title}: {e}")
+                    continue
+
+        except Exception as e:
+            print(f"  Error fetching page {page}: {e}")
+            continue
+
+    print(f"  Found {len(news_items)} items")
+    return news_items
 
 def fetch_team_news(
     team_abbrev: str,
@@ -319,8 +341,8 @@ def fetch_team_news(
         if team_abbrev in all_standings:
             result['standings'] = asdict(all_standings[team_abbrev])
 
-    # Get news from ESPN
-    news_items = scrape_espn_news(team_abbrev, max_items)
+    # Get news from Hupu
+    news_items = scrape_hupu_news(team_abbrev, max_items)
     result['news'] = [asdict(item) for item in news_items]
 
     return result
