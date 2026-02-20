@@ -622,14 +622,7 @@ class WinsorizationTransformer(BaseEstimator, TransformerMixin):
         return self
     
     def transform(self, X):
-        X_transformed = np.copy(X)
-        for i in range(X.shape[1]):
-            X_transformed[:, i] = np.clip(
-                X_transformed[:, i], 
-                self.lower_bounds_[i], 
-                self.upper_bounds_[i]
-            )
-        return X_transformed
+        return np.clip(X, self.lower_bounds_, self.upper_bounds_)
 
 
 class ClippingTransformer(BaseEstimator, TransformerMixin):
@@ -646,13 +639,6 @@ class ClippingTransformer(BaseEstimator, TransformerMixin):
         return self
     
     def transform(self, X):
-        X_transformed = np.copy(X)
-        for i in range(X.shape[1]):
-            lower_bound = self.means_[i] - self.std_threshold * self.stds_[i]
-            upper_bound = self.means_[i] + self.std_threshold * self.stds_[i]
-            X_transformed[:, i] = np.clip(
-                X_transformed[:, i], 
-                lower_bound, 
-                upper_bound
-            )
-        return X_transformed
+        lower_bounds = self.means_ - self.std_threshold * self.stds_
+        upper_bounds = self.means_ + self.std_threshold * self.stds_
+        return np.clip(X, lower_bounds, upper_bounds)
