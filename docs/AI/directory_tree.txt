@@ -491,9 +491,6 @@
 │       ├── inference/
 │       │   └── main.py
 │       ├── webscraping/
-│       │   ├── old/
-│       │   │   ├── test_websraping.py
-│       │   │   └── webscraping_old.py
 │       │   ├── base_scraper_classes.py
 │       │   ├── boxscore_scraper.py
 │       │   ├── di_container.py
