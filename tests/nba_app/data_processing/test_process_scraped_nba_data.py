@@ -138,22 +138,62 @@ def test_log_performance_decorator(processor):
 
 
 def test_validate_home_visitor_teams(processor):
-    """Test home/visitor team validation (if method exists)."""
-    if hasattr(processor, 'validate_home_visitor_teams'):
-        df = pd.DataFrame({
-            'GAME_ID': ['001', '001', '002', '002'],
-            'TEAM_ID': [101, 102, 103, 104],
-            'is_home_team': [1, 0, 1, 0],
-            'original_game_id': ['0021900001', '0021900001', '0021900002', '0021900002']
-        })
+    """Test home/visitor team validation with various scenarios."""
+    # Setup test data covering all edge cases
+    data = {
+        'GAME_ID': [
+            '101', '101',  # Valid game: 1 home, 1 visitor
+            '102', '102',  # Invalid game: 2 home teams
+            '103', '103',  # Invalid game: 2 visitor teams
+            '104',         # Invalid game: Single team (home)
+            '105',         # Invalid game: Single team (visitor)
+            '106', '106', '106' # Invalid game: 3 teams (1 home, 2 visitor)
+        ],
+        'original_game_id': [
+            'G101', 'G101',
+            'G102', 'G102',
+            'G103', 'G103',
+            'G104',
+            'G105',
+            'G106', 'G106', 'G106'
+        ],
+        'is_home_team': [
+            1, 0,  # Valid
+            1, 1,  # Invalid (2 home)
+            0, 0,  # Invalid (2 visitor)
+            1,     # Invalid (missing visitor)
+            0,     # Invalid (missing home)
+            1, 0, 0 # Invalid (extra visitor)
+        ],
+        'TEAM_ID': range(11)
+    }
+    df = pd.DataFrame(data)
 
-        with patch.object(processor, '_validate_home_visitor_assignment') as mock_validate:
-            mock_validate.return_value = True
+    valid_df, invalid_df = processor.validate_home_visitor_teams(df)
 
-            valid_df, invalid_df = processor.validate_home_visitor_teams(df)
+    # Check assertions
+    assert isinstance(valid_df, pd.DataFrame)
+    assert isinstance(invalid_df, pd.DataFrame)
 
-            assert isinstance(valid_df, pd.DataFrame)
-            assert isinstance(invalid_df, pd.DataFrame)
+    # Check valid games count (2 rows for 1 game)
+    assert len(valid_df) == 2
+    # Verify the content of valid games (using GAME_ID as original_game_id is dropped)
+    assert all(valid_df['GAME_ID'] == '101')
+    assert 'original_game_id' not in valid_df.columns
+
+    # Check invalid games count (all other rows: 2+2+1+1+3 = 9)
+    assert len(invalid_df) == 9
+
+    # Verify expected invalid game IDs are present
+    invalid_game_ids = invalid_df['original_game_id'].unique()
+    assert 'G102' in invalid_game_ids
+    assert 'G103' in invalid_game_ids
+    assert 'G104' in invalid_game_ids
+    assert 'G105' in invalid_game_ids
+    assert 'G106' in invalid_game_ids
+
+    # original_game_id should be preserved in invalid_df for debugging/saving
+    assert 'original_game_id' in invalid_df.columns
 
 
 def test_save_invalid_records(processor):
